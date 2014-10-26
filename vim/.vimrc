@@ -1,3 +1,4 @@
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -57,7 +58,6 @@ nmap <leader>t :NERDTreeToggle<CR>
 Plugin 'Raimondi/delimitMate'
 
 Plugin 'sjl/badwolf'
-"Plugin 'vim-scripts/desert.vim', {'rtp': 'colors/'}
 
 "plugin for indentation line
 Plugin 'Yggdroot/indentLine'
@@ -73,10 +73,11 @@ Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 set rtp+=$HOME/.vim/bundle/powerline/powerline/lib/python2.7/site-packages/powerline/bindings/vim/
 " Always show statusline
 set laststatus=2
-" scripts from http://vim-scripts.org/vim/scripts.html
+
 Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()  
+
 filetype plugin on
 filetype plugin indent on
 
@@ -90,14 +91,6 @@ set autoindent
 "Подсвечиваем все что можно подсвечивать
 let python_highlight_all = 1
 
-
-"Вырубаем .swp и ~ (резервные) файлы
-set nobackup
-set noswapfile
-set encoding=utf-8 " Кодировка файлов по умолчанию
-set fileencodings=utf8,cp1251 " Возможные кодировки файлов, если файл не в unicode кодировке,
-" то будет использоваться cp1251
-
 "Вырубаем .swp и ~ (резервные) файлы
 set nobackup
 set noswapfile
@@ -110,11 +103,6 @@ set nu "Включаем нумерацию строк
 set mousehide "Спрятать курсор мыши когда набираем текст
 set mouse=a "Включить поддержку мыши
 
-"сокращение для добавления кодировки
-iab bin! #! /usr/bin/env python3
-iab utf! # -*- coding: utf-8 -*-
-iab main! if __name__ == '__main__':
-"
 "Включаем 256 цветов в терминале, мы ведь работаем из иксов?
 "Нужно во многих терминалах, например в gnome-terminal
 set t_Co=256
