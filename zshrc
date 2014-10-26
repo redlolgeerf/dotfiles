@@ -18,6 +18,13 @@ alias clip="xclip -selection clipboard"
 # paths for vietualenvwrapper
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+
+# completion settings
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle :compinstall filename '/home/eyeinthebrick/.zshrc'
+autoload -Uz compinit
+compinit
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
