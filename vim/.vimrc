@@ -185,12 +185,40 @@ inoremap <C-l> <C-o>l
 inoremap <C-w> <C-o>w
 inoremap <C-b> <C-o>b
 
-" Use the OS clipboard by default
-set clipboard=unnamed
+if has('unnamedplus')
+" By default, Vim will not use the system clipboard when yanking/pasting to
+" the default register. This option makes Vim use the system default
+" clipboard.
+" Note that on X11, there are _two_ system clipboards: the "standard" one, and
+" the selection/mouse-middle-click one. Vim sees the standard one as register
+" '+' (and this option makes Vim use it by default) and the selection one as
+" '*'.
+" See :h 'clipboard' for details.
+    set clipboard=unnamedplus,unnamed
+else
+" Vim now also uses the selection system clipboard for default yank/paste.
+    set clipboard+=unnamed
+endif
 
 " remove menu
 set guioptions-=m
 set guioptions-=T
+set guioptions+=c
 
 set spelllang=ru_ru,en_us
 nmap <F6> :set spell<CR>
+
+" with this, we can now type ",." to exit out of insert mode
+" if we really wanted to type ",.", then just type one char, wait half a sec,
+" type another
+inoremap ,. <Esc>
+vnoremap ,. <Esc>
+
+"Basically you press * or # to search for the current selection
+vnoremap <silent> * :call VisualSearch('f')<CR>
+vnoremap <silent> # :call VisualSearch('b')<CR>
+vnoremap <silent> gv :call VisualSearch('gv')<CR>
+
+" This command will allow us to save a file we don't have permission to save
+" *after* we have already opened it. Super useful.
+cnoremap w!! w !sudo tee % >/dev/null
