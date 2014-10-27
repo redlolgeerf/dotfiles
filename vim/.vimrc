@@ -45,9 +45,9 @@ au VimEnter * RainbowParenthesesLoadBraces
 
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 "no autocompletion
-let g:jedi#completions_enabled = 0
+"let g:jedi#completions_enabled = 0
 
 Plugin 'scrooloose/syntastic'
 let g:syntastic_python_checkers = ['pylint', 'pylama', 'pep8', 'flake8', 'pyflakes']
