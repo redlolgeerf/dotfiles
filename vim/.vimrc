@@ -10,6 +10,11 @@ call vundle#begin()
 Plugin 'gmarik/vundle' 
 
 Plugin 'Valloric/YouCompleteMe'
+nmap <leader>g :YcmCompleter GoToDefinition<CR> 
+nmap <leader>d :YcmCompleter GoToDeclaration<CR> 
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insetion = 1
+let g:ycm_goto_buffer_command = 'new-tab'
 
 Plugin 'kien/ctrlp.vim' 
 
