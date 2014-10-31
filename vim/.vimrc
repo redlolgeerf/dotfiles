@@ -18,6 +18,9 @@ let g:ycm_goto_buffer_command = 'new-tab'
 
 Plugin 'kien/ctrlp.vim' 
 
+" Alignment
+Plugin 'godlygeek/tabular' 
+
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 
