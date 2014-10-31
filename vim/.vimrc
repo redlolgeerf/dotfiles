@@ -89,11 +89,18 @@ call vundle#end()
 filetype plugin on
 filetype plugin indent on
 
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set expandtab "Ставим табы пробелами
-set softtabstop=4 "4 пробела в табе
+if has("autocmd")
+  autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab smarttab
+
+  " Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+endif
+
 "Автоотступ
 set autoindent
 "Подсвечиваем все что можно подсвечивать
