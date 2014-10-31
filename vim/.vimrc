@@ -140,6 +140,19 @@ if has('multi_byte')
 endif
 nmap <leader>h :set list!<CR>
 
+autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
 " Save the current buffer
 imap <F5> <esc>:w<CR>a
 nmap <F5> :w<CR>
@@ -237,3 +250,5 @@ vnoremap <silent> gv :call VisualSearch('gv')<CR>
 " This command will allow us to save a file we don't have permission to save
 " *after* we have already opened it. Super useful.
 cnoremap w!! w !sudo tee % >/dev/null
+
+set cmdheight=2
