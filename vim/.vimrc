@@ -27,6 +27,9 @@ Plugin 'sjl/gundo.vim'
 "Visual registers
 Plugin 'vim-scripts/YankRing.vim'
 
+" Yes to square brackets!
+Plugin 'tpope/vim-unimpaired'
+
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 
