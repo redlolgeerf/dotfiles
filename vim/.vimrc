@@ -35,7 +35,7 @@ Plugin 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
-"
+
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-t>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -99,15 +99,15 @@ filetype plugin on
 filetype plugin indent on
 
 if has("autocmd")
-  autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
 
-  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab smarttab
+	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab smarttab
 
-  " Treat .rss files as XML
-  autocmd BufNewFile,BufRead *.rss setfiletype xml
+	" Treat .rss files as XML
+	autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
 
 "Автоотступ
@@ -135,31 +135,31 @@ syntax on
 
 "font
 if has('gui_running')
-    set guifont=Inconsolata\ 12
+	set guifont=Inconsolata\ 12
 endif
 
 "отображение скрытых символов
 if has('multi_byte')
-    if version >= 700
-        " set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
-        set listchars=tab:▸\ ,eol:¬
-    else
-        set listchars=tab:»\ ,trail:·,eol:¶,extends:>,precedes:<,nbsp:_
-    endif
+	if version >= 700
+		" set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
+		set listchars=tab:▸\ ,eol:¬
+	else
+		set listchars=tab:»\ ,trail:·,eol:¶,extends:>,precedes:<,nbsp:_
+	endif
 endif
 nmap <leader>h :set list!<CR>
 
 autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+	" Preparation: save last search, and cursor position.
+	let _s=@/
+	let l = line(".")
+	let c = col(".")
+	" Do the business:
+	%s/\s\+$//e
+	" Clean up: restore previous search history, and cursor position
+	let @/=_s
+	call cursor(l, c)
 endfunction
 
 " Save the current buffer
@@ -173,11 +173,11 @@ nnoremap <F2> :tabnext<CR>
 nnoremap <C-w>t :tabedit<CR>
 
 " highlight collumn end for python files only
-function SetLimit()
-	set colorcolumn=79
-	highlight ColorColumn ctermbg=darkgray
-endfunction
-autocmd FileType python call SetLimit()
+"function SetLimit() 
+"set colorcolumn=79
+"highlight ColorColumn ctermbg=darkgray
+"endfunction
+"autocmd FileType python call SetLimit()
 
 "fixing backspace behavior
 set backspace=2
@@ -197,15 +197,15 @@ set wildmode=longest:full,full " Expand match on first Tab complete
 set wildcharm=<TAB>
 
 fun! DetectTemplate()
-  let n = 1
-  while n < line("$")
-    if getline(n) =~ '{%' || getline(n) =~ '{{'
-      set ft=htmldjango
-      return
-    endif
-    let n = n + 1
-  endwhile
-  set ft=html "default html
+	let n = 1
+	while n < line("$")
+		if getline(n) =~ '{%' || getline(n) =~ '{{'
+			set ft=htmldjango
+			return
+		endif
+		let n = n + 1
+	endwhile
+	set ft=html "default html
 endfun
 autocmd BufNewFile,BufRead *.html call DetectTemplate()
 
@@ -218,18 +218,18 @@ inoremap <C-w> <C-o>w
 inoremap <C-b> <C-o>b
 
 if has('unnamedplus')
-" By default, Vim will not use the system clipboard when yanking/pasting to
-" the default register. This option makes Vim use the system default
-" clipboard.
-" Note that on X11, there are _two_ system clipboards: the "standard" one, and
-" the selection/mouse-middle-click one. Vim sees the standard one as register
-" '+' (and this option makes Vim use it by default) and the selection one as
-" '*'.
-" See :h 'clipboard' for details.
-    set clipboard=unnamedplus,unnamed
+	" By default, Vim will not use the system clipboard when yanking/pasting to
+	" the default register. This option makes Vim use the system default
+	" clipboard.
+	" Note that on X11, there are _two_ system clipboards: the "standard" one, and
+	" the selection/mouse-middle-click one. Vim sees the standard one as register
+	" '+' (and this option makes Vim use it by default) and the selection one as
+	" '*'.
+	" See :h 'clipboard' for details.
+	set clipboard=unnamedplus,unnamed
 else
-" Vim now also uses the selection system clipboard for default yank/paste.
-    set clipboard+=unnamed
+	" Vim now also uses the selection system clipboard for default yank/paste.
+	set clipboard+=unnamed
 endif
 
 " remove menu
@@ -277,7 +277,7 @@ set cmdheight=2
 " Vimrc manipulation
 " Source the vimrc file after saving it
 if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
+	autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
