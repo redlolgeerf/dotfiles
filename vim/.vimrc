@@ -193,11 +193,6 @@ set wildmenu " Better commandline completion
 set wildmode=longest:full,full " Expand match on first Tab complete
 set wildcharm=<TAB>
 
-"show diff from previously saved version
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-	 	\ | wincmd p | diffthis
-nmap <leader>p :DiffOrig<CR>
-
 fun! DetectTemplate()
   let n = 1
   while n < line("$")
@@ -248,7 +243,24 @@ nmap <F6> :set spell<CR>
 inoremap ,. <Esc>
 vnoremap ,. <Esc>
 
-"Basically you press * or # to search for the current selection
+function! VisualSearch(direction) range
+	let l:saved_reg = @"
+	execute "normal! vgvy"
+	let l:pattern = escape(@", '\\/.*$^~[]')
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+	if a:direction == 'b'
+		execute "normal ?" . l:pattern . "^M"
+	elseif a:direction == 'gv'
+		execute "Ack " . l:pattern . ' %'
+	elseif a:direction == 'f'
+		execute "normal /" . l:pattern . "^M"
+	endif
+
+	let @/ = l:pattern
+	let @" = l:saved_reg
+endfunction "Basically you press * or # to search for the current selection
+
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
 vnoremap <silent> gv :call VisualSearch('gv')<CR>
@@ -258,3 +270,11 @@ vnoremap <silent> gv :call VisualSearch('gv')<CR>
 cnoremap w!! w !sudo tee % >/dev/null
 
 set cmdheight=2
+
+" Vimrc manipulation
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+nmap <leader>v :tabedit $MYVIMRC<CR>
