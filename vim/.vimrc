@@ -21,6 +21,12 @@ Plugin 'kien/ctrlp.vim'
 " Alignment
 Plugin 'godlygeek/tabular' 
 
+"Visual undo tree
+Plugin 'sjl/gundo.vim'
+
+"Visual registers
+Plugin 'vim-scripts/YankRing.vim'
+
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 
