@@ -18,6 +18,11 @@ let g:ycm_goto_buffer_command = 'new-tab'
 
 Plugin 'kien/ctrlp.vim' 
 
+" Nice start screen
+Plugin 'mhinz/vim-startify'
+let g:startify_custom_header = 
+    \ map(split(system('fortune ~/.vim/fortunes | cowsay -W 60'), '\n'), '"   ". v:val') + ['','']
+
 " Alignment
 Plugin 'godlygeek/tabular' 
 
