@@ -279,10 +279,4 @@ cnoremap w!! w !sudo tee % >/dev/null
 
 set cmdheight=2
 
-" Vimrc manipulation
-" Source the vimrc file after saving it
-if has("autocmd")
-	autocmd bufwritepost .vimrc source $MYVIMRC
-endif
-
 nmap <leader>v :tabedit $MYVIMRC<CR>
