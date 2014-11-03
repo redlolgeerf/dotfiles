@@ -214,7 +214,7 @@ fun! DetectTemplate()
 endfun
 autocmd BufNewFile,BufRead *.html call DetectTemplate()
 
-" make hjkl movements accessible from insert mode via the <Alt> modifier key
+" make hjkl movements accessible from insert mode via the <Ctrl> modifier key
 inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
