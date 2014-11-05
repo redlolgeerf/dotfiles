@@ -26,6 +26,8 @@ let g:startify_custom_header =
 " Alignment
 Plugin 'godlygeek/tabular' 
 
+Plugin 'tpope/vim-surround'
+
 "Visual undo tree
 Plugin 'sjl/gundo.vim'
 
