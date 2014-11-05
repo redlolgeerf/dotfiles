@@ -317,7 +317,7 @@ netwidget = wibox.widget.background(lain.widgets.net({
 
 -- Keyboard map indicator and changer
 kbdcfg = {}
-kbdcfg.cmd = "setxkbmap"
+kbdcfg.cmd = "xkb-switch -s"
 kbdcfg.layout = { { "us", "" }, { "ru", "" } }
 kbdcfg.current = 1  -- us is our default layout
 kbdcfg.widget = wibox.widget.textbox()
@@ -332,7 +332,7 @@ kbdcfg.switch = function (x)
   local t = kbdcfg.layout[kbdcfg.current]
   kbdcfg.widget:set_text(" " .. t[1] .. " ")
   --os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
-  os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. ",us" )
+  os.execute( kbdcfg.cmd .. " " .. t[1] .. " " )
 end
 kbdcfgwidgetbg = wibox.widget.background(kbdcfg.widget, "#313131")
 
