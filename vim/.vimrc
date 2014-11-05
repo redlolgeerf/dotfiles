@@ -17,6 +17,12 @@ let g:ycm_autoclose_preview_window_after_insetion = 1
 let g:ycm_goto_buffer_command = 'new-tab'
 
 Plugin 'kien/ctrlp.vim' 
+" This does not work due to xkb-switch
+" Automatically switch from ru to us, when leaving insert mode
+"Plugin 'lyokha/vim-xkbswitch'
+"let g:XkbSwitchEnabled = 1
+"let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
+"let g:XkbSwitchIMappings = ['ru']
 
 " Nice start screen
 Plugin 'mhinz/vim-startify'
