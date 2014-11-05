@@ -14,6 +14,9 @@ ZSH_THEME="robbyrussell"
 alias ls="ls -A"
 alias py="gvim -p *.py"
 alias clip="xclip -selection clipboard"
+alias gv="gvim"
+alias gogo='cd ~/Projects/hydra && workon standard'
+alias djex='cd ~/Projects/djex && workon djex'
 
 # paths for vietualenvwrapper
 export WORKON_HOME=~/.virtualenvs
@@ -69,6 +72,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/Projects/art3d_scripts
+export PATH=$PATH:$HOME/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -86,3 +91,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+envoy -t ssh-agent
+source <(envoy -p)
+
