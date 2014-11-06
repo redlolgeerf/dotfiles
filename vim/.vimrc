@@ -111,7 +111,9 @@ call vundle#end()
 filetype plugin on
 filetype plugin indent on
 
+set ts=4 sts=4 sw=4 expandtab
 if has("autocmd")
+
 	autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
@@ -186,11 +188,11 @@ nnoremap <F2> :tabnext<CR>
 nnoremap <C-w>t :tabedit<CR>
 
 " highlight collumn end for python files only
-"function SetLimit() 
-"set colorcolumn=79
-"highlight ColorColumn ctermbg=darkgray
-"endfunction
-"autocmd FileType python call SetLimit()
+function! SetLimit() 
+	set colorcolumn=79
+	highlight ColorColumn ctermbg=darkgray
+endfunction
+autocmd FileType python call SetLimit()
 
 "fixing backspace behavior
 set backspace=2
