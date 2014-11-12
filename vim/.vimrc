@@ -14,14 +14,15 @@ nmap <leader>g :YcmCompleter GoToDefinition<CR>
 nmap <leader>d :YcmCompleter GoToDeclaration<CR> 
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insetion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_goto_buffer_command = 'new-tab'
 
 Plugin 'kien/ctrlp.vim' 
-" This does not work due to xkb-switch
-" Automatically switch from ru to us, when leaving insert mode
-"Plugin 'lyokha/vim-xkbswitch'
-"let g:XkbSwitchEnabled = 1
-"let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
+
+"Automatically switch from ru to us, when leaving insert mode
+Plugin 'lyokha/vim-xkbswitch'
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
 "let g:XkbSwitchIMappings = ['ru']
 
 " Nice start screen
@@ -36,9 +37,6 @@ Plugin 'tpope/vim-surround'
 
 "Visual undo tree
 Plugin 'sjl/gundo.vim'
-
-"Visual registers
-Plugin 'vim-scripts/YankRing.vim'
 
 " Yes to square brackets!
 Plugin 'tpope/vim-unimpaired'
@@ -70,10 +68,6 @@ au VimEnter * RainbowParenthesesLoadBraces
 
 Plugin 'tpope/vim-fugitive'
 
-"Plugin 'davidhalter/jedi-vim'
-"no autocompletion
-"let g:jedi#completions_enabled = 0
-
 Plugin 'scrooloose/syntastic'
 let g:syntastic_python_checkers = ['pylint', 'pylama', 'pep8', 'flake8', 'pyflakes']
 let g:syntastic_always_populate_loc_list = 1
@@ -84,6 +78,7 @@ Plugin 'lambdalisue/vim-django-support'
 Plugin 'scrooloose/nerdtree'
 "open NerdTree with leader+t
 nmap <leader>t :NERDTreeToggle<CR> 
+let g:NERDTreeWinPos = "right"
 
 Plugin 'Raimondi/delimitMate'
 
@@ -101,6 +96,7 @@ let g:dbext_default_profile_sqlite_test = 'type=SQLITE:SQLITE_bin=sqlite3:dbname
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 set rtp+=$HOME/.vim/bundle/powerline/powerline/lib/python2.7/site-packages/powerline/bindings/vim/
+let g:Powerline_symbols = 'fancy'
 " Always show statusline
 set laststatus=2
 
