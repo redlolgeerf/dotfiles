@@ -54,7 +54,7 @@ run_once("unclutter")
 run_once("xscreensaver -no-splash")
 run_once("thunar --daemon")
 run_once("xfce4-clipman &")
-run_once("compton -d -c")
+run_once("compton -d -c &")
 -- }}}
 
 -- {{{ Variable definitions
@@ -82,7 +82,12 @@ local layouts = {
     lain.layout.uselesstile,
     awful.layout.suit.fair,
     lain.layout.uselesstile.left,
-    lain.layout.uselesstile.top
+    lain.layout.uselesstile.top,
+    lain.layout.termfair,
+    lain.layout.centerfair,
+    lain.layout.centerwork,
+    lain.layout.uselessfair,
+    lain.layout.uselesspiral,
 }
 -- }}}
 
