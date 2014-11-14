@@ -14,14 +14,15 @@ nmap <leader>g :YcmCompleter GoToDefinition<CR>
 nmap <leader>d :YcmCompleter GoToDeclaration<CR> 
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insetion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_goto_buffer_command = 'new-tab'
 
 Plugin 'kien/ctrlp.vim' 
-" This does not work due to xkb-switch
+
 " Automatically switch from ru to us, when leaving insert mode
-"Plugin 'lyokha/vim-xkbswitch'
-"let g:XkbSwitchEnabled = 1
-"let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
+Plugin 'lyokha/vim-xkbswitch'
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
 "let g:XkbSwitchIMappings = ['ru']
 
 " Nice start screen
@@ -38,7 +39,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
 
 "Visual registers
-Plugin 'vim-scripts/YankRing.vim'
+"Plugin 'vim-scripts/YankRing.vim'
 
 " Yes to square brackets!
 Plugin 'tpope/vim-unimpaired'
@@ -83,6 +84,7 @@ Plugin 'lambdalisue/vim-django-support'
 
 Plugin 'scrooloose/nerdtree'
 "open NerdTree with leader+t
+let NERDTreeWinPos = "right"
 nmap <leader>t :NERDTreeToggle<CR> 
 
 Plugin 'Raimondi/delimitMate'
@@ -150,7 +152,7 @@ syntax on
 
 "font
 if has('gui_running')
-	set guifont=Inconsolata\ 12
+	set guifont=Firamono\ 12
 endif
 
 "отображение скрытых символов
@@ -162,7 +164,6 @@ if has('multi_byte')
 		set listchars=tab:»\ ,trail:·,eol:¶,extends:>,precedes:<,nbsp:_
 	endif
 endif
-nmap <leader>h :set list!<CR>
 
 autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
 function! <SID>StripTrailingWhitespaces()
