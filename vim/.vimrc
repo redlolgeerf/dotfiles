@@ -38,9 +38,6 @@ Plugin 'tpope/vim-surround'
 "Visual undo tree
 Plugin 'sjl/gundo.vim'
 
-"Visual registers
-"Plugin 'vim-scripts/YankRing.vim'
-
 " Yes to square brackets!
 Plugin 'tpope/vim-unimpaired'
 
@@ -71,10 +68,6 @@ au VimEnter * RainbowParenthesesLoadBraces
 
 Plugin 'tpope/vim-fugitive'
 
-"Plugin 'davidhalter/jedi-vim'
-"no autocompletion
-"let g:jedi#completions_enabled = 0
-
 Plugin 'scrooloose/syntastic'
 let g:syntastic_python_checkers = ['pylint', 'pylama', 'pep8', 'flake8', 'pyflakes']
 let g:syntastic_always_populate_loc_list = 1
@@ -86,6 +79,7 @@ Plugin 'scrooloose/nerdtree'
 "open NerdTree with leader+t
 let NERDTreeWinPos = "right"
 nmap <leader>t :NERDTreeToggle<CR> 
+let g:NERDTreeWinPos = "right"
 
 Plugin 'Raimondi/delimitMate'
 
@@ -103,6 +97,7 @@ let g:dbext_default_profile_sqlite_test = 'type=SQLITE:SQLITE_bin=sqlite3:dbname
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 set rtp+=$HOME/.vim/bundle/powerline/powerline/lib/python2.7/site-packages/powerline/bindings/vim/
+let g:Powerline_symbols = 'fancy'
 " Always show statusline
 set laststatus=2
 
