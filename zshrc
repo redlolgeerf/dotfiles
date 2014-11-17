@@ -12,6 +12,7 @@ ZSH_THEME="robbyrussell"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls -A"
+alias cls="clear"
 alias py="gvim -p *.py"
 alias clip="xclip -selection clipboard"
 alias gv="gvim"
@@ -65,7 +66,7 @@ compinit
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pip)
+plugins=(git pip fabric)
 
 source $ZSH/oh-my-zsh.sh
 

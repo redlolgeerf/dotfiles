@@ -52,7 +52,6 @@ end
 run_once("urxvtd")
 run_once("unclutter")
 run_once("xscreensaver -no-splash")
-run_once("thunar --daemon")
 run_once("xfce4-clipman &")
 run_once("compton -d -c &")
 -- }}}

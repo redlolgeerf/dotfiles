@@ -63,6 +63,7 @@ XTerm*background: #101010
 !*color13: S_violet
 !*color14: S_base1
 !*color15: S_base3
+<<<<<<< Updated upstream
 ! URxvt*termName:                       string
 ! URxvt*geometry:                       geometry
 ! URxvt*chdir:                          string

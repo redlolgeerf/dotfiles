@@ -69,7 +69,7 @@ au VimEnter * RainbowParenthesesLoadBraces
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'scrooloose/syntastic'
-let g:syntastic_python_checkers = ['pylint', 'pylama', 'pep8', 'flake8', 'pyflakes']
+let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_always_populate_loc_list = 1
 nmap <leader>c :SyntasticCheck<CR> 
 
@@ -135,7 +135,8 @@ set fileencodings=utf8,cp1251 " Возможные кодировки файло
 " то будет использоваться cp1251
 
 colorscheme badwolf "Цветовая схема
-set nu "Включаем нумерацию строк
+set number "Включаем нумерацию строк
+set cursorline "Включаем нумерацию строк
 set mousehide "Спрятать курсор мыши когда набираем текст
 set mouse=a "Включить поддержку мыши
 
@@ -248,8 +249,8 @@ set guioptions-=m
 set guioptions-=T
 set guioptions+=c
 
+set lazyredraw
 set spelllang=ru_ru,en_us
-nmap <F6> :set spell<CR>
 
 " with this, we can now type ",." to exit out of insert mode
 " if we really wanted to type ",.", then just type one char, wait half a sec,
@@ -286,3 +287,10 @@ cnoremap w!! w !sudo tee % >/dev/null
 set cmdheight=2
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
+
+" undo settings
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+" How many lines
+set undoreload=10000
