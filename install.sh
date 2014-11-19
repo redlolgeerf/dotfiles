@@ -37,6 +37,14 @@ function uninstall_zsh() {
     delete "$HOMES"/.zshrc
 }
 
+function install_devilspie() {
+    symlink "$DOT_PATH"/devilspie "$HOMES"/.devilspie
+}
+
+function uninstall_devilspie() {
+    delete "$HOMES"/.devilspie
+}
+
 function install_xresources() {
     symlink "$DOT_PATH"/Xresources "$HOMES"/.Xresources
 }

@@ -1,0 +1,10 @@
+( if
+( or
+( contains ( window_class ) "Gvim" )
+( contains ( application_name ) "thunar" )
+( contains ( window_class ) "Thunar" )
+)
+( begin
+( spawn_async (str "transset-df -i " (window_xid) " 0.95" ))
+)
+)
