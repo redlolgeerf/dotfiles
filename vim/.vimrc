@@ -95,9 +95,10 @@ let g:dbext_default_profile_sqlite_master = 'type=SQLITE:SQLITE_bin=sqlite3:dbna
 let g:dbext_default_profile_sqlite_master_old = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/Projects/hydra/db/main.sqlite.old'
 let g:dbext_default_profile_sqlite_test = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/dev/hydra/db/main.sqlite'
 
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-set rtp+=$HOME/.vim/bundle/powerline/powerline/lib/python2.7/site-packages/powerline/bindings/vim/
-let g:Powerline_symbols = 'fancy'
+Plugin 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_close_button = 0
+
 " Always show statusline
 set laststatus=2
 
