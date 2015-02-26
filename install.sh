@@ -64,6 +64,13 @@ function uninstall_awesome() {
     delete "$HOMES"/.config/awesome
 }
 
+function install_tmux() {
+    symlink "$DOT_PATH"/tmux.conf "$HOMES"/.tmux.conf
+}
+
+function uninstall_tmux() {
+    delete "$HOMES"/.tmux.conf
+}
 
 INSTALL=true
 to_install=()
