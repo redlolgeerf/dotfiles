@@ -516,7 +516,7 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "p", function() os.execute("screenshot") end),
 
     --Lock screen
-    awful.key({ modkey, "Control" }, "l", function () awful.util.spawn("xscreensaver-command --lock") end),
+    awful.key({ modkey, "Control" }, "l", function () kbdcfg.switch('us') ; awful.util.spawn("xscreensaver-command --lock") end),
     -- Tag browsing
     awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
