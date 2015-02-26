@@ -95,3 +95,4 @@ export PATH=$PATH:$HOME/bin
 envoy -t ssh-agent
 source <(envoy -p)
 
+unset GREP_OPTIONS
