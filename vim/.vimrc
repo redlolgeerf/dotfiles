@@ -6,10 +6,45 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin list
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'gmarik/vundle' 
-
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'kien/ctrlp.vim' 
+Plugin 'lyokha/vim-xkbswitch' " Automatically switch from ru to us, when leaving insert mode
+Plugin 'mhinz/vim-startify' " Nice start screen
+Plugin 'godlygeek/tabular' " Alignment
+Plugin 'tpope/vim-surround'
+Plugin 'sjl/gundo.vim' "Visual undo tree
+Plugin 'tpope/vim-unimpaired' " Yes to square brackets!
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'majutsushi/tagbar' 
+Plugin 'kien/rainbow_parentheses.vim' 
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'lambdalisue/vim-django-support'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Raimondi/delimitMate'
+Plugin 'sjl/badwolf'
+Plugin 'fatih/molokai'
+Plugin 'Yggdroot/indentLine' "plugin for indentation line
+Plugin 'vim-scripts/dbext.vim' "plugin for working with sql
+Plugin 'bling/vim-airline'
+Plugin 'fatih/vim-go' "everything for golang
+Plugin 'scrooloose/nerdcommenter'
+
+call vundle#end()  
+
+filetype plugin on
+filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" YouCompleteMe
 nmap <leader>g :YcmCompleter GoToDefinition<CR> 
 nmap <leader>d :YcmCompleter GoToDeclaration<CR> 
 let g:ycm_add_preview_to_completeopt = 1
@@ -17,101 +52,50 @@ let g:ycm_autoclose_preview_window_after_insetion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_goto_buffer_command = 'new-tab'
 
-Plugin 'kien/ctrlp.vim' 
-
-" Automatically switch from ru to us, when leaving insert mode
-Plugin 'lyokha/vim-xkbswitch'
+" XkbSwitch
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
-"let g:XkbSwitchIMappings = ['ru']
 
-" Nice start screen
-Plugin 'mhinz/vim-startify'
+" Startify
 let g:startify_custom_header = 
     \ map(split(system('fortune ~/.vim/fortunes | cowsay -W 60'), '\n'), '"   ". v:val') + ['','']
 
-" Alignment
-Plugin 'godlygeek/tabular' 
-
-Plugin 'tpope/vim-surround'
-
-"Visual undo tree
-Plugin 'sjl/gundo.vim'
-
-" Yes to square brackets!
-Plugin 'tpope/vim-unimpaired'
-
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" UltiSnips
 let g:UltiSnipsExpandTrigger="<c-t>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsUsePythonVersion = 2
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-Plugin 'majutsushi/tagbar' 
+" TagBar
 nmap <F8> :TagbarToggle<CR>
 
-Plugin 'kien/rainbow_parentheses.vim' 
+" RainbowParentheses
 nmap <F9> :RainbowParenthesesToggleAll<CR>
 au VimEnter * RainbowParenthesesToggleAll
 au VimEnter * RainbowParenthesesLoadRound
 au VimEnter * RainbowParenthesesLoadSquare
 au VimEnter * RainbowParenthesesLoadBraces
 
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'scrooloose/syntastic'
+" Syntastic
 let g:syntastic_python_checkers = ['flake8', 'pylama', 'pyflakes']
 let g:syntastic_always_populate_loc_list = 1
 nmap <leader>c :SyntasticCheck<CR> 
 
-Plugin 'lambdalisue/vim-django-support'
-
-Plugin 'scrooloose/nerdtree'
-"open NerdTree with leader+t
+" NerdTree
 let NERDTreeWinPos = "right"
 nmap <leader>t :NERDTreeToggle<CR> 
 let g:NERDTreeWinPos = "right"
-
-Plugin 'Raimondi/delimitMate'
-
-Plugin 'sjl/badwolf'
-
-Plugin 'fatih/molokai'
-
-"plugin for indentation line
-Plugin 'Yggdroot/indentLine'
-
-"plugin for working with sql
-Plugin 'vim-scripts/dbext.vim'
-" SQLite
+"
+" Dbext
 let g:dbext_default_profile_sqlite_master = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/Projects/hydra/db/main.sqlite'
 let g:dbext_default_profile_sqlite_master_old = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/Projects/hydra/db/main.sqlite.old'
 let g:dbext_default_profile_sqlite_test = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/dev/hydra/db/main.sqlite'
 
-Plugin 'bling/vim-airline'
+" Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_close_button = 0
-"everything for golang
-Plugin 'fatih/vim-go'
-
-" Always show statusline
-set laststatus=2
-
-Plugin 'scrooloose/nerdcommenter'
-
-call vundle#end()  
-
-filetype plugin on
-filetype plugin indent on
 
 set ts=4 sts=4 sw=4 expandtab
 if has("autocmd")
@@ -126,6 +110,9 @@ if has("autocmd")
 	" Treat .rss files as XML
 	autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
+
+" Always show statusline
+set laststatus=2
 
 "Автоотступ
 set autoindent
