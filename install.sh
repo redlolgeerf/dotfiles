@@ -22,6 +22,10 @@ function delete() {
 function install_vim() {
     symlink "$DOT_PATH"/vim "$HOMES"/.vim
     symlink "$DOT_PATH"/vim/.vimrc "$HOMES"/.vimrc
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    vim +PluginInstall +qall
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.sh
 }
 
 function uninstall_vim() {
