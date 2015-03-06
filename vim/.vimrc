@@ -100,6 +100,8 @@ let g:dbext_default_profile_sqlite_test = 'type=SQLITE:SQLITE_bin=sqlite3:dbname
 Plugin 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_close_button = 0
+"everything for golang
+Plugin 'fatih/vim-go'
 
 " Always show statusline
 set laststatus=2
