@@ -69,7 +69,7 @@ au VimEnter * RainbowParenthesesLoadBraces
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'scrooloose/syntastic'
-let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_checkers = ['flake8', 'pylama', 'pyflakes']
 let g:syntastic_always_populate_loc_list = 1
 nmap <leader>c :SyntasticCheck<CR> 
 
