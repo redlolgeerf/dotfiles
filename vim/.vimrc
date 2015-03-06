@@ -85,6 +85,8 @@ Plugin 'Raimondi/delimitMate'
 
 Plugin 'sjl/badwolf'
 
+Plugin 'fatih/molokai'
+
 "plugin for indentation line
 Plugin 'Yggdroot/indentLine'
 
@@ -135,7 +137,8 @@ set encoding=utf-8 " Кодировка файлов по умолчанию
 set fileencodings=utf8,cp1251 " Возможные кодировки файлов, если файл не в unicode кодировке,
 " то будет использоваться cp1251
 
-colorscheme badwolf "Цветовая схема
+"colorscheme badwolf "Цветовая схема
+colorscheme molokai "Цветовая схема
 set number "Включаем нумерацию строк
 set cursorline "Включаем нумерацию строк
 set mousehide "Спрятать курсор мыши когда набираем текст
