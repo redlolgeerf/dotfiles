@@ -10,6 +10,7 @@ call vundle#begin()
 " Plugin list
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'gmarik/vundle' 
+Plugin 'klen/python-mode' 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim' 
 Plugin 'lyokha/vim-xkbswitch' " Automatically switch from ru to us, when leaving insert mode
@@ -23,13 +24,12 @@ Plugin 'honza/vim-snippets'
 Plugin 'majutsushi/tagbar' 
 Plugin 'kien/rainbow_parentheses.vim' 
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'lambdalisue/vim-django-support'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Raimondi/delimitMate'
 Plugin 'sjl/badwolf'
 Plugin 'fatih/molokai'
-Plugin 'Yggdroot/indentLine' "plugin for indentation line
 Plugin 'vim-scripts/dbext.vim' "plugin for working with sql
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go' "everything for golang
@@ -86,7 +86,7 @@ nmap <leader>c :SyntasticCheck<CR>
 let NERDTreeWinPos = "right"
 nmap <leader>t :NERDTreeToggle<CR> 
 let g:NERDTreeWinPos = "right"
-"
+
 " Dbext
 let g:dbext_default_profile_sqlite_master = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/Projects/hydra/db/main.sqlite'
 let g:dbext_default_profile_sqlite_master_old = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/Projects/hydra/db/main.sqlite.old'
@@ -95,6 +95,13 @@ let g:dbext_default_profile_sqlite_test = 'type=SQLITE:SQLITE_bin=sqlite3:dbname
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_close_button = 0
+
+" NerdCommenter
+let g:NERDSpaceDelims = 1
+" Pymode
+let g:pymode_rope_completion = 0
+let g:pymode_folding = 0
+let g:pymode_options_colorcolumn = 1
 
 set ts=4 sts=4 sw=4 expandtab
 if has("autocmd")
