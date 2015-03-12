@@ -93,7 +93,7 @@ export PATH=$PATH:$HOME/bin
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-envoy -t ssh-agent
-source <(envoy -p)
+#envoy -t ssh-agent
+#source <(envoy -p)
 
 unset GREP_OPTIONS

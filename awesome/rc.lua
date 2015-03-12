@@ -79,7 +79,6 @@ graphics   = "gimp"
 
 local layouts = {
     awful.layout.suit.floating,
-    lain.layout.uselesstile,
     awful.layout.suit.fair,
     lain.layout.uselesstile.left,
     lain.layout.uselesstile.top,

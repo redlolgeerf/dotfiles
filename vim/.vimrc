@@ -55,7 +55,6 @@ let g:ycm_goto_buffer_command = 'new-tab'
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
 
-" Startify
 let g:startify_custom_header = 
     \ map(split(system('fortune ~/.vim/fortunes | cowsay -W 60'), '\n'), '"   ". v:val') + ['','']
 
