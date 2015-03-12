@@ -92,8 +92,8 @@ export PATH=$PATH:$HOME/bin
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-#envoy -t ssh-agent
-#source <(envoy -p)
+export SSH_KEY_PATH="~/.ssh/dsa_id"
+envoy -t ssh-agent
+source <(envoy -p)
 
 unset GREP_OPTIONS
