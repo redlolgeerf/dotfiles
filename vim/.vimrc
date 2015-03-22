@@ -11,7 +11,6 @@ call vundle#begin()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'gmarik/vundle' 
 Plugin 'klen/python-mode' 
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim' 
 Plugin 'lyokha/vim-xkbswitch' " Automatically switch from ru to us, when leaving insert mode
 Plugin 'mhinz/vim-startify' " Nice start screen
@@ -34,6 +33,7 @@ Plugin 'vim-scripts/dbext.vim' "plugin for working with sql
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go' "everything for golang
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()  
 
