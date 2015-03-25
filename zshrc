@@ -40,7 +40,7 @@ compinit
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
-eval `dircolors /tmp/dircolors/dircolors.256dark`  
+eval `dircolors $HOME/.dir_colors/dircolors.256dark`
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -92,8 +92,9 @@ export PATH=$PATH:$HOME/bin
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/dsa_id"
-envoy -t ssh-agent
+# export SSH_KEY_PATH="~/.ssh/id_rsa"
+# envoy -t ssh-agent
+envoy -t ssh-agent -a ~/.ssh/id_rsa
 source <(envoy -p)
 
 unset GREP_OPTIONS
