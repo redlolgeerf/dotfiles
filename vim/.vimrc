@@ -248,6 +248,10 @@ set guioptions-=m
 set guioptions-=T
 set guioptions+=c
 
+" remove scrollbar
+set guioptions-=r
+set guioptions-=L
+
 set lazyredraw
 set spelllang=ru_ru,en_us
 
