@@ -1,23 +1,19 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-export TERM=xterm-256color
+export TERM=rxvt-unicode
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell-modified"
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="ls -A"
 alias cls="clear"
 alias py="gvim -p *.py"
 alias clip="xclip -selection clipboard"
 alias gv="gvim"
-alias gogo='cd ~/Projects/hydra && workon standard'
-alias djex='cd ~/Projects/djex && workon djex'
 
 # paths for vietualenvwrapper
 export WORKON_HOME=~/.virtualenvs
@@ -74,7 +70,6 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/Projects/art3d_scripts
 export PATH=$PATH:$HOME/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
