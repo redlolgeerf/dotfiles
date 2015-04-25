@@ -88,6 +88,7 @@ nmap <leader>c :SyntasticCheck<CR>
 let NERDTreeWinPos = "right"
 nmap <leader>t :NERDTreeToggle<CR> 
 let g:NERDTreeWinPos = "right"
+let NERDTreeIgnore = ['\.pyc$']
 
 " Dbext
 let g:dbext_default_profile_sqlite_master = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/Projects/hydra/db/main.sqlite'
@@ -249,6 +250,10 @@ endif
 set guioptions-=m
 set guioptions-=T
 set guioptions+=c
+
+" remove scrollbar
+set guioptions-=r
+set guioptions-=L
 
 set lazyredraw
 set spelllang=ru_ru,en_us
