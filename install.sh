@@ -76,6 +76,14 @@ function uninstall_tmux() {
     delete "$HOMES"/.tmux.conf
 }
 
+function install_emacs() {
+    symlink "$DOT_PATH"/emacs.d "$HOMES"/.emacs.d
+}
+
+function uninstall_emacs() {
+    delete "$HOMES"/.emacs.d
+}
+
 INSTALL=true
 to_install=()
 

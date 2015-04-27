@@ -31,6 +31,9 @@ Plugin 'vim-scripts/dbext.vim' "plugin for working with sql
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go' "everything for golang
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'marijnh/tern_for_vim' "js completion
+Plugin 'jelera/vim-javascript-syntax' "js syntax and indentation
+Plugin 'pangloss/vim-javascript' "js highlight
 Plugin 'Valloric/YouCompleteMe'
 
 """""""""""""""""""""""""""""" Themes """"""""""""""""""""""""""""""
