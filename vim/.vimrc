@@ -23,17 +23,22 @@ Plugin 'honza/vim-snippets'
 Plugin 'majutsushi/tagbar' 
 Plugin 'kien/rainbow_parentheses.vim' 
 Plugin 'tpope/vim-fugitive'
-"Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'lambdalisue/vim-django-support'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Raimondi/delimitMate'
-Plugin 'sjl/badwolf'
-Plugin 'fatih/molokai'
 Plugin 'vim-scripts/dbext.vim' "plugin for working with sql
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go' "everything for golang
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Valloric/YouCompleteMe'
+
+"""""""""""""""""""""""""""""" Themes """"""""""""""""""""""""""""""
+Plugin 'whatyouhide/vim-gotham'
+Plugin 'sjl/badwolf'
+Plugin 'fatih/molokai'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 call vundle#end()  
 
@@ -132,8 +137,7 @@ set encoding=utf-8 " Кодировка файлов по умолчанию
 set fileencodings=utf8,cp1251 " Возможные кодировки файлов, если файл не в unicode кодировке,
 " то будет использоваться cp1251
 
-"colorscheme badwolf "Цветовая схема
-colorscheme molokai "Цветовая схема
+colorscheme gotham "Цветовая схема
 set number "Включаем нумерацию строк
 set cursorline "Включаем нумерацию строк
 set mousehide "Спрятать курсор мыши когда набираем текст
