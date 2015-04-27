@@ -14,8 +14,9 @@ alias cls="clear"
 alias py="gvim -p *.py"
 alias clip="xclip -selection clipboard"
 alias gv="gvim"
+alias clock_back="pkill -f indicator-datetime-service"
 
-# paths for vietualenvwrapper
+# paths for virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
