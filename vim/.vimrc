@@ -108,8 +108,12 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:NERDSpaceDelims = 1
 " Pymode
 let g:pymode_rope_completion = 0
-let g:pymode_folding = 0
+let g:pymode_folding = 1
 let g:pymode_options_colorcolumn = 1
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_write = 0
+let g:pymode_lint_options_pep8 = {'max_line_length': 160, 'ignore': 'E128'}
+nmap <leader>c :PymodeLint<CR> 
 
 set ts=4 sts=4 sw=4 expandtab
 if has("autocmd")
