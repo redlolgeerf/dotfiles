@@ -9,7 +9,7 @@ call vundle#begin()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin list
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'gmarik/vundle' 
+Plugin 'gmarik/Vundle.vim' 
 Plugin 'klen/python-mode' 
 Plugin 'kien/ctrlp.vim' 
 Plugin 'lyokha/vim-xkbswitch' " Automatically switch from ru to us, when leaving insert mode
@@ -87,7 +87,6 @@ au VimEnter * RainbowParenthesesLoadBraces
 " Syntastic
 let g:syntastic_python_checkers = ['flake8', 'pylama', 'pyflakes']
 let g:syntastic_always_populate_loc_list = 1
-nmap <leader>c :SyntasticCheck<CR> 
 
 " NerdTree
 let NERDTreeWinPos = "right"

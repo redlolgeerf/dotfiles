@@ -94,3 +94,5 @@ envoy -t ssh-agent -a ~/.ssh/id_rsa
 source <(envoy -p)
 
 unset GREP_OPTIONS
+
+#/usr/bin/setxkbmap -option 'ctrl:nocaps'
