@@ -35,6 +35,9 @@ Plugin 'marijnh/tern_for_vim' "js completion
 Plugin 'jelera/vim-javascript-syntax' "js syntax and indentation
 Plugin 'pangloss/vim-javascript' "js highlight
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/IndexedSearch'
+Plugin 'vim-scripts/bufexplorer.zip'
 
 """""""""""""""""""""""""""""" Themes """"""""""""""""""""""""""""""
 Plugin 'whatyouhide/vim-gotham'
