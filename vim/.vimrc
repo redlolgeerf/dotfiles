@@ -38,6 +38,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/IndexedSearch'
 Plugin 'vim-scripts/bufexplorer.zip'
+Plugin 'tpope/vim-dispatch'
 
 """""""""""""""""""""""""""""" Themes """"""""""""""""""""""""""""""
 Plugin 'whatyouhide/vim-gotham'
@@ -119,6 +120,9 @@ nmap <leader>c :PymodeLint<CR>
 
 " Ack
 nnoremap <Leader>f :<C-u>execute "Ack " . expand("<cword>") <Bar> cw<CR>
+
+" Dispatch
+nnoremap <F10> :Dispatch<CR>
 
 set ts=4 sts=4 sw=4 expandtab
 if has("autocmd")
