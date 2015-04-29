@@ -39,6 +39,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/IndexedSearch'
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-vinegar'
 
 """""""""""""""""""""""""""""" Themes """"""""""""""""""""""""""""""
 Plugin 'whatyouhide/vim-gotham'
