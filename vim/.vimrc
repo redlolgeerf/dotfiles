@@ -117,6 +117,9 @@ let g:pymode_lint_write = 0
 let g:pymode_lint_options_pep8 = {'max_line_length': 160, 'ignore': 'E128'}
 nmap <leader>c :PymodeLint<CR> 
 
+" Ack
+nnoremap <Leader>f :<C-u>execute "Ack " . expand("<cword>") <Bar> cw<CR>
+
 set ts=4 sts=4 sw=4 expandtab
 if has("autocmd")
 
@@ -130,6 +133,9 @@ if has("autocmd")
 	" Treat .rss files as XML
 	autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
+
+" Auto change the directory to the current file I'm working on
+autocmd BufEnter * lcd %:p:h
 
 " Always show statusline
 set laststatus=2
@@ -215,10 +221,17 @@ set ignorecase " Ignore case in search patterns
 set smartcase " Override the 'ignorecase' option if the search pattern contains upper case characters
 set incsearch " While typing a search command, show where the pattern
 
-" Tab completion in command line mode
+
 set wildmenu " Better commandline completion
 set wildmode=longest:full,full " Expand match on first Tab complete
-set wildcharm=<TAB>
+set wildignore+=.hg,.git,.svn,*.pyc,.ropeproject
+set wildcharm=<TAB> " Tab completion in command line mode
+set showcmd
+
+set hidden
+
+vnoremap < <gv
+vnoremap > >gv
 
 fun! DetectTemplate()
 	let n = 1
@@ -310,3 +323,15 @@ set undodir=$HOME/.vim/undo
 set undolevels=1000
 " How many lines
 set undoreload=10000
+
+set splitbelow
+set splitright
+set timeoutlen=250 
+set iskeyword+=_
+
+" Shortcut for :%s//
+nnoremap <leader>s :<C-u>%s//<left>
+vnoremap <leader>s :s//<left>
+
+" Open file under cursor in a new vertical split
+nnoremap gf :<C-u>vertical wincmd f<CR>
