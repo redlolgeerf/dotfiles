@@ -123,11 +123,15 @@ let g:pymode_lint_write = 0
 let g:pymode_lint_options_pep8 = {'max_line_length': 160, 'ignore': 'E128'}
 nmap <leader>c :PymodeLint<CR> 
 
-" Ack
-nnoremap <Leader>f :<C-u>execute "Ack " . expand("<cword>") <Bar> cw<CR>
-
 " Dispatch
 nnoremap <F10> :Dispatch<CR>
+
+" ack.vim
+if executable('ag')
+  let g:ackprg = 'ag'
+endif
+let g:ackhighlight = 1
+nnoremap <Leader>f :<C-u>execute "Ack " . expand("<cword>") <Bar> cw<CR>
 
 set ts=4 sts=4 sw=4 expandtab
 if has("autocmd")
