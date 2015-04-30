@@ -35,6 +35,11 @@ Plugin 'marijnh/tern_for_vim' "js completion
 Plugin 'jelera/vim-javascript-syntax' "js syntax and indentation
 Plugin 'pangloss/vim-javascript' "js highlight
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mitsuhiko/vim-jinja'
+" copy lines into clipboard with the line numbers 
+Plugin 'ujihisa/nclipper.vim' 
+Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'tpope/vim-jdaddy' " json prettyfier
 
 """""""""""""""""""""""""""""" Themes """"""""""""""""""""""""""""""
 Plugin 'whatyouhide/vim-gotham'
@@ -228,7 +233,7 @@ fun! DetectTemplate()
 	endwhile
 	set ft=html "default html
 endfun
-autocmd BufNewFile,BufRead *.html call DetectTemplate()
+" autocmd BufNewFile,BufRead *.html call DetectTemplate()
 
 " make hjkl movements accessible from insert mode via the <Ctrl> modifier key
 inoremap <C-h> <C-o>h

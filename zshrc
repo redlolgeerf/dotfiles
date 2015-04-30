@@ -90,9 +90,29 @@ export PATH=$PATH:$HOME/bin
 # ssh
 # export SSH_KEY_PATH="~/.ssh/id_rsa"
 # envoy -t ssh-agent
-envoy -t ssh-agent -a ~/.ssh/id_rsa
-source <(envoy -p)
+# envoy -t ssh-agent -a ~/.ssh/id_rsa
+# source <(envoy -p)
 
 unset GREP_OPTIONS
 
-#/usr/bin/setxkbmap -option 'ctrl:nocaps'
+function check_for_virtual_env {
+    [ -d .git ] || git rev-parse --git-dir &> /dev/null
+    if [ $? == 0 ]; then
+        local ENV_NAME=`basename \`pwd\``
+         
+        if [ "${VIRTUAL_ENV##*/}" != $ENV_NAME ] && [ -e $WORKON_HOME/$ENV_NAME/bin/activate ]; then
+            workon $ENV_NAME && export CD_VIRTUAL_ENV=$ENV_NAME
+        fi
+
+        elif [ $CD_VIRTUAL_ENV ]; then
+            deactivate && unset CD_VIRTUAL_ENV
+    fi
+}
+ 
+# function cd {
+    # builtin cd "$@" && check_for_virtual_env
+# }
+ 
+# check_for_virtual_env 
+# /usr/bin/setxkbmap -option "ctrl:swapcaps"
+/usr/bin/setxkbmap -option "ctrl:nocaps"
