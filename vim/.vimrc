@@ -123,7 +123,7 @@ let g:pymode_folding = 1
 let g:pymode_options_colorcolumn = 1
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_write = 0
-let g:pymode_lint_options_pep8 = {'max_line_length': 160, 'ignore': 'E128'}
+let g:pymode_lint_options_pep8 = {'max_line_length': 160, 'ignore': ['E128', 'E402', 'E501']}
 nmap <leader>c :PymodeLint<CR> 
 
 " Dispatch
@@ -355,3 +355,7 @@ vnoremap <leader>s :s//<left>
 
 " Open file under cursor in a new vertical split
 nnoremap gf :<C-u>vertical wincmd f<CR>
+
+cabbrev Todo :tabedit $HOME/todo.txt
+
+set ttimeoutlen=50  " Make Esc work faster
