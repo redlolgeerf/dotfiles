@@ -64,12 +64,13 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " YouCompleteMe
-nmap <leader>g :YcmCompleter GoToDefinition<CR> 
+nmap gd :YcmCompleter GoTo<CR> 
 nmap <leader>d :YcmCompleter GoToDeclaration<CR> 
 let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insetion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_goto_buffer_command = 'new-tab'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_goto_buffer_command = 'same-buffer'
+let g:ycm_complete_in_comments = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
 " XkbSwitch
 let g:XkbSwitchEnabled = 1
