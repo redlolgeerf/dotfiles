@@ -6,59 +6,62 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin list
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'gmarik/Vundle.vim' 
-Plugin 'klen/python-mode' 
-Plugin 'kien/ctrlp.vim' 
-Plugin 'lyokha/vim-xkbswitch' " Automatically switch from ru to us, when leaving insert mode
-Plugin 'mhinz/vim-startify' " Nice start screen
-Plugin 'godlygeek/tabular' " Alignment
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'gmarik/Vundle.vim'
+Plugin 'klen/python-mode'
+Plugin 'kien/ctrlp.vim'
+Plugin 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when leaving insert mode
+Plugin 'mhinz/vim-startify'             " Nice start screen
+Plugin 'godlygeek/tabular'              " Alignment
 Plugin 'tpope/vim-surround'
-Plugin 'sjl/gundo.vim' "Visual undo tree
-Plugin 'tpope/vim-unimpaired' " Yes to square brackets!
+Plugin 'sjl/gundo.vim'                  " Visual undo tree
+Plugin 'tpope/vim-unimpaired'           " Yes to square brackets!
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'majutsushi/tagbar' 
-Plugin 'kien/rainbow_parentheses.vim' 
+Plugin 'majutsushi/tagbar'
+Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'scrooloose/syntastic'
-Plugin 'lambdalisue/vim-django-support'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Raimondi/delimitMate'
-Plugin 'vim-scripts/dbext.vim' "plugin for working with sql
+Plugin 'vim-scripts/dbext.vim'          " plugin for working with sql
 Plugin 'bling/vim-airline'
-Plugin 'fatih/vim-go' "everything for golang
+Plugin 'fatih/vim-go'                   " everything for golang
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'marijnh/tern_for_vim' "js completion
-Plugin 'jelera/vim-javascript-syntax' "js syntax and indentation
-Plugin 'pangloss/vim-javascript' "js highlight
+Plugin 'marijnh/tern_for_vim'           " js completion
+Plugin 'jelera/vim-javascript-syntax'   " js syntax and indentation
+Plugin 'pangloss/vim-javascript'        " js highlight
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mitsuhiko/vim-jinja'
-Plugin 'ujihisa/nclipper.vim' 
+Plugin 'ujihisa/nclipper.vim'
 Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'tpope/vim-jdaddy' " json prettyfier
+Plugin 'tpope/vim-jdaddy'               " json prettyfier
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/IndexedSearch'
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-vinegar'
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin list end
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""" Themes """"""""""""""""""""""""""""""
 Plugin 'whatyouhide/vim-gotham'
 Plugin 'sjl/badwolf'
 Plugin 'fatih/molokai'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 call vundle#end()  
 
 filetype plugin indent on
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " YouCompleteMe
 nmap <leader>g :YcmCompleter GoToDefinition<CR> 
@@ -132,6 +135,10 @@ if executable('ag')
 endif
 let g:ackhighlight = 1
 nnoremap <Leader>f :<C-u>execute "Ack " . expand("<cword>") <Bar> cw<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings end
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set ts=4 sts=4 sw=4 expandtab
 if has("autocmd")
