@@ -79,24 +79,24 @@ graphics   = "gimp"
 
 local layouts = {
     awful.layout.suit.floating,
-    awful.layout.suit.fair,
-    lain.layout.uselesstile.left,
-    lain.layout.uselesstile.top,
-    lain.layout.termfair,
-    lain.layout.centerfair,
+    awful.layout.suit.fair, -- good
+    lain.layout.uselesstile.left, -- ok
     lain.layout.centerwork,
-    lain.layout.uselessfair,
-    lain.layout.uselesspiral,
+    -- lain.layout.uselesstile.top, -- 3
+    -- lain.layout.termfair,
+    -- lain.layout.centerfair,
+    -- lain.layout.uselessfair,
+    -- lain.layout.uselesspiral,
 }
 -- }}}
 
 -- {{{ Tags
 tags = {
    names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-   layout = { layouts[1], layouts[3], layouts[2], layouts[1], layouts[5] }
+   layout = { layouts[1], layouts[1], layouts[2], layouts[1], layouts[5] }
 }
 for s = 1, screen.count() do
-   tags[s] = awful.tag(tags.names, s, layouts[3])
+   tags[s] = awful.tag(tags.names, s, layouts[2])
 end
 
 -- }}}
