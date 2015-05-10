@@ -120,57 +120,9 @@ gray   = "#9E9C9A"
 -- Textclock
 clockicon = wibox.widget.imagebox(beautiful.widget_clock)
 mytextclock = awful.widget.textclock(" %a %d %b  %H:%M")
---mytextclock = awful.widget.textclock(" %H:%M ")
 
 -- Calendar
---lain.widgets.calendar:attach(mytextclock)
---lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
-
-mailicon = wibox.widget.imagebox(beautiful.widget_mail)
-mailicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn(mail) end)))
---[[ Mail IMAP check
--- commented because it needs to be set before use
-mailwidget = lain.widgets.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        mail  = ""
-        count = ""
-
-        if mailcount > 0 then
-            mail = "Mail "
-            count = mailcount .. " "
-        end
-
-        widget:set_markup(markup(gray, mail) .. count)
-    end
-})
-]]
-
--- MPD
-mpdicon = wibox.widget.imagebox(beautiful.widget_music)
-mpdicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell(musicplr) end)))
-mpdwidget = lain.widgets.mpd({
-    settings = function()
-        if mpd_now.state == "play" then
-            artist = " " .. mpd_now.artist .. " "
-            title  = mpd_now.title  .. " "
-            mpdicon:set_image(beautiful.widget_music_on)
-        elseif mpd_now.state == "pause" then
-            artist = " mpd "
-            title  = "paused "
-        else
-            artist = ""
-            title  = ""
-            mpdicon:set_image(beautiful.widget_music)
-        end
-
-        widget:set_markup(markup("#EA6F81", artist) .. title)
-    end
-})
-mpdwidgetbg = wibox.widget.background(mpdwidget, "#313131")
+lain.widgets.calendar:attach(mytextclock, { font_size = 10 })
 
 -- MEM
 memicon = wibox.widget.imagebox(beautiful.widget_mem)
@@ -188,61 +140,6 @@ cpuwidget = wibox.widget.background(lain.widgets.cpu({
     end
 }), "#313131")
 
--- Coretemp
---tempicon = wibox.widget.imagebox(beautiful.widget_temp)
---tempwidget = lain.widgets.temp({
---    settings = function()
---        widget:set_text(" " .. coretemp_now .. "°C ")
---    end
---})
---mycpuusage = lain.widgets.cpu()
---mycpu = lain.widgets.cpu({
---    timeout = 4,
---    settings = function()
---        widget:set_markup("Cpu " .. cpu_now.usage)
---    end
---})
---
---mymem = lain.widgets.mem({
---    timeout = 4,
---    settings = function()
---        widget:set_markup("Memory " .. mem_now.used)
---    end
---})
--- MPD
--- mpdwidget = lain.widgets.mpd({
---     settings = function()
---         artist = mpd_now.artist .. " "
---         title  = mpd_now.title  .. "  "
--- 
---         if mpd_now.state == "pause" then
---             artist = "mpd "
---             title  = "paused  "
---         elseif mpd_now.state == "stop" then
---             artist = ""
---             title  = ""
---         end
--- 
---         widget:set_markup(markup(gray, artist) .. title)
---     end
--- })
-
--- /home fs
---fshome = lain.widgets.fs({
---    partition = "/home",
---    settings  = function()
---        fs_header = ""
---        fs_p      = ""
---
---        if fs_now.used >= 90 then
---            fs_header = " Hdd "
---            fs_p      = fs_now.used
---        end
---
---        widget:set_markup(markup(gray, fs_header) .. fs_p)
---    end
---})
-
 -- / fs
 fsicon = wibox.widget.imagebox(beautiful.widget_hdd)
 fswidget = lain.widgets.fs({
@@ -252,37 +149,7 @@ fswidget = lain.widgets.fs({
 })
 fswidgetbg = wibox.widget.background(fswidget, "#313131")
 
--- Battery
---batwidget = lain.widgets.bat({
---    settings = function()
---        bat_header = " Bat "
---        bat_p      = bat_now.perc .. " "
---
---        if bat_now.status == "Not present" then
---            bat_header = ""
---            bat_p      = ""
---        end
---
---        widget:set_markup(markup(gray, bat_header) .. bat_p)
---    end
---})
-
--- ALSA volume
---volumewidget = lain.widgets.alsa({
---    settings = function()
---        header = " Vol "
---        level  = volume_now.level
---
---        if volume_now.status == "off" then
---            level = level .. "M "
---        else
---            level = level .. " "
---        end
---
---        widget:set_markup(markup(gray, header) .. level)
---    end
---})
-
+-- Volume
 volicon = wibox.widget.imagebox(beautiful.widget_vol)
 volumewidget = lain.widgets.alsa({
     settings = function()
@@ -311,13 +178,6 @@ netwidget = wibox.widget.background(lain.widgets.net({
     end
 }), "#000000")
 
--- Weather
---yawn = lain.widgets.yawn(2122265,
---{
---    settings = function()
---        widget:set_markup(" " .. units .. " ")
---    end
---})
 
 -- Keyboard map indicator and changer
 kbdcfg = {}
@@ -332,10 +192,8 @@ kbdcfg.switch = function (x)
     else
         kbdcfg.current = 2
     end
-  --kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
   local t = kbdcfg.layout[kbdcfg.current]
   kbdcfg.widget:set_text(" " .. t[1] .. " ")
-  --os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
   os.execute( kbdcfg.cmd .. " " .. t[1] .. " " )
 end
 kbdcfgwidgetbg = wibox.widget.background(kbdcfg.widget, "#313131")
@@ -440,44 +298,20 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    --right_layout:add(first)
-    ----right_layout:add(mpdwidget)
-    ----right_layout:add(mailwidget)
-    --right_layout:add(mycpu)
-    --right_layout:add(mymem)
-    --right_layout:add(yawn.icon)
-    --right_layout:add(yawn.widget)
-    --right_layout:add(fshome)
-    --right_layout:add(batwidget)
-    --right_layout:add(volumewidget)
-    --right_layout:add(mytextclock)
 
     right_layout:add(spr)
-    --right_layout:add(arrl)
-    --right_layout:add(arrl_ld)
-    --right_layout:add(mpdicon)
-    --right_layout:add(mpdwidgetbg)
-    --right_layout:add(arrl_dl)
     right_layout:add(volicon)
     right_layout:add(volumewidget)
-    --right_layout:add(arrl_ld)
-    --right_layout:add(mailicon)
-    --right_layout:add(mailwidget)
     right_layout:add(arrl_ld)
     right_layout:add(cpuicon)
     right_layout:add(cpuwidget)
     right_layout:add(arrl_dl)
     right_layout:add(memicon)
     right_layout:add(memwidget)
-    --right_layout:add(arrl_dl)
-    --right_layout:add(tempicon)
-    --right_layout:add(tempwidget)
     right_layout:add(arrl_ld)
     right_layout:add(fsicon)
     right_layout:add(fswidgetbg)
     right_layout:add(arrl_dl)
-    --right_layout:add(baticon)
-    --right_layout:add(batwidget)
     right_layout:add(neticon)
     right_layout:add(netwidget)
     right_layout:add(arrl_ld)
@@ -516,6 +350,7 @@ globalkeys = awful.util.table.join(
 
     --Lock screen
     awful.key({ modkey, "Control" }, "l", function () kbdcfg.switch('us') ; awful.util.spawn("xscreensaver-command --lock") end),
+     
     -- Tag browsing
     awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
@@ -570,9 +405,6 @@ globalkeys = awful.util.table.join(
         mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
     end),
 
-    -- On the fly useless gaps change
-    awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end),
-    awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -603,12 +435,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "q",      awesome.quit),
 
     -- Dropdown terminal
-    --awful.key({ modkey,	          }, "z",      function () drop(terminal) end),
+    awful.key({ modkey,	          }, "z",      function () drop(terminal) end),
 
     -- Widgets popups
     awful.key({ altkey,           }, "c",      function () lain.widgets.calendar:show(7) end),
-    awful.key({ altkey,           }, "h",      function () fshome.show(7) end),
-    awful.key({ altkey,           }, "w",      function () yawn.show(7) end),
 
     -- ALSA volume control
     awful.key({  }, "XF86AudioRaiseVolume",
@@ -632,40 +462,11 @@ globalkeys = awful.util.table.join(
             volumewidget.update()
         end),
 
-    -- MPD control
-    --awful.key({ altkey, "Control" }, "Up",
-    --    function ()
-    --        awful.util.spawn_with_shell("mpc toggle || ncmpcpp toggle || ncmpc toggle || pms toggle")
-    --        mpdwidget.update()
-    --    end),
-    --awful.key({ altkey, "Control" }, "Down",
-    --    function ()
-    --        awful.util.spawn_with_shell("mpc stop || ncmpcpp stop || ncmpc stop || pms stop")
-    --        mpdwidget.update()
-    --    end),
-    --awful.key({ altkey, "Control" }, "Left",
-    --    function ()
-    --        awful.util.spawn_with_shell("mpc prev || ncmpcpp prev || ncmpc prev || pms prev")
-    --        mpdwidget.update()
-    --    end),
-    --awful.key({ altkey, "Control" }, "Right",
-    --    function ()
-    --        awful.util.spawn_with_shell("mpc next || ncmpcpp next || ncmpc next || pms next")
-    --        mpdwidget.update()
-    --    end),
-
-    -- Copy to clipboard
-    --awful.key({ modkey }, "c", function () os.execute("xcmenu -pi") end),
-    --awful.key({ modkey }, "v", function () os.execute("xcmenu -p") end),
-
     -- Taking screenshots
     awful.key({ }, "#107", function () awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end), 
 
     -- User programs
     awful.key({ modkey }, "q", function () awful.util.spawn(browser) end),
-    --awful.key({ modkey }, "i", function () awful.util.spawn(browser2) end),
-    --awful.key({ modkey }, "s", function () awful.util.spawn(gui_editor) end),
-    --awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
 
     -- Prompt
     awful.key({ modkey }, "d", function () mypromptbox[mouse.screen]:run() end),
@@ -689,8 +490,6 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
@@ -761,28 +560,6 @@ awful.rules.rules = {
 	                   size_hints_honor = false } },
     { rule = { class = "urxvt" },
           properties = { opacity = 0.59 } },
-
-    { rule = { class = "MPlayer" },
-          properties = { floating = true } },
-
-    { rule = { class = "Dwb" },
-          properties = { tag = tags[1][1] } },
-
-    { rule = { class = "Iron" },
-          properties = { tag = tags[1][1] } },
-
-    { rule = { instance = "plugin-container" },
-          properties = { tag = tags[1][1] } },
-
-	  { rule = { class = "Gimp" },
-     	    properties = { tag = tags[1][4] } },
-
-    { rule = { class = "Gimp", role = "gimp-image-window" },
-          properties = { maximized_horizontal = true,
-                         maximized_vertical = true } },
-
-    { rule = { instance = "plugin-container" },
-         properties = { floating = true } },
 }
 -- }}}
 
