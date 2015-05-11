@@ -68,6 +68,17 @@ function uninstall_awesome() {
     delete "$HOMES"/.config/awesome
 }
 
+function install_qtile() {
+    if ! [[ -e "$HOMES"/.config ]]
+        then mkdir "$HOMES"/.config
+    fi
+    symlink "$DOT_PATH"/qtile "$HOMES"/.config/qtile
+}
+
+function uninstall_qtile() {
+    delete "$HOMES"/.config/qtile
+}
+
 function install_tmux() {
     symlink "$DOT_PATH"/tmux.conf "$HOMES"/.tmux.conf
 }
