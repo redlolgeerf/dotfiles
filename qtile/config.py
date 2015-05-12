@@ -1,6 +1,7 @@
 
 import subprocess
 import re
+import platform
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
@@ -11,6 +12,30 @@ alt = "mod1"
 
 TERM = "urxvt"
 
+DISTRO = platform.linux_distribution()[0].lower()
+
+
+class DistroDependableCmd(object):
+    def __init__(self, distro_dict):
+        self.distro_dict
+
+    def call(self, *args, **kwargs):
+        return self.distro_dict[DISTRO].format(*args, **kwargs)
+
+def language_switch(lang):
+    if DISTRO == 'ubuntu':
+        cmd = "setxkbmap {}"
+    else:
+        raise RuntimeError
+    return cmd.format(lang)
+
+
+def screen_lock():
+    if DISTRO == 'ubuntu':
+        cmd = "gnome-screensaver-command -l"
+    else:
+        raise RuntimeError
+    return cmd
 
 keys = [
     # Switch between windows in current stack pane
@@ -96,7 +121,7 @@ keys = [
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
 
-    Key([mod], "r", lazy.spawncmd()),
+    Key([mod], "d", lazy.spawncmd()),
     Key([mod], "g", lazy.switchgroup()),
 
     # custom keybindings
@@ -113,8 +138,10 @@ keys = [
         lazy.spawn("amixer -c 0 -q set Master toggle")
     ),
 
-    Key([alt], "i", lazy.spawn("xkb-switch -s ru")),
-    Key([alt], "u", lazy.spawn("xkb-switch -s us")),
+    Key([alt], "Cyrillic_ghe", lazy.spawn(language_switch('us'))),
+    Key([alt], "r", lazy.spawn(language_switch('ru'))),
+
+    Key([alt, "control"], "l", lazy.spawn(screen_lock())),
 ]
 
 groups = [Group(str(i)) for i in range(1, 6)]
