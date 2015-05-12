@@ -125,7 +125,8 @@ let g:pymode_options_colorcolumn = 1
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_write = 0
 let g:pymode_lint_options_pep8 = {'max_line_length': 160, 'ignore': ['E128', 'E402', 'E501']}
-nmap <leader>c :PymodeLint<CR> 
+nmap gc :PymodeLint<CR> 
+let g:pymode_rope_goto_definition_cmd = 'new'
 
 " Dispatch
 nnoremap <F10> :Dispatch<CR>
@@ -135,8 +136,11 @@ if executable('ag')
   let g:ackprg = 'ag'
 endif
 let g:ackhighlight = 1
-nnoremap <Leader>f :<C-u>execute "Ack " . expand("<cword>") <Bar> cw<CR>
+nnoremap <Leader>f :<C-u>execute "Ack! " . expand("<cword>") <Bar> cw<CR>
 
+" bufexplorer
+let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
+nnoremap <silent> gb :BufExplorer<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings end
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
