@@ -64,7 +64,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pip fabric)
+plugins=(git pip docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,24 +95,18 @@ export PATH=$PATH:$HOME/bin
 
 unset GREP_OPTIONS
 
-function check_for_virtual_env {
-    [ -d .git ] || git rev-parse --git-dir &> /dev/null
-    if [ $? == 0 ]; then
-        local ENV_NAME=`basename \`pwd\``
-         
-        if [ "${VIRTUAL_ENV##*/}" != $ENV_NAME ] && [ -e $WORKON_HOME/$ENV_NAME/bin/activate ]; then
-            workon $ENV_NAME && export CD_VIRTUAL_ENV=$ENV_NAME
-        fi
-
-        elif [ $CD_VIRTUAL_ENV ]; then
-            deactivate && unset CD_VIRTUAL_ENV
-    fi
-}
- 
-# function cd {
-    # builtin cd "$@" && check_for_virtual_env
-# }
- 
-# check_for_virtual_env 
-# /usr/bin/setxkbmap -option "ctrl:swapcaps"
 /usr/bin/setxkbmap -option "ctrl:nocaps"
+
+alias do="sudo docker"
+alias dcp="sudo docker-compose"
+
+
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=10000
+setopt appendhistory nomatch notify
+unsetopt autocd beep extendedglob
+bindkey -v
+# End of lines configured by zsh-newuser-install
