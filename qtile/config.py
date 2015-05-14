@@ -15,26 +15,23 @@ TERM = "urxvt"
 DISTRO = platform.linux_distribution()[0].lower()
 
 
-class DistroDependableCmd(object):
-    def __init__(self, distro_dict):
-        self.distro_dict
-
-    def call(self, *args, **kwargs):
-        return self.distro_dict[DISTRO].format(*args, **kwargs)
-
 def language_switch(lang):
     if DISTRO == 'ubuntu':
         cmd = "setxkbmap {}"
+    elif DISTRO == 'arch':
+        cmd = "xkb-switch -s {}"
     else:
-        raise RuntimeError
+        cmd = "xkb-switch -s {}"
     return cmd.format(lang)
 
 
 def screen_lock():
     if DISTRO == 'ubuntu':
         cmd = "gnome-screensaver-command -l"
+    elif DISTRO == 'arch':
+        cmd = "xscreensaver-command --lock"
     else:
-        raise RuntimeError
+        cmd = "xscreensaver-command --lock"
     return cmd
 
 keys = [
