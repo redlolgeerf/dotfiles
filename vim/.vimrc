@@ -118,13 +118,14 @@ let g:airline#extensions#tabline#show_close_button = 0
 
 " NerdCommenter
 let g:NERDSpaceDelims = 1
+
 " Pymode
 let g:pymode_rope_completion = 0
 let g:pymode_folding = 1
 let g:pymode_options_colorcolumn = 1
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_write = 0
-let g:pymode_lint_options_pep8 = {'max_line_length': 160, 'ignore': ['E128', 'E402', 'E501']}
+let g:pymode_lint_options_pep8 = {'max_line_length': 160, 'ignore': ['E128', 'E402', 'E501', 'E731']}
 nmap gc :PymodeLint<CR> 
 let g:pymode_rope_goto_definition_cmd = 'new'
 
