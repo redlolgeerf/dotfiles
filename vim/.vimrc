@@ -356,3 +356,7 @@ nnoremap gf :<C-u>vertical wincmd f<CR>
 cabbrev Todo :tabedit $HOME/todo.txt
 
 set ttimeoutlen=50  " Make Esc work faster
+
+if v:version >= 704
+  set regexpengine=1
+endif
