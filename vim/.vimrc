@@ -89,8 +89,8 @@ let g:UltiSnipsEditSplit="vertical"
 nmap <F8> :TagbarToggle<CR>
 
 " Syntastic
-let g:syntastic_python_checkers = ['flake8', 'pylama', 'pyflakes']
 let g:syntastic_always_populate_loc_list = 1
+nmap <leader>c :SyntasticCheck<CR> 
 
 " NerdTree
 let NERDTreeWinPos = "right"
