@@ -21,12 +21,11 @@ Plugin 'tpope/vim-unimpaired'           " Yes to square brackets!
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'majutsushi/tagbar'
-Plugin 'kien/rainbow_parentheses.vim'
+" Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Raimondi/delimitMate'
-Plugin 'vim-scripts/dbext.vim'          " plugin for working with sql
+" Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go'                   " everything for golang
 Plugin 'scrooloose/nerdcommenter'
@@ -36,7 +35,6 @@ Plugin 'pangloss/vim-javascript'        " js highlight
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mitsuhiko/vim-jinja'
 Plugin 'ujihisa/nclipper.vim'
-Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'tpope/vim-jdaddy'               " json prettyfier
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/IndexedSearch'
@@ -89,13 +87,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
-
-" RainbowParentheses
-nmap <F9> :RainbowParenthesesToggleAll<CR>
-au VimEnter * RainbowParenthesesToggleAll
-au VimEnter * RainbowParenthesesLoadRound
-au VimEnter * RainbowParenthesesLoadSquare
-au VimEnter * RainbowParenthesesLoadBraces
 
 " Syntastic
 let g:syntastic_python_checkers = ['flake8', 'pylama', 'pyflakes']
