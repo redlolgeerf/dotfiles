@@ -135,7 +135,7 @@ keys = [
         lazy.spawn("amixer -c 0 -q set Master toggle")
     ),
 
-    Key([alt], "Cyrillic_ghe", lazy.spawn(language_switch('us'))),
+    Key([alt], "Cyrillic_u", lazy.spawn(language_switch('us'))),
     Key([alt], "r", lazy.spawn(language_switch('ru'))),
 
     Key([alt, "control"], "l", lazy.spawn(screen_lock())),
