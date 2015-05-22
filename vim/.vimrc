@@ -63,7 +63,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " YouCompleteMe
-nmap gd :YcmCompleter GoTo<CR> 
+nmap gd :YcmCompleter GoToDefinition<CR> 
 nmap <leader>d :YcmCompleter GoToDeclaration<CR> 
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
