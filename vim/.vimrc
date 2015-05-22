@@ -41,6 +41,7 @@ Plugin 'vim-scripts/IndexedSearch'
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-vinegar'
+Plugin 'dbakker/vim-projectroot'        " guessoing project root
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin list end
@@ -128,7 +129,8 @@ if executable('ag')
   let g:ackprg = 'ag'
 endif
 let g:ackhighlight = 1
-nnoremap <Leader>f :<C-u>execute "Ack! " . expand("<cword>") <Bar> cw<CR>
+nnoremap <Leader>f :ProjectRootExe Ack! --py '\b'<cword>'\b' <CR>
+nnoremap <Leader>s :ProjectRootExe Ack! --py <cword>
 
 " bufexplorer
 let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
@@ -345,10 +347,6 @@ set splitbelow
 set splitright
 set timeoutlen=250 
 set iskeyword+=_
-
-" Shortcut for :%s//
-nnoremap <leader>s :<C-u>%s//<left>
-vnoremap <leader>s :s//<left>
 
 " Open file under cursor in a new vertical split
 nnoremap gf :<C-u>vertical wincmd f<CR>
