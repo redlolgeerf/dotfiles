@@ -68,6 +68,14 @@ function uninstall_awesome() {
     delete "$HOMES"/.config/awesome
 }
 
+function install_pylint() {
+    symlink "$DOT_PATH"/pylintrc "$HOMES"/.pylintrc
+}
+
+function uninstall_pylint() {
+    delete "$HOMES"/.pylintrc
+}
+
 function install_qtile() {
     if ! [[ -e "$HOMES"/.config ]]
         then mkdir "$HOMES"/.config
