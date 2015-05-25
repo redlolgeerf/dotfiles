@@ -109,8 +109,8 @@ let g:pymode_rope_completion = 0
 let g:pymode_folding = 1
 let g:pymode_options_colorcolumn = 1
 let g:pymode_lint_on_fly = 0
-let g:pymode_lint_write = 0
-let g:pymode_lint_options_pep8 = {'max_line_length': 160, 'ignore': ['E128', 'E402', 'E501', 'E731']}
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
 nmap gc :PymodeLint<CR> 
 let g:pymode_rope_goto_definition_cmd = 'new'
 
