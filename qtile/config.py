@@ -136,6 +136,7 @@ keys = [
     ),
 
     Key([alt], "Cyrillic_u", lazy.spawn(language_switch('us'))),
+    Key([alt], "Escape", lazy.spawn(language_switch('us'))),
     Key([alt], "r", lazy.spawn(language_switch('ru'))),
 
     Key([alt, "control"], "l", lazy.spawn(screen_lock())),
