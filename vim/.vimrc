@@ -242,9 +242,6 @@ set showcmd
 
 set hidden
 
-vnoremap < <gv
-vnoremap > >gv
-
 fun! DetectTemplate()
 	let n = 1
 	while n < line("$")
@@ -338,7 +335,7 @@ set undoreload=10000
 
 set splitbelow
 set splitright
-set timeoutlen=250 
+set timeoutlen=450 
 set iskeyword+=_
 
 " Open file under cursor in a new vertical split
