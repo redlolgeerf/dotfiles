@@ -21,11 +21,9 @@ Plugin 'tpope/vim-unimpaired'           " Yes to square brackets!
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'majutsushi/tagbar'
-" Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go'                   " everything for golang
 Plugin 'scrooloose/nerdcommenter'
@@ -98,11 +96,6 @@ let NERDTreeWinPos = "right"
 nmap <leader>t :NERDTreeToggle<CR> 
 let g:NERDTreeWinPos = "right"
 let NERDTreeIgnore = ['\.pyc$']
-
-" Dbext
-let g:dbext_default_profile_sqlite_master = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/Projects/hydra/db/main.sqlite'
-let g:dbext_default_profile_sqlite_master_old = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/Projects/hydra/db/main.sqlite.old'
-let g:dbext_default_profile_sqlite_test = 'type=SQLITE:SQLITE_bin=sqlite3:dbname=~/dev/hydra/db/main.sqlite'
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
