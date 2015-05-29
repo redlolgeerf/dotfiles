@@ -88,8 +88,19 @@ let g:UltiSnipsEditSplit="vertical"
 nmap <F8> :TagbarToggle<CR>
 
 " Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
-nmap <leader>c :SyntasticCheck<CR> 
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_js_checkers = ['jshint']
+let g:syntastic_html_checkers = ['tidy']
+nmap gc :SyntasticCheck<CR> 
 
 " NerdTree
 let NERDTreeWinPos = "right"
@@ -110,8 +121,7 @@ let g:pymode_folding = 1
 let g:pymode_options_colorcolumn = 1
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_on_write = 0
-let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
-nmap gc :PymodeLint<CR> 
+let g:pymode_lint_checkers = []
 let g:pymode_rope_goto_definition_cmd = 'new'
 
 " Dispatch
