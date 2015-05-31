@@ -149,9 +149,11 @@ if has("autocmd")
 	autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab smarttab
+	autocmd FileType javascript nmap gd :TernDef<CR>
 
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab smarttab
+	autocmd FileType python nmap gd :YcmCompleter GoToDefinition<CR> 
 
 	" Treat .rss files as XML
 	autocmd BufNewFile,BufRead *.rss setfiletype xml
