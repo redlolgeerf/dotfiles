@@ -134,7 +134,7 @@ if executable('ag')
 endif
 let g:ackhighlight = 1
 nnoremap <Leader>f :ProjectRootExe Ack! --py '\b'<cword>'\b' <CR>
-nnoremap <Leader>s :ProjectRootExe Ack! --py <cword>
+nnoremap <Leader>s :Ack! --py <C-R>=expand("<cword>")<CR> <C-R>=ProjectRootGuess()<CR>
 
 " bufexplorer
 let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
