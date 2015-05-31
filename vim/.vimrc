@@ -40,6 +40,7 @@ Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-vinegar'
 Plugin 'dbakker/vim-projectroot'        " guessoing project root
+Plugin 'Raimondi/delimitMate'
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin list end
