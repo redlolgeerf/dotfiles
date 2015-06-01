@@ -40,7 +40,7 @@ Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-vinegar'
 Plugin 'dbakker/vim-projectroot'        " guessoing project root
-Plugin 'Raimondi/delimitMate'
+" Plugin 'Raimondi/delimitMate'
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin list end
@@ -134,7 +134,7 @@ if executable('ag')
 endif
 let g:ackhighlight = 1
 nnoremap <Leader>f :ProjectRootExe Ack! --py '\b'<cword>'\b' <CR>
-nnoremap <Leader>s :Ack! --py <C-R>=expand("<cword>")<CR> <C-R>=ProjectRootGuess()<CR>
+nnoremap <Leader>s :Ack! --py '\b'<C-R>=expand("<cword>")<CR>'\b' <C-R>=ProjectRootGuess()<CR>
 
 " bufexplorer
 let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
@@ -342,7 +342,7 @@ nmap <leader>v :tabedit $MYVIMRC<CR>
 " undo settings
 set undofile
 set undodir=$HOME/.vim/undo
-set undolevels=1000
+set undolevels=10000
 " How many lines
 set undoreload=10000
 
