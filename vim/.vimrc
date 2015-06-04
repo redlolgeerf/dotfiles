@@ -40,7 +40,7 @@ Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-vinegar'
 Plugin 'dbakker/vim-projectroot'        " guessoing project root
-" Plugin 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin list end
@@ -102,6 +102,7 @@ let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_js_checkers = ['jshint']
 let g:syntastic_html_checkers = ['tidy']
 nmap gc :SyntasticCheck<CR> 
+nmap <leader>c :SyntasticToggleMode<CR> 
 
 " NerdTree
 let NERDTreeWinPos = "right"
@@ -139,6 +140,9 @@ nnoremap <Leader>s :Ack! --py '\b'<C-R>=expand("<cword>")<CR>'\b' <C-R>=ProjectR
 " bufexplorer
 let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
 nnoremap <silent> gb :BufExplorer<CR>
+
+" delimitMate
+let g:delimitMate_expand_cr=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings end
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
