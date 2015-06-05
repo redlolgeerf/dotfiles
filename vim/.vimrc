@@ -186,6 +186,8 @@ set encoding=utf-8 " Кодировка файлов по умолчанию
 set fileencodings=utf8,cp1251 " Возможные кодировки файлов, если файл не в unicode кодировке,
 " то будет использоваться cp1251
 
+set t_Co=256
+set background=dark
 if has("gui_running")
     colorscheme gotham
 else
@@ -196,10 +198,6 @@ set cursorline "Включаем нумерацию строк
 set mousehide "Спрятать курсор мыши когда набираем текст
 set mouse=a "Включить поддержку мыши
 
-"Включаем 256 цветов в терминале, мы ведь работаем из иксов?
-"Нужно во многих терминалах, например в gnome-terminal
-set t_Co=256
-set background=dark
 syntax on
 
 "font
