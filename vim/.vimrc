@@ -1,10 +1,14 @@
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible   " be iMproved, required
+let g:is_posix = 1 " vim's default is archaic bourne shell, bring it up to the 90s
+" this is to edit commit messages
+if has(" gui_running")
+    filetype off   " required
+endif
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call vundle#rc()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin list
@@ -52,9 +56,7 @@ Plugin 'sjl/badwolf'
 Plugin 'fatih/molokai'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-call vundle#end()  
-
+" call vundle#end()
 filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -63,7 +65,9 @@ filetype plugin indent on
 
 " YouCompleteMe
 nmap gd :YcmCompleter GoToDefinition<CR> 
-nmap <leader>d :YcmCompleter GoToDeclaration<CR> 
+if has("gui_running")
+    nmap <leader>d :YcmCompleter GoToDeclaration<CR> 
+endif
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_goto_buffer_command = 'same-buffer'
@@ -161,6 +165,7 @@ if has("autocmd")
 
 	" Treat .rss files as XML
 	autocmd BufNewFile,BufRead *.rss setfiletype xml
+    au! BufReadPost {COMMIT_EDITMSG,*/COMMIT_EDITMSG} setl ft=gitcommit noml list| norm 1G
 endif
 
 " Auto change the directory to the current file I'm working on
@@ -181,7 +186,11 @@ set encoding=utf-8 " Кодировка файлов по умолчанию
 set fileencodings=utf8,cp1251 " Возможные кодировки файлов, если файл не в unicode кодировке,
 " то будет использоваться cp1251
 
-colorscheme gotham "Цветовая схема
+if has("gui_running")
+    colorscheme gotham
+else
+    colorscheme gotham256
+endif
 set number "Включаем нумерацию строк
 set cursorline "Включаем нумерацию строк
 set mousehide "Спрятать курсор мыши когда набираем текст
