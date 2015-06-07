@@ -146,6 +146,7 @@ let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
 nnoremap <silent> gb :BufExplorer<CR>
 
 " delimitMate
+let g:delimitMate_expand_space=1
 let g:delimitMate_expand_cr=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings end
@@ -159,6 +160,7 @@ if has("autocmd")
 	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab smarttab
 	autocmd FileType javascript nmap gd :TernDef<CR>
+	autocmd FileType javascript call JavaScriptFold()
 
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab smarttab
 	autocmd FileType python nmap gd :YcmCompleter GoToDefinition<CR> 
