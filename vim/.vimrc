@@ -58,6 +58,8 @@ Plugin 'fatih/molokai'
 
 " call vundle#end()
 filetype plugin indent on
+let maplocalleader = "\<Space>"
+nnoremap <SPACE> <Nop>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
@@ -66,7 +68,7 @@ filetype plugin indent on
 " YouCompleteMe
 nmap gd :YcmCompleter GoToDefinition<CR> 
 if has("gui_running")
-    nmap <leader>d :YcmCompleter GoToDeclaration<CR> 
+    nmap <LocalLeader>d :YcmCompleter GoToDeclaration<CR> 
 endif
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -106,7 +108,7 @@ let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_js_checkers = ['jshint']
 let g:syntastic_html_checkers = ['tidy']
 nmap gc :SyntasticCheck<CR> 
-nmap <leader>c :SyntasticToggleMode<CR> 
+nmap <LocalLeader>c :SyntasticToggleMode<CR> 
 
 " NerdTree
 let NERDTreeWinPos = "right"
@@ -147,6 +149,10 @@ nnoremap <silent> gb :BufExplorer<CR>
 
 " delimitMate
 let g:delimitMate_expand_cr=1
+ 
+" ctrlp
+nmap <LocalLeader>t :CtrlPBufTag<CR>
+nmap <LocalLeader>b :CtrlPBuffer<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings end
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -372,3 +378,6 @@ set ttimeoutlen=50  " Make Esc work faster
 if v:version >= 704
   set regexpengine=1
 endif
+
+nmap <LocalLeader><Space> za
+nmap <LocalLeader>h :noh<CR>
