@@ -1,8 +1,9 @@
+" vim: set foldmethod=marker foldlevel=0:
 call plug#begin('~/.nvim/plugged')
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin list
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ===================================================
+" Plugin list {{{
+" =================================================== 
 Plug 'gmarik/Vundle.vim'
 Plug 'klen/python-mode'
 Plug 'kien/ctrlp.vim'
@@ -33,27 +34,27 @@ Plug 'vim-scripts/IndexedSearch'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
-Plug 'dbakker/vim-projectroot'        " guessoing project root
+Plug 'dbakker/vim-projectroot'        " guessing project root
 Plug 'Raimondi/delimitMate'
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin list end
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =================================================== }}}
 
-"""""""""""""""""""""""""""""" Themes """"""""""""""""""""""""""""""
+" ===================================================
+" {{{ Themes 
+" ===================================================
 Plug 'whatyouhide/vim-gotham'
 Plug 'sjl/badwolf'
 Plug 'fatih/molokai'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =================================================== }}}
 
 call plug#end()
 
 let maplocalleader = "\<Space>"
 nnoremap <SPACE> <Nop>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ===================================================
+" {{{ Plugin settings
+" ===================================================
 
 " YouCompleteMe
 nmap gd :YcmCompleter GoToDefinition<CR> 
@@ -144,9 +145,7 @@ let g:delimitMate_expand_cr=1
 " ctrlp
 nmap <LocalLeader>t :CtrlPBufTag<CR>
 nmap <LocalLeader>b :CtrlPBuffer<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin settings end
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =================================================== }}}
 
 set ts=4 sts=4 sw=4 expandtab
 if has("autocmd")
@@ -180,7 +179,6 @@ let python_highlight_all = 1
 "Вырубаем .swp и ~ (резервные) файлы
 set nobackup
 set noswapfile
-set encoding=utf-8 " Кодировка файлов по умолчанию
 set fileencodings=utf8,cp1251 " Возможные кодировки файлов, если файл не в unicode кодировке,
 " то будет использоваться cp1251
 
