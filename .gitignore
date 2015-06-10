@@ -1,3 +1,5 @@
 vim/bundle/*
 vim/.netrwhist
 *.pyc
+nvim/plugged
+nvim/autoload

@@ -36,7 +36,8 @@ function uninstall_vim() {
 function install_nvim() {
     symlink "$DOT_PATH"/nvim "$HOMES"/.nvim
     symlink "$DOT_PATH"/nvim/.nvimrc "$HOMES"/.nvimrc
-    ./install.sh
+    curl -fLo ~/.nvim/autoload/plug.vim --create-dirs \\
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 function uninstall_nvim() {
