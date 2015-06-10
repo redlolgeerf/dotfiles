@@ -33,6 +33,17 @@ function uninstall_vim() {
     delete "$HOMES"/.vimrc
 }
 
+function install_nvim() {
+    symlink "$DOT_PATH"/nvim "$HOMES"/.nvim
+    symlink "$DOT_PATH"/nvim/.nvimrc "$HOMES"/.nvimrc
+    ./install.sh
+}
+
+function uninstall_nvim() {
+    delete "$HOMES"/.nvim
+    delete "$HOMES"/.nvimrc
+}
+
 function install_zsh() {
     symlink "$DOT_PATH"/zshrc "$HOMES"/.zshrc
 }
