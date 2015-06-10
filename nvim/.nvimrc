@@ -1,63 +1,53 @@
-
-set nocompatible   " be iMproved, required
-let g:is_posix = 1 " vim's default is archaic bourne shell, bring it up to the 90s
-" this is to edit commit messages
-if has(" gui_running")
-    filetype off   " required
-endif
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+call plug#begin('~/.nvim/plugged')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin list
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'gmarik/Vundle.vim'
-Plugin 'klen/python-mode'
-Plugin 'kien/ctrlp.vim'
-Plugin 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when leaving insert mode
-Plugin 'mhinz/vim-startify'             " Nice start screen
-Plugin 'godlygeek/tabular'              " Alignment
-Plugin 'tpope/vim-surround'
-Plugin 'sjl/gundo.vim'                  " Visual undo tree
-Plugin 'tpope/vim-unimpaired'           " Yes to square brackets!
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
-Plugin 'fatih/vim-go'                   " everything for golang
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'marijnh/tern_for_vim'           " js completion
-Plugin 'jelera/vim-javascript-syntax'   " js syntax and indentation
-Plugin 'pangloss/vim-javascript'        " js highlight
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'mitsuhiko/vim-jinja'
-Plugin 'ujihisa/nclipper.vim'
-Plugin 'tpope/vim-jdaddy'               " json prettyfier
-Plugin 'mileszs/ack.vim'
-Plugin 'vim-scripts/IndexedSearch'
-Plugin 'vim-scripts/bufexplorer.zip'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-vinegar'
-Plugin 'dbakker/vim-projectroot'        " guessoing project root
-Plugin 'Raimondi/delimitMate'
+Plug 'gmarik/Vundle.vim'
+Plug 'klen/python-mode'
+Plug 'kien/ctrlp.vim'
+Plug 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when leaving insert mode
+Plug 'mhinz/vim-startify'             " Nice start screen
+Plug 'godlygeek/tabular'              " Alignment
+Plug 'tpope/vim-surround'
+Plug 'sjl/gundo.vim'                  " Visual undo tree
+Plug 'tpope/vim-unimpaired'           " Yes to square brackets!
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'bling/vim-airline'
+Plug 'fatih/vim-go'                   " everything for golang
+Plug 'scrooloose/nerdcommenter'
+Plug 'marijnh/tern_for_vim'           " js completion
+Plug 'jelera/vim-javascript-syntax'   " js syntax and indentation
+Plug 'pangloss/vim-javascript'        " js highlight
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'mitsuhiko/vim-jinja'
+Plug 'ujihisa/nclipper.vim'
+Plug 'tpope/vim-jdaddy'               " json prettyfier
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/IndexedSearch'
+Plug 'vim-scripts/bufexplorer.zip'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-vinegar'
+Plug 'dbakker/vim-projectroot'        " guessoing project root
+Plug 'Raimondi/delimitMate'
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin list end
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""" Themes """"""""""""""""""""""""""""""
-Plugin 'whatyouhide/vim-gotham'
-Plugin 'sjl/badwolf'
-Plugin 'fatih/molokai'
+Plug 'whatyouhide/vim-gotham'
+Plug 'sjl/badwolf'
+Plug 'fatih/molokai'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" call vundle#end()
-filetype plugin indent on
+call plug#end()
+
 let maplocalleader = "\<Space>"
 nnoremap <SPACE> <Nop>
 
@@ -176,8 +166,8 @@ if has("autocmd")
     au! BufReadPost {COMMIT_EDITMSG,*/COMMIT_EDITMSG} setl ft=gitcommit noml list| norm 1G
 endif
 
-" Auto change the directory to the current file I'm working on
-autocmd BufEnter * lcd %:p:h
+" " Auto change the directory to the current file I'm working on
+" autocmd BufEnter * lcd %:p:h
 
 " Always show statusline
 set laststatus=2
@@ -360,7 +350,7 @@ nmap <leader>v :tabedit $MYVIMRC<CR>
 
 " undo settings
 set undofile
-set undodir=$HOME/.vim/undo
+set undodir=$HOME/.nvim/undo
 set undolevels=10000
 " How many lines
 set undoreload=10000
