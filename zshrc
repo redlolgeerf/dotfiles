@@ -95,10 +95,6 @@ unset GREP_OPTIONS
 
 /usr/bin/setxkbmap -option "ctrl:nocaps"
 
-alias do="sudo docker"
-alias dcp="sudo docker-compose"
-
-
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
