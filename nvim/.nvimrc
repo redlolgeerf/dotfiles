@@ -17,7 +17,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'fatih/vim-go'                   " everything for golang
@@ -36,6 +36,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
 Plug 'dbakker/vim-projectroot'        " guessing project root
 Plug 'Raimondi/delimitMate'
+Plug 'benekastah/neomake'
 "
 " =================================================== }}}
 
@@ -58,9 +59,7 @@ nnoremap <SPACE> <Nop>
 
 " YouCompleteMe
 nmap gd :YcmCompleter GoToDefinition<CR> 
-if has("gui_running")
-    nmap <LocalLeader>d :YcmCompleter GoToDeclaration<CR> 
-endif
+nmap <LocalLeader>d :YcmCompleter GoToDeclaration<CR> 
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_goto_buffer_command = 'same-buffer'
@@ -85,21 +84,21 @@ let g:UltiSnipsEditSplit="vertical"
 " TagBar
 nmap <F8> :TagbarToggle<CR>
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" " Syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_js_checkers = ['jshint']
-let g:syntastic_html_checkers = ['tidy']
-nmap gc :SyntasticCheck<CR> 
-nmap <LocalLeader>c :SyntasticToggleMode<CR> 
+" let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_js_checkers = ['jshint']
+" let g:syntastic_html_checkers = ['tidy']
+" nmap gc :SyntasticCheck<CR> 
+" nmap <LocalLeader>c :SyntasticToggleMode<CR> 
 
 " NerdTree
 let NERDTreeWinPos = "right"
@@ -145,6 +144,22 @@ let g:delimitMate_expand_cr=1
 " ctrlp
 nmap <LocalLeader>t :CtrlPBufTag<CR>
 nmap <LocalLeader>b :CtrlPBuffer<CR>
+
+" neomake
+let g:neomake_python_enabled_makers = ['pylint']
+let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_error_sign = {
+    \ 'text': 'E>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+let g:neomake_warning_sign = {
+    \ 'text': 'W>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+nmap <F7> :Neomake<CR>
+
+"
+hi IndentGuidesOdd guibg=#11151c
 " =================================================== }}}
 
 set ts=4 sts=4 sw=4 expandtab
@@ -225,8 +240,8 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 " Save the current buffer
-imap <F5> <esc>:w<CR>a
-nmap <F5> :w<CR>
+imap <F6> <esc>:w<CR> :Neomake<CR>a
+nmap <F6> :w<CR> :Neomake<CR>
 
 "switching between tabs
 nnoremap <F1> :tabprevious<CR>
