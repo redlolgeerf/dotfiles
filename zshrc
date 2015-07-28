@@ -1,7 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-export TERM=rxvt-unicode
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -88,17 +87,12 @@ export PATH=$PATH:$HOME/bin
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-envoy -t ssh-agent -a ~/.ssh/id_rsa
-source <(envoy -p)
+# envoy -t ssh-agent -a ~/.ssh/id_rsa
+# source <(envoy -p)
 
 unset GREP_OPTIONS
 
 /usr/bin/setxkbmap -option "ctrl:nocaps"
-
-alias do="sudo docker"
-alias dcp="sudo docker-compose"
-
-
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -106,5 +100,9 @@ HISTSIZE=1000
 SAVEHIST=10000
 setopt appendhistory nomatch notify
 unsetopt autocd beep extendedglob
-bindkey -v
 # End of lines configured by zsh-newuser-install
+
+export NVM_DIR="/home/mpolyakov/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
