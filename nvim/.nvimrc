@@ -6,12 +6,12 @@ call plug#begin('~/.nvim/plugged')
 " =================================================== 
 Plug 'gmarik/Vundle.vim'
 Plug 'klen/python-mode'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when leaving insert mode
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'godlygeek/tabular'              " Alignment
 Plug 'tpope/vim-surround'
-Plug 'sjl/gundo.vim'                  " Visual undo tree
+" Plug 'sjl/gundo.vim'                  " Visual undo tree
 Plug 'tpope/vim-unimpaired'           " Yes to square brackets!
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -37,6 +37,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'dbakker/vim-projectroot'        " guessing project root
 Plug 'Raimondi/delimitMate'
 Plug 'benekastah/neomake'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'gregsexton/gitv'
+Plug 'ludovicchabant/vim-gutentags'
 "
 " =================================================== }}}
 
@@ -130,8 +133,8 @@ if executable('ag')
   let g:ackprg = 'ag'
 endif
 let g:ackhighlight = 1
-nnoremap <Leader>f :ProjectRootExe Ack! --py '\b'<cword>'\b' <CR>
-nnoremap <Leader>s :Ack! --py '\b'<C-R>=expand("<cword>")<CR>'\b' <C-R>=ProjectRootGuess()<CR>
+nnoremap <Leader>f :ProjectRootExe Ack! '\b'<cword>'\b' <CR>
+nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' <C-R>=ProjectRootGuess()<CR>
 
 " bufexplorer
 let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
@@ -142,7 +145,7 @@ let g:delimitMate_expand_space=1
 let g:delimitMate_expand_cr=1
  
 " ctrlp
-nmap <LocalLeader>t :CtrlPBufTag<CR>
+nmap <LocalLeader>t :CtrlPTag<CR>
 nmap <LocalLeader>b :CtrlPBuffer<CR>
 
 " neomake
@@ -366,7 +369,7 @@ set undofile
 set undodir=$HOME/.nvim/undo
 set undolevels=10000
 " How many lines
-set undoreload=10000
+" set undoreload=10000
 
 set splitbelow
 set splitright
