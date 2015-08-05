@@ -7,6 +7,8 @@ call plug#begin('~/.nvim/plugged')
 Plug 'gmarik/Vundle.vim'
 Plug 'klen/python-mode'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when leaving insert mode
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'godlygeek/tabular'              " Alignment
@@ -147,6 +149,7 @@ let g:delimitMate_expand_cr=1
 " ctrlp
 nmap <LocalLeader>t :CtrlPTag<CR>
 nmap <LocalLeader>b :CtrlPBuffer<CR>
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " neomake
 let g:neomake_python_enabled_makers = ['pylint']
