@@ -19,6 +19,8 @@ alias clock_back="pkill -f indicator-datetime-service"
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
+export GOPATH=~/Go
+
 # completion settings
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle :compinstall filename '/home/eyeinthebrick/.zshrc'
@@ -63,7 +65,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pip docker)
+plugins=(git pip docker go golang)
 
 source $ZSH/oh-my-zsh.sh
 
