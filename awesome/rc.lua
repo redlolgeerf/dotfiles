@@ -49,7 +49,7 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
-run_once("urxvtd")
+-- run_once("urxvtd")
 run_once("unclutter")
 run_once("xscreensaver -no-splash")
 run_once("xfce4-clipman &")
@@ -67,7 +67,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/blackburn_custom/th
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "urxvt"
+terminal   = "sakura"
 editor     = os.getenv("EDITOR") or "vim" or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -349,7 +349,8 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "p", function() os.execute("screenshot") end),
 
     --Lock screen
-    awful.key({ modkey, "Control" }, "l", function () kbdcfg.switch('us') ; awful.util.spawn("xscreensaver-command --lock") end),
+    -- awful.key({ modkey, "Control" }, "l", function () kbdcfg.switch('us') ; awful.util.spawn("xscreensaver-command --lock") end),
+    awful.key({ altkey, "Control" }, "l", function () kbdcfg.switch('us') ; awful.util.spawn("gnome-screensaver-command -l") end),
      
     -- Tag browsing
     awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
@@ -478,15 +479,15 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
 
-   -- Alt + Right Shift switches the current keyboard layout
-    awful.key({ modkey }, "#34", function () kbdcfg.switch('us') end),
-    awful.key({ modkey }, "#35", function () kbdcfg.switch('ru') end)
+   -- Switche the current keyboard layout
+    awful.key({ altkey }, "#26", function () kbdcfg.switch('us') end),
+    awful.key({ altkey }, "#27", function () kbdcfg.switch('ru') end)
 )
 
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
+    awful.key({ modkey,           }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        )

@@ -1,4 +1,9 @@
 
+utf8Title: true
+renderFont: true
+faceName: Firamono
+faceSize: 14
+
 XTerm*utf8Title: true
 XTerm*renderFont: true
 XTerm*faceName: Firamono
