@@ -27,7 +27,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'marijnh/tern_for_vim'           " js completion
 Plug 'jelera/vim-javascript-syntax'   " js syntax and indentation
 Plug 'pangloss/vim-javascript'        " js highlight
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer' }
 Plug 'mitsuhiko/vim-jinja'
 Plug 'ujihisa/nclipper.vim'
 Plug 'tpope/vim-jdaddy'               " json prettyfier
