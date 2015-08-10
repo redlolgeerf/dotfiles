@@ -42,6 +42,7 @@ Plug 'benekastah/neomake'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'gregsexton/gitv'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'vasconcelloslf/vim-interestingwords'
 "
 " =================================================== }}}
 
@@ -167,6 +168,11 @@ nmap <F7> :Neomake<CR>
 
 "
 hi IndentGuidesOdd guibg=#11151c
+
+" interestingwords
+nnoremap <silent> <localleader>k :call InterestingWords('n')<cr>
+nnoremap <silent> <localleader>K :call UncolorAllWords()<cr>
+let g:interestingWordsRandomiseColors = 1
 " =================================================== }}}
 
 set ts=4 sts=4 sw=4 expandtab
