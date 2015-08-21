@@ -20,6 +20,7 @@ export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 export GOPATH=~/Go
+export PATH=$PATH:$HOME/Go/bin
 
 # completion settings
 zstyle ':completion:*' completer _expand _complete _ignored
