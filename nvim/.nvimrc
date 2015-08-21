@@ -153,7 +153,7 @@ nmap <LocalLeader>b :CtrlPBuffer<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " neomake
-let g:neomake_go_enabled_makers = ['go']
+let g:neomake_go_enabled_makers = ['golint']
 let g:neomake_python_enabled_makers = ['pylint']
 let g:neomake_javascript_enabled_makers = ['jshint']
 let g:neomake_error_sign = {
