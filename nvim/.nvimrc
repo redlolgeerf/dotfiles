@@ -190,7 +190,14 @@ if has("autocmd")
 	" Treat .rss files as XML
 	autocmd BufNewFile,BufRead *.rss setfiletype xml
     au! BufReadPost {COMMIT_EDITMSG,*/COMMIT_EDITMSG} setl ft=gitcommit noml list| norm 1G
+
+    autocmd BufWritePost * :call RunLint()
+    autocmd InsertLeave * :call RunLint()
 endif
+
+fun! RunLint()
+    Neomake
+endfunction
 
 " " Auto change the directory to the current file I'm working on
 " autocmd BufEnter * lcd %:p:h
@@ -252,8 +259,8 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 " Save the current buffer
-imap <F6> <esc>:w<CR> :Neomake<CR>a
-nmap <F6> :w<CR> :Neomake<CR>
+imap <F6> <esc>:w<CR> a
+nmap <F6> :w<CR>
 
 "switching between tabs
 nnoremap <F1> :tabprevious<CR>
