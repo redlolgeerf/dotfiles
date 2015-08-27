@@ -137,7 +137,7 @@ if executable('ag')
 endif
 let g:ackhighlight = 1
 nnoremap <Leader>f :ProjectRootExe Ack! '\b'<cword>'\b' <CR>
-nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' <C-R>=ProjectRootGuess()<CR>
+nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>
 
 " bufexplorer
 let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
