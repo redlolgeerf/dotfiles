@@ -8,7 +8,7 @@ call plug#begin('~/.nvim/plugged')
 Plug 'klen/python-mode'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when leaving insert mode
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'godlygeek/tabular'              " Alignment
@@ -148,7 +148,6 @@ let g:delimitMate_expand_space=1
 let g:delimitMate_expand_cr=1
  
 " ctrlp
-nmap <LocalLeader>t :CtrlPTag<CR>
 nmap <LocalLeader>b :CtrlPBuffer<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
@@ -403,3 +402,31 @@ nmap <LocalLeader>h :noh<CR>
 " terminal configuration
 tnoremap <Esc> <C-\><C-n>
 let g:terminal_scrollback_buffer_size = 100000
+
+function! s:tags_sink(line)
+  let parts = split(a:line, '\t\zs')
+  let excmd = matchstr(parts[2:], '^.*\ze;"\t')
+  execute 'silent e' parts[1][:-2]
+  let [magic, &magic] = [&magic, 0]
+  execute excmd
+  let &magic = magic
+endfunction
+
+function! s:tags()
+  if empty(tagfiles())
+    echohl WarningMsg
+    echom 'Preparing tags'
+    echohl None
+    call system('ctags -R')
+  endif
+
+  call fzf#run({
+  \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
+  \            '| grep -v ^!',
+  \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
+  \ 'down':    '40%',
+  \ 'sink':    function('s:tags_sink')})
+endfunction
+
+command! Tags call s:tags()
+nmap <LocalLeader>t :Tags<CR>
