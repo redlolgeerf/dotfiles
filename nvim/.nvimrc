@@ -4,7 +4,7 @@ call plug#begin('~/.nvim/plugged')
 " ===================================================
 " Plugin list {{{
 " =================================================== 
-Plug 'gmarik/Vundle.vim'
+" Plug 'gmarik/Vundle.vim'
 Plug 'klen/python-mode'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
