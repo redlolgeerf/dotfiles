@@ -443,3 +443,7 @@ endfunction
 
 command! Tags call s:tags()
 nmap <LocalLeader>t :Tags<CR>
+
+if has("patch-7.4.314")
+    set shortmess+=c
+endif
