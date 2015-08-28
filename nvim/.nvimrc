@@ -27,7 +27,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'marijnh/tern_for_vim'           " js completion
 Plug 'jelera/vim-javascript-syntax'   " js syntax and indentation
 Plug 'pangloss/vim-javascript'        " js highlight
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer' }
+Plug 'Shougo/deoplete.nvim'
 Plug 'mitsuhiko/vim-jinja'
 Plug 'ujihisa/nclipper.vim'
 Plug 'tpope/vim-jdaddy'               " json prettyfier
@@ -63,14 +64,19 @@ nnoremap <SPACE> <Nop>
 " {{{ Plugin settings
 " ===================================================
 
-" YouCompleteMe
-nmap gd :YcmCompleter GoToDefinition<CR> 
-nmap <LocalLeader>d :YcmCompleter GoToDeclaration<CR> 
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_goto_buffer_command = 'same-buffer'
-let g:ycm_complete_in_comments = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" " YouCompleteMe
+" nmap gd :YcmCompleter GoToDefinition<CR> 
+" nmap <LocalLeader>d :YcmCompleter GoToDeclaration<CR> 
+" let g:ycm_add_preview_to_completeopt = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_goto_buffer_command = 'same-buffer'
+" let g:ycm_complete_in_comments = 1
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+"Deoplete
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
 
 " XkbSwitch
 let g:XkbSwitchEnabled = 1
@@ -185,7 +191,7 @@ if has("autocmd")
 	autocmd FileType javascript call JavaScriptFold()
 
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab smarttab
-	autocmd FileType python nmap gd :YcmCompleter GoToDefinition<CR> 
+	" autocmd FileType python nmap gd :YcmCompleter GoToDefinition<CR> 
 
 	" Treat .rss files as XML
 	autocmd BufNewFile,BufRead *.rss setfiletype xml
