@@ -152,7 +152,7 @@ nmap <LocalLeader>b :CtrlPBuffer<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " neomake
-let g:neomake_go_enabled_makers = ['golint']
+let g:neomake_go_enabled_makers = ['golint', 'go']
 let g:neomake_python_enabled_makers = ['pylint']
 let g:neomake_javascript_enabled_makers = ['jshint']
 let g:neomake_error_sign = {
@@ -163,7 +163,7 @@ let g:neomake_warning_sign = {
     \ 'text': 'W>',
     \ 'texthl': 'ErrorMsg',
     \ }
-nmap <F7> :Neomake<CR>
+nmap <F7> :Neomake!<CR>
 
 "
 hi IndentGuidesOdd guibg=#11151c
@@ -182,7 +182,7 @@ if has("autocmd")
 	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab smarttab
 	autocmd FileType javascript nmap gd :TernDef<CR>
-	autocmd FileType javascript call JavaScriptFold()
+	" autocmd FileType javascript call JavaScriptFold()
 
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab smarttab
 	autocmd FileType python nmap gd :YcmCompleter GoToDefinition<CR> 
