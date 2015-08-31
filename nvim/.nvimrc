@@ -6,9 +6,10 @@ call plug#begin('~/.nvim/plugged')
 " =================================================== 
 " Plug 'gmarik/Vundle.vim'
 Plug 'klen/python-mode'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'tsukkee/unite-tag'
+Plug 'Shougo/neoinclude.vim'
 Plug 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when leaving insert mode
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'godlygeek/tabular'              " Alignment
@@ -33,7 +34,6 @@ Plug 'ujihisa/nclipper.vim'
 Plug 'tpope/vim-jdaddy'               " json prettyfier
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/IndexedSearch'
-Plug 'vim-scripts/bufexplorer.zip'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
 Plug 'dbakker/vim-projectroot'        " guessing project root
@@ -72,6 +72,22 @@ let g:ycm_goto_buffer_command = 'same-buffer'
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
+" Unite
+
+nmap gb :Unite -no-split -auto-preview buffer<CR>
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nmap <C-p> :UniteWithProjectDir -start-insert -no-split -auto-preview file_rec/neovim<CR>
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_rec_async_command =
+            \ ['ag', '--follow', '--nocolor', '--nogroup',
+            \  '--hidden', '-g', '']
+
+" Unite tag
+nmap <Leader>t :Unite -start-insert -no-split -auto-preview tag/include<CR>
+nmap <LocalLeader>t :Unite tag/include -no-split -auto-preview -input=<C-R>=expand("<cword>")<CR><CR>
+let g:unite_source_tag_max_name_length = 50
+let g:unite_source_tag_max_fname_length	= 50
+
 " XkbSwitch
 let g:XkbSwitchEnabled = 1
 let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
@@ -90,25 +106,8 @@ let g:UltiSnipsEditSplit="vertical"
 " TagBar
 nmap <F8> :TagbarToggle<CR>
 
-" " Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_python_checkers = ['pylint']
-" let g:syntastic_js_checkers = ['jshint']
-" let g:syntastic_html_checkers = ['tidy']
-" nmap gc :SyntasticCheck<CR> 
-" nmap <LocalLeader>c :SyntasticToggleMode<CR> 
-
 " NerdTree
 let NERDTreeWinPos = "right"
-nmap <leader>t :NERDTreeToggle<CR> 
 let g:NERDTreeWinPos = "right"
 let NERDTreeIgnore = ['\.pyc$']
 
@@ -128,29 +127,18 @@ let g:pymode_lint_on_write = 0
 let g:pymode_lint_checkers = []
 let g:pymode_rope_goto_definition_cmd = 'new'
 
-" Dispatch
-nnoremap <F10> :Dispatch<CR>
-
-" ack.vim
-if executable('ag')
-  let g:ackprg = 'ag'
-endif
-let g:ackhighlight = 1
-nnoremap <Leader>f :ProjectRootExe Ack! '\b'<cword>'\b' <CR>
-nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>
-
-" bufexplorer
-let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
-nnoremap <silent> gb :BufExplorer<CR>
+" " ack.vim
+" if executable('ag')
+  " let g:ackprg = 'ag'
+" endif
+" let g:ackhighlight = 1
+" nnoremap <Leader>f :ProjectRootExe Ack! '\b'<cword>'\b' <CR>
+" nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>
 
 " delimitMate
 let g:delimitMate_expand_space=1
 let g:delimitMate_expand_cr=1
  
-" ctrlp
-nmap <LocalLeader>b :CtrlPBuffer<CR>
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
 " neomake
 let g:neomake_go_enabled_makers = ['golint', 'go']
 let g:neomake_python_enabled_makers = ['pylint']
@@ -409,31 +397,3 @@ nmap <LocalLeader>h :noh<CR>
 " terminal configuration
 tnoremap <Esc> <C-\><C-n>
 let g:terminal_scrollback_buffer_size = 100000
-
-function! s:tags_sink(line)
-  let parts = split(a:line, '\t\zs')
-  let excmd = matchstr(parts[2:], '^.*\ze;"\t')
-  execute 'silent e' parts[1][:-2]
-  let [magic, &magic] = [&magic, 0]
-  execute excmd
-  let &magic = magic
-endfunction
-
-function! s:tags()
-  if empty(tagfiles())
-    echohl WarningMsg
-    echom 'Preparing tags'
-    echohl None
-    call system('ctags -R')
-  endif
-
-  call fzf#run({
-  \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
-  \            '| grep -v ^!',
-  \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
-  \ 'down':    '40%',
-  \ 'sink':    function('s:tags_sink')})
-endfunction
-
-command! Tags call s:tags()
-nmap <LocalLeader>t :Tags<CR>
