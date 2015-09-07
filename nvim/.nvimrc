@@ -4,7 +4,6 @@ call plug#begin('~/.nvim/plugged')
 " ===================================================
 " Plugin list {{{
 " =================================================== 
-" Plug 'gmarik/Vundle.vim'
 Plug 'klen/python-mode'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
@@ -13,13 +12,11 @@ Plug 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'godlygeek/tabular'              " Alignment
 Plug 'tpope/vim-surround'
-" Plug 'sjl/gundo.vim'                  " Visual undo tree
 Plug 'tpope/vim-unimpaired'           " Yes to square brackets!
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-" Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'fatih/vim-go'                   " everything for golang
@@ -90,22 +87,6 @@ let g:UltiSnipsEditSplit="vertical"
 " TagBar
 nmap <F8> :TagbarToggle<CR>
 
-" " Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_python_checkers = ['pylint']
-" let g:syntastic_js_checkers = ['jshint']
-" let g:syntastic_html_checkers = ['tidy']
-" nmap gc :SyntasticCheck<CR> 
-" nmap <LocalLeader>c :SyntasticToggleMode<CR> 
-
 " NerdTree
 let NERDTreeWinPos = "right"
 nmap <leader>t :NERDTreeToggle<CR> 
@@ -127,9 +108,6 @@ let g:pymode_lint_on_fly = 0
 let g:pymode_lint_on_write = 0
 let g:pymode_lint_checkers = []
 let g:pymode_rope_goto_definition_cmd = 'new'
-
-" Dispatch
-nnoremap <F10> :Dispatch<CR>
 
 " ack.vim
 if executable('ag')
