@@ -130,7 +130,7 @@ nmap <LocalLeader>b :CtrlPBuffer<CR>
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " neomake
-let g:neomake_go_enabled_makers = ['golint', 'go']
+let g:neomake_go_enabled_makers = ['go']
 let g:neomake_python_enabled_makers = ['pylint']
 let g:neomake_javascript_enabled_makers = ['jshint']
 let g:neomake_error_sign = {
@@ -169,13 +169,10 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.rss setfiletype xml
     au! BufReadPost {COMMIT_EDITMSG,*/COMMIT_EDITMSG} setl ft=gitcommit noml list| norm 1G
 
-    autocmd BufWritePost * :call RunLint()
-    autocmd InsertLeave * :call RunLint()
+    autocmd BufWritePost *.go :Neomake!
+    autocmd BufWritePost *.py :Neomake
+    autocmd BufWritePost *.js :Neomake
 endif
-
-fun! RunLint()
-    Neomake
-endfunction
 
 " " Auto change the directory to the current file I'm working on
 " autocmd BufEnter * lcd %:p:h
