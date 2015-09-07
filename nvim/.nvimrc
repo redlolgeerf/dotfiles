@@ -6,7 +6,7 @@ call plug#begin('~/.nvim/plugged')
 " =================================================== 
 Plug 'klen/python-mode'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'nixprime/cpsm', { 'do': './install.sh' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when leaving insert mode
 Plug 'mhinz/vim-startify'             " Nice start screen
@@ -127,7 +127,8 @@ let g:delimitMate_expand_cr=1
  
 " ctrlp
 nmap <LocalLeader>b :CtrlPBuffer<CR>
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " neomake
 let g:neomake_go_enabled_makers = ['go']
