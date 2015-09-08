@@ -48,6 +48,7 @@ Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'whatyouhide/vim-gotham'
 Plug 'sjl/badwolf'
 Plug 'fatih/molokai'
+Plug 'christophermca/meta5'
 " =================================================== }}}
 
 call plug#end()
@@ -196,9 +197,9 @@ set fileencodings=utf8,cp1251 " Возможные кодировки файло
 set t_Co=256
 set background=dark
 if has("gui_running")
-    colorscheme gotham
+    colorscheme meta5
 else
-    colorscheme gotham256
+    colorscheme meta5
 endif
 set number "Включаем нумерацию строк
 set cursorline "Включаем нумерацию строк
@@ -247,8 +248,8 @@ nnoremap <C-w>t :tabedit<CR>
 
 " highlight collumn end for python files only
 function! SetLimit() 
-	set colorcolumn=79
-	highlight ColorColumn ctermbg=darkgray
+	setlocal colorcolumn=79
+    highlight ColorColumn ctermbg=234 guibg=#1c1c1c
 endfunction
 autocmd FileType python call SetLimit()
 
