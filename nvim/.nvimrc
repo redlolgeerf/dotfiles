@@ -131,6 +131,9 @@ let g:delimitMate_expand_cr=1
 nmap <LocalLeader>b :CtrlPBuffer<CR>
 let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+nmap <LocalLeader>t :CtrlPBufTag<CR>
+nmap <Leader>t :CtrlPTag<CR>
+
 
 " neomake
 let g:neomake_go_enabled_makers = ['go']
