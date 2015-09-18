@@ -4,22 +4,18 @@ call plug#begin('~/.nvim/plugged')
 " ===================================================
 " Plugin list {{{
 " =================================================== 
-" Plug 'gmarik/Vundle.vim'
 Plug 'klen/python-mode'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'nixprime/cpsm', { 'do': './install.sh' }
 Plug 'lyokha/vim-xkbswitch'           " Automatically switch from ru to us, when leaving insert mode
 Plug 'mhinz/vim-startify'             " Nice start screen
 Plug 'godlygeek/tabular'              " Alignment
 Plug 'tpope/vim-surround'
-" Plug 'sjl/gundo.vim'                  " Visual undo tree
 Plug 'tpope/vim-unimpaired'           " Yes to square brackets!
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-" Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'fatih/vim-go'                   " everything for golang
@@ -53,6 +49,7 @@ Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'whatyouhide/vim-gotham'
 Plug 'sjl/badwolf'
 Plug 'fatih/molokai'
+Plug 'christophermca/meta5'
 " =================================================== }}}
 
 call plug#end()
@@ -96,22 +93,6 @@ let g:UltiSnipsEditSplit="vertical"
 " TagBar
 nmap <F8> :TagbarToggle<CR>
 
-" " Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_python_checkers = ['pylint']
-" let g:syntastic_js_checkers = ['jshint']
-" let g:syntastic_html_checkers = ['tidy']
-" nmap gc :SyntasticCheck<CR> 
-" nmap <LocalLeader>c :SyntasticToggleMode<CR> 
-
 " NerdTree
 let NERDTreeWinPos = "right"
 nmap <leader>t :NERDTreeToggle<CR> 
@@ -134,16 +115,15 @@ let g:pymode_lint_on_write = 0
 let g:pymode_lint_checkers = []
 let g:pymode_rope_goto_definition_cmd = 'new'
 
-" Dispatch
-nnoremap <F10> :Dispatch<CR>
-
 " ack.vim
 if executable('ag')
   let g:ackprg = 'ag'
 endif
 let g:ackhighlight = 1
-nnoremap <Leader>f :ProjectRootExe Ack! '\b'<cword>'\b' <CR>
-nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>
+nnoremap <LocalLeader>f :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR><CR>
+nnoremap <LocalLeader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>
+nnoremap <Leader>f :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>/../<CR>
+nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>/../
 
 " bufexplorer
 let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
@@ -155,10 +135,14 @@ let g:delimitMate_expand_cr=1
  
 " ctrlp
 nmap <LocalLeader>b :CtrlPBuffer<CR>
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+nmap <LocalLeader>t :CtrlPBufTag<CR>
+nmap <Leader>t :CtrlPTag<CR>
+
 
 " neomake
-let g:neomake_go_enabled_makers = ['golint']
+let g:neomake_go_enabled_makers = ['go']
 let g:neomake_python_enabled_makers = ['pylint']
 let g:neomake_javascript_enabled_makers = ['jshint']
 let g:neomake_error_sign = {
@@ -169,7 +153,7 @@ let g:neomake_warning_sign = {
     \ 'text': 'W>',
     \ 'texthl': 'ErrorMsg',
     \ }
-nmap <F7> :Neomake<CR>
+nmap <F7> :Neomake!<CR>
 
 "
 hi IndentGuidesOdd guibg=#11151c
@@ -188,7 +172,7 @@ if has("autocmd")
 	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab smarttab
 	autocmd FileType javascript nmap gd :TernDef<CR>
-	autocmd FileType javascript call JavaScriptFold()
+	" autocmd FileType javascript call JavaScriptFold()
 
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab smarttab
 	" autocmd FileType python nmap gd :YcmCompleter GoToDefinition<CR> 
@@ -197,13 +181,10 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.rss setfiletype xml
     au! BufReadPost {COMMIT_EDITMSG,*/COMMIT_EDITMSG} setl ft=gitcommit noml list| norm 1G
 
-    autocmd BufWritePost * :call RunLint()
-    autocmd InsertLeave * :call RunLint()
+    autocmd BufWritePost *.go :Neomake!
+    autocmd BufWritePost *.py :Neomake
+    autocmd BufWritePost *.js :Neomake
 endif
-
-fun! RunLint()
-    Neomake
-endfunction
 
 " " Auto change the directory to the current file I'm working on
 " autocmd BufEnter * lcd %:p:h
@@ -225,9 +206,9 @@ set fileencodings=utf8,cp1251 " Возможные кодировки файло
 set t_Co=256
 set background=dark
 if has("gui_running")
-    colorscheme gotham
+    colorscheme meta5
 else
-    colorscheme gotham256
+    colorscheme meta5
 endif
 set number "Включаем нумерацию строк
 set cursorline "Включаем нумерацию строк
@@ -276,8 +257,8 @@ nnoremap <C-w>t :tabedit<CR>
 
 " highlight collumn end for python files only
 function! SetLimit() 
-	set colorcolumn=79
-	highlight ColorColumn ctermbg=darkgray
+	setlocal colorcolumn=79
+    highlight ColorColumn ctermbg=234 guibg=#1c1c1c
 endfunction
 autocmd FileType python call SetLimit()
 
@@ -415,35 +396,6 @@ nmap <LocalLeader>h :noh<CR>
 " terminal configuration
 tnoremap <Esc> <C-\><C-n>
 let g:terminal_scrollback_buffer_size = 100000
-
-function! s:tags_sink(line)
-  let parts = split(a:line, '\t\zs')
-  let excmd = matchstr(parts[2:], '^.*\ze;"\t')
-  execute 'silent e' parts[1][:-2]
-  let [magic, &magic] = [&magic, 0]
-  execute excmd
-  let &magic = magic
-endfunction
-
-function! s:tags()
-  if empty(tagfiles())
-    echohl WarningMsg
-    echom 'Preparing tags'
-    echohl None
-    call system('ctags -R')
-  endif
-
-  call fzf#run({
-  \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
-  \            '| grep -v ^!',
-  \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
-  \ 'down':    '40%',
-  \ 'sink':    function('s:tags_sink')})
-endfunction
-
-command! Tags call s:tags()
-nmap <LocalLeader>t :Tags<CR>
-
 if has("patch-7.4.314")
     set shortmess+=c
 endif
