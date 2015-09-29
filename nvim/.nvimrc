@@ -390,3 +390,8 @@ nmap <LocalLeader>h :noh<CR>
 " terminal configuration
 tnoremap <Esc> <C-\><C-n>
 let g:terminal_scrollback_buffer_size = 100000
+
+noremap <up>    <C-W>+
+noremap <down>  <C-W>-
+noremap <left>  3<C-W><
+noremap <right> 3<C-W>>
