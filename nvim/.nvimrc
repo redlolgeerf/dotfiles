@@ -39,6 +39,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'gregsexton/gitv'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vasconcelloslf/vim-interestingwords'
+Plug 'othree/html5.vim'
+Plug 'mxw/vim-jsx'
+Plug 'vimwiki/vimwiki'
 "
 " =================================================== }}}
 
@@ -156,6 +159,9 @@ hi IndentGuidesOdd guibg=#11151c
 nnoremap <silent> <localleader>k :call InterestingWords('n')<cr>
 nnoremap <silent> <localleader>K :call UncolorAllWords()<cr>
 let g:interestingWordsRandomiseColors = 1
+
+" vim-jsx
+let g:jsx_ext_required = 0
 " =================================================== }}}
 
 set ts=4 sts=4 sw=4 expandtab
@@ -207,7 +213,7 @@ endif
 set number "Включаем нумерацию строк
 set cursorline "Включаем нумерацию строк
 set mousehide "Спрятать курсор мыши когда набираем текст
-set mouse=a "Включить поддержку мыши
+set mouse= "Turn mouse off
 
 syntax on
 
