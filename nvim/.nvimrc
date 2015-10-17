@@ -194,6 +194,12 @@ Plug 'marijnh/tern_for_vim'
 " }}}
 Plug 'ap/vim-css-color'
 Plug 'fatih/vim-go'
+Plug 'wting/rust.vim'
+Plug 'racer-rust/vim-racer', { 'do': 'cargo build --release' }
+" {{{
+ let g:racer_cmd = "/usr/bin/racer"
+ let $RUST_SRC_PATH="/home/eyeinthebrick/rust/src"
+" }}}
 
 " Git
 " ====================================================================
