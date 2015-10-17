@@ -151,54 +151,64 @@ Plug 'benekastah/neomake'
 " }}}
 Plug 'majutsushi/tagbar'
 " {{{
-  nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 " }}}
+" {{{ Python
 Plug 'klen/python-mode'
 " {{{
-  let g:pymode_rope_completion = 0
-  let g:pymode_folding = 1
-  let g:pymode_options_colorcolumn = 1
-  let g:pymode_lint_on_fly = 0
-  let g:pymode_lint_on_write = 0
-  let g:pymode_lint_checkers = []
-  let g:pymode_rope_goto_definition_cmd = 'new'
+let g:pymode_rope_completion = 0
+let g:pymode_folding = 1
+let g:pymode_options_colorcolumn = 1
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_checkers = []
+let g:pymode_rope_goto_definition_cmd = 'new'
 
-  let python_highlight_all = 1
+let python_highlight_all = 1
 
-  autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
-  function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-  endfunction
+autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
 " }}}
 Plug 'mitsuhiko/vim-jinja'
-Plug 'othree/html5.vim'
+" }}}
+" {{{ JavaScript
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/yajs.vim'
 Plug 'mxw/vim-jsx'
 " {{{
-  let g:jsx_ext_required = 0
+let g:jsx_ext_required = 0
 " }}}
 Plug 'gavocanov/vim-js-indent'
 Plug 'marijnh/tern_for_vim'
 " {{{
-	autocmd FileType javascript nmap gd :TernDef<CR>
+autocmd FileType javascript nmap gd :TernDef<CR>
 " }}}
+" }}}
+" {{{ HTML & CSS
 Plug 'ap/vim-css-color'
+Plug 'othree/html5.vim'
+" }}}
+" {{{ Go
 Plug 'fatih/vim-go'
+" }}}
+" {{{ Rust
 Plug 'wting/rust.vim'
 Plug 'racer-rust/vim-racer', { 'do': 'cargo build --release' }
 " {{{
  let g:racer_cmd = "/usr/bin/racer"
  let $RUST_SRC_PATH="/home/eyeinthebrick/rust/src"
+" }}}
 " }}}
 
 " Git
