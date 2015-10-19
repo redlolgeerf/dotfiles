@@ -3,3 +3,6 @@ vim/.netrwhist
 *.pyc
 nvim/plugged
 nvim/autoload
+nvim/UltiSnips
+nvim/spell
+nvim/undo
