@@ -203,11 +203,13 @@ Plug 'othree/html5.vim'
 Plug 'fatih/vim-go'
 " }}}
 " {{{ Rust
-Plug 'wting/rust.vim'
-Plug 'racer-rust/vim-racer', { 'do': 'cargo build --release' }
-" {{{
- let g:racer_cmd = "/usr/bin/racer"
- let $RUST_SRC_PATH="/home/eyeinthebrick/rust/src"
+if executable('rustc')
+  Plug 'wting/rust.vim'
+  Plug 'racer-rust/vim-racer', { 'do': 'cargo build --release' }
+  " {{{
+  let g:racer_cmd = "/usr/bin/racer"
+  let $RUST_SRC_PATH="/home/eyeinthebrick/rust/src"
+endif
 " }}}
 " }}}
 
