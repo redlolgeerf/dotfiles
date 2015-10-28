@@ -210,6 +210,9 @@ Plug 'racer-rust/vim-racer', { 'do': 'cargo build --release' }
  let $RUST_SRC_PATH="/home/eyeinthebrick/rust/src"
 " }}}
 " }}}
+" {{{ Markup
+Plug 'cespare/vim-toml'
+" }}}
 
 " Git
 " ====================================================================
