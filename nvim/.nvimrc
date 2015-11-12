@@ -107,10 +107,10 @@ Plug 'mileszs/ack.vim'
     let g:ackprg = 'ag'
   endif
   let g:ackhighlight = 1
-  nnoremap <LocalLeader>f :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR><CR>
-  nnoremap <LocalLeader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>
-  nnoremap <Leader>f :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>/../<CR>
-  nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' --<C-R>=&ft<CR> <C-R>=ProjectRootGuess()<CR>/../
+  nnoremap <LocalLeader>f :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b'  <C-R>=ProjectRootGuess()<CR><CR>
+  nnoremap <LocalLeader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' <C-R>=ProjectRootGuess()<CR>
+  nnoremap <Leader>f :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' <C-R>=ProjectRootGuess()<CR>/../<CR>
+  nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' <C-R>=ProjectRootGuess()<CR>/../
 " }}}
 Plug 'tpope/vim-vinegar'
 
