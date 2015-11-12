@@ -212,6 +212,9 @@ if executable('rustc')
 endif
 " }}}
 " }}}
+" {{{ Markup
+Plug 'cespare/vim-toml'
+" }}}
 
 " Git
 " ====================================================================
