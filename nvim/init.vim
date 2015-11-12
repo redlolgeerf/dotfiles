@@ -60,17 +60,21 @@ Plug 'mhinz/vim-startify'
 
 " Completion
 " ====================================================================
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer' }
+Plug 'Shougo/deoplete.nvim'
 " {{{
-  nmap gd :YcmCompleter GoToDefinition<CR> 
-  nmap <LocalLeader>d :YcmCompleter GoToDeclaration<CR> 
-  let g:ycm_add_preview_to_completeopt = 1
-  let g:ycm_autoclose_preview_window_after_insertion = 1
-  let g:ycm_goto_buffer_command = 'same-buffer'
-  let g:ycm_complete_in_comments = 1
-  let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
-	autocmd FileType python nmap gd :YcmCompleter GoToDefinition<CR> 
+let g:deoplete#enable_at_startup = 1
+autocmd FileType python setlocal omnifunc=jedi#completions
+" }}}
+Plug 'davidhalter/jedi-vim'
+" {{{
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = 0 
+" }}}
+Plug 'Shougo/echodoc'
+" {{{
+let g:echodoc_enable_at_startup = 1
 " }}}
 Plug 'SirVer/ultisnips'
 " {{{
