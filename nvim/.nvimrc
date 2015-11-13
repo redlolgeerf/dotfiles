@@ -243,6 +243,10 @@ Plug 'ludovicchabant/vim-gutentags'
       \ '*/vendor/*',
       \ '*/node_modules/*',
       \ ]
+
+  let g:gutentags_ctags_executable_rs = 'rusty-tags vi'
+  set tags=rusty-tags.vi;/,path-to-rust-source-code/rusty-tags.vi
+  autocmd BufWrite *.rs :silent !rusty-tags vi &
 " }}}
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
