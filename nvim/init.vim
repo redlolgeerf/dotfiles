@@ -10,18 +10,20 @@ if empty(glob('~/.nvim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
-" }}}
-call plug#begin('~/.nvim/plugged') " Plugins initialization start {{{
+"
 " }}}
 
-" Themes
+" {{{ Plugins
+call plug#begin('~/.nvim/plugged') " Plugins initialization start 
+
+" {{{ Themes
 " ====================================================================
 Plug 'whatyouhide/vim-gotham'
 Plug 'sjl/badwolf'
 Plug 'fatih/molokai'
 Plug 'christophermca/meta5'
-
-" Appearance
+" }}}
+" {{{  Appearance
 " ====================================================================
 Plug 'bling/vim-airline'
 " {{{
@@ -57,8 +59,8 @@ Plug 'mhinz/vim-startify'
         \ map(split(system('fortune ~/.vim/fortunes | cowsay -W 60'), '\n'), '"   ". v:val') + ['','']
   autocmd! User Startified setlocal colorcolumn=0
   " }}}
-
-" Completion
+" }}}
+" {{{ Completion
 " ====================================================================
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer' }
 " {{{
@@ -81,8 +83,8 @@ Plug 'SirVer/ultisnips'
   let g:UltiSnipsEditSplit="vertical"
 " }}}
 Plug 'honza/vim-snippets'
-
-" File Navigation
+" }}}
+" {{{ File Navigation
 " ====================================================================
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nixprime/cpsm', { 'do': './install.sh' }
@@ -113,8 +115,8 @@ Plug 'mileszs/ack.vim'
   nnoremap <Leader>s :Ack! '\b'<C-R>=expand("<cword>")<CR>'\b' <C-R>=ProjectRootGuess()<CR>/../
 " }}}
 Plug 'tpope/vim-vinegar'
-
-" Text Manipulation
+" }}}
+" {{{ Text Manipulation
 " ====================================================================
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
@@ -127,8 +129,8 @@ Plug 'Raimondi/delimitMate'
   let g:delimitMate_expand_space=1
   let g:delimitMate_expand_cr=1
 " }}}
-
-" Languages
+" }}}
+" {{{ Languages
 " ====================================================================
 Plug 'benekastah/neomake'
 " {{{
@@ -215,8 +217,8 @@ endif
 " {{{ Markup
 Plug 'cespare/vim-toml'
 " }}}
-
-" Git
+" }}}
+" {{{ Git
 " ====================================================================
 Plug 'tpope/vim-fugitive'
 " {{{
@@ -226,8 +228,8 @@ Plug 'tpope/vim-fugitive'
 " }}}
 Plug 'gregsexton/gitv'
 Plug 'idanarye/vim-merginal'
-
-" Utility
+" }}}
+" {{{ Utility
 " ====================================================================
 Plug 'lyokha/vim-xkbswitch'
 " {{{
@@ -265,13 +267,13 @@ Plug 'vim-scripts/bufexplorer.zip'
   let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
   nnoremap <silent> gb :BufExplorer<CR>
 " }}}
-
-" Misc
+" }}}
+" {{{ Misc
 " ====================================================================
 Plug 'vimwiki/vimwiki'
-
-call plug#end() " Plugins initialization finished {{{
 " }}}
+
+call plug#end() " Plugins initialization finished }}}
 
 " General settings {{{
 " ====================================================================
