@@ -149,7 +149,8 @@ Plug 'benekastah/neomake'
 
   let g:neomake_go_enabled_makers = ['go']
   let g:neomake_python_enabled_makers = ['pylint']
-  let g:neomake_javascript_enabled_makers = ['jshint']
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  let g:neomake_javascript_jsx_enabled_makers = ['eslint']
 " }}}
 Plug 'majutsushi/tagbar'
 " {{{
@@ -331,15 +332,16 @@ set spelllang=ru_ru,en_us
 " Indentation {{{
 " ====================================================================
 set autoindent
-set expandtab     " replace <Tab with spaces
+" set expandtab     " replace <Tab with spaces
 set tabstop=4     " number of spaces that a <Tab> in the file counts for
 set softtabstop=4 " remove <Tab> symbols as it was spaces
 set shiftwidth=4  " indent size for << and >>
 set shiftround    " round indent to multiple of 'shiftwidth' (for << and >>)
 autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab smarttab
+autocmd FileType html setlocal ts=2 sts=2 sw=2 smarttab
+autocmd FileType css setlocal ts=2 sts=2 sw=2 smarttab
+autocmd FileType javascript setlocal ts=2 sw=2 smarttab expandtab
+autocmd FileType javascript.jsx setlocal ts=2 sw=2 smarttab expandtab
 autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab smarttab
 " }}}
 " Search {{{
