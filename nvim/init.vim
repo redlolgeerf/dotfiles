@@ -124,11 +124,11 @@ Plug 'scrooloose/nerdcommenter'
 " {{{
   let g:NERDSpaceDelims = 1
 " }}}
-Plug 'Raimondi/delimitMate'
-" {{{
-  let g:delimitMate_expand_space=1
-  let g:delimitMate_expand_cr=1
-" }}}
+"Plug 'Raimondi/delimitMate'
+"" {{{
+"  let g:delimitMate_expand_space=1
+"  let g:delimitMate_expand_cr=1
+"" }}}
 " }}}
 " {{{ Languages
 " ====================================================================
