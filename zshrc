@@ -105,7 +105,7 @@ setopt appendhistory nomatch notify
 unsetopt autocd beep extendedglob
 # End of lines configured by zsh-newuser-install
 
-export NVM_DIR="/home/mpolyakov/.nvm"
+export NVM_DIR=$HOME'/.nvm'
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
