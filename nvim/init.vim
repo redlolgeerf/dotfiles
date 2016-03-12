@@ -124,11 +124,11 @@ Plug 'scrooloose/nerdcommenter'
 " {{{
   let g:NERDSpaceDelims = 1
 " }}}
-Plug 'Raimondi/delimitMate'
-" {{{
-  let g:delimitMate_expand_space=1
-  let g:delimitMate_expand_cr=1
-" }}}
+"Plug 'Raimondi/delimitMate'
+"" {{{
+"  let g:delimitMate_expand_space=1
+"  let g:delimitMate_expand_cr=1
+"" }}}
 " }}}
 " {{{ Languages
 " ====================================================================
@@ -266,11 +266,16 @@ Plug 'takac/vim-hardtime'
   let g:hardtime_ignore_buffer_patterns = ['netrw', 'NERD.*', 'Tagbar', 'BufExplorer']
   let g:hardtime_allow_different_key = 1
 " }}}
-Plug 'vim-scripts/IndexedSearch'
+" Plug 'vim-scripts/IndexedSearch'
 Plug 'vim-scripts/bufexplorer.zip'
 " {{{
   let g:bufExplorerDisableDefaultKeyMapping=1    " Disable mapping.
   nnoremap <silent> gb :BufExplorer<CR>
+" }}}
+Plug 'kassio/neoterm'
+" {{{
+let g:neoterm_position = 'vertical'
+let g:neoterm_raise_when_tests_fail = 1
 " }}}
 " }}}
 " {{{ Misc
