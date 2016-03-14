@@ -87,13 +87,15 @@ Plug 'honza/vim-snippets'
 " {{{ File Navigation
 " ====================================================================
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'nixprime/cpsm', { 'do': './install.sh' }
 " {{{
   nmap <LocalLeader>b :CtrlPBuffer<CR>
-  let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   nmap <LocalLeader>t :CtrlPBufTag<CR>
   nmap <Leader>t :CtrlPTag<CR>
+" }}}
+Plug 'nixprime/cpsm', { 'do': './install.sh' }
+" {{{
+  let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 " }}}
 Plug 'scrooloose/nerdtree'
 " {{{
