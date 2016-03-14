@@ -13,7 +13,6 @@ alias cls="clear"
 alias py="gvim -p *.py"
 alias clip="xclip -selection clipboard"
 alias gv="gvim"
-alias clock_back="pkill -f indicator-datetime-service"
 
 # paths for virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
@@ -66,7 +65,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pip docker go golang)
+plugins=(git pip npm go golang docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,7 +104,7 @@ setopt appendhistory nomatch notify
 unsetopt autocd beep extendedglob
 # End of lines configured by zsh-newuser-install
 
-export NVM_DIR="/home/mpolyakov/.nvm"
+export NVM_DIR=$HOME'/.nvm'
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -150,5 +149,5 @@ fbr() {
 
 # kill all background jobs
 killbg() {
-  jobs -l | awk '{printf $3" "}' | xargs kill
+  jobs -l | awk '{printf $3" "}' | xargs kill -9
 }
