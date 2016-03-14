@@ -65,15 +65,37 @@ Plug 'mhinz/vim-startify'
 Plug 'Shougo/deoplete.nvim'
 " {{{
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+		inoremap <silent><expr> <Tab>
+		\ pumvisible() ? "\<C-n>" :
+		\ deoplete#mappings#manual_complete()
 autocmd FileType python setlocal omnifunc=jedi#completions
 " }}}
-Plug 'davidhalter/jedi-vim'
+Plug 'Shougo/neoinclude.vim'
 " {{{
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#show_call_signatures = 0 
 " }}}
+Plug 'Shougo/neco-syntax'
+" {{{
+" }}}
+Plug 'zchee/deoplete-jedi'
+" {{{
+" }}}
+Plug 'carlitux/deoplete-ternjs'
+" {{{
+" }}}
+Plug 'Shougo/context_filetype.vim'
+" {{{
+" }}}
+Plug 'Konfekt/FastFold'
+" {{{
+" }}}
+" Plug 'davidhalter/jedi-vim'
+" " {{{
+" let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#smart_auto_mappings = 0
+" let g:jedi#show_call_signatures = 0 
+" " }}}
 Plug 'Shougo/echodoc'
 " {{{
 let g:echodoc_enable_at_startup = 1
