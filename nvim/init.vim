@@ -126,6 +126,7 @@ Plug 'scrooloose/nerdcommenter'
 " {{{
   let g:NERDSpaceDelims = 1
 " }}}
+Plug 'wellle/targets.vim'
 "Plug 'Raimondi/delimitMate'
 "" {{{
 "  let g:delimitMate_expand_space=1
