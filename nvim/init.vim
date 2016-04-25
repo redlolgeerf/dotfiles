@@ -67,7 +67,7 @@ Plug 'mhinz/vim-startify'
 " }}}
 " {{{ Completion
 " ====================================================================
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --gocode-completer --tern-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer --tern-completer' }
 " {{{
   nmap gd :YcmCompleter GoToDefinition<CR> 
   nmap <LocalLeader>d :YcmCompleter GoToDeclaration<CR> 
