@@ -22,6 +22,11 @@ Plug 'whatyouhide/vim-gotham'
 Plug 'sjl/badwolf'
 Plug 'fatih/molokai'
 Plug 'christophermca/meta5'
+Plug 'morhetz/gruvbox'
+" {{{
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'hard'
+" }}}
 " }}}
 " {{{  Appearance
 " ====================================================================
@@ -138,6 +143,7 @@ Plug 'wellle/targets.vim'
 Plug 'benekastah/neomake'
 " {{{
   autocmd! BufWritePost * Neomake
+
   let g:neomake_airline = 0
 
   let g:neomake_error_sign = {
@@ -377,7 +383,7 @@ set background=dark
 if has("gui_running")
     colorscheme meta5
 else
-    colorscheme meta5
+    colorscheme gruvbox
 endif
 
 set cursorline     " highlight current line
