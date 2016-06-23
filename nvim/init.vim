@@ -27,6 +27,7 @@ Plug 'morhetz/gruvbox'
 let g:gruvbox_italic = 1
 let g:gruvbox_contrast_dark = 'hard'
 " }}}
+Plug 'toupeira/vim-desertink'
 " }}}
 " {{{  Appearance
 " ====================================================================
@@ -379,11 +380,12 @@ set hlsearch   " Highlight search results
 " }}}
 " Colors and highlightings {{{
 " ====================================================================
+set termguicolors
 set background=dark
 if has("gui_running")
     colorscheme meta5
 else
-    colorscheme gruvbox
+    colorscheme desertink
 endif
 
 set cursorline     " highlight current line
