@@ -68,17 +68,13 @@ Plug 'mhinz/vim-startify'
 " }}}
 " {{{ Completion
 " ====================================================================
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer --tern-completer' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " {{{
-  nmap gd :YcmCompleter GoToDefinition<CR> 
-  nmap <LocalLeader>d :YcmCompleter GoToDeclaration<CR> 
-  let g:ycm_add_preview_to_completeopt = 1
-  let g:ycm_autoclose_preview_window_after_insertion = 1
-  let g:ycm_goto_buffer_command = 'same-buffer'
-  let g:ycm_complete_in_comments = 1
-  let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
-	autocmd FileType python nmap gd :YcmCompleter GoToDefinition<CR> 
+  let g:deoplete#enable_at_startup = 1
+" }}}
+Plug 'zchee/deoplete-jedi'
+" {{{
+  let deoplete#sources#jedi#show_docstring = 1
 " }}}
 Plug 'SirVer/ultisnips'
 " {{{
