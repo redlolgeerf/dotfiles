@@ -218,10 +218,10 @@ Plug 'fatih/vim-go'
 " {{{ Rust
 if executable('rustc')
   Plug 'wting/rust.vim'
-  Plug 'racer-rust/vim-racer', { 'do': 'cargo build --release' }
+  Plug 'racer-rust/vim-racer', { 'do': 'cargo install racer' }
   " {{{
-  let g:racer_cmd = "/usr/bin/racer"
-  let $RUST_SRC_PATH="/home/eyeinthebrick/rust/src"
+  let g:racer_cmd = "racer"
+  let $RUST_SRC_PATH="/home/redlolgeerf/rust/src"
 endif
 " }}}
 " }}}
@@ -253,7 +253,7 @@ Plug 'idanarye/vim-merginal'
 Plug 'lyokha/vim-xkbswitch'
 " {{{
   let g:XkbSwitchEnabled = 1
-  let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
+  " let g:XkbSwitchLib = '/usr/lib/libxkbswitch.so'
 " }}}
 Plug 'ludovicchabant/vim-gutentags'
 " {{{
