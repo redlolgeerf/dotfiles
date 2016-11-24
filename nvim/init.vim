@@ -122,6 +122,7 @@ Plug 'tpope/vim-vinegar'
 " }}}
 " {{{ Text Manipulation
 " ====================================================================
+Plug 'Konfekt/FastFold'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdcommenter'
