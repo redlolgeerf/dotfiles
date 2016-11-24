@@ -138,26 +138,8 @@ Plug 'wellle/targets.vim'
 " }}}
 " {{{ Languages
 " ====================================================================
-Plug 'benekastah/neomake'
+Plug 'w0rp/ale'
 " {{{
-  autocmd! BufWritePost * Neomake
-
-  let g:neomake_airline = 0
-
-  let g:neomake_error_sign = {
-      \ 'text': 'E>',
-      \ 'texthl': 'ErrorMsg',
-      \ }
-  let g:neomake_warning_sign = {
-      \ 'text': 'W>',
-      \ 'texthl': 'ErrorMsg',
-      \ }
-  nmap <F7> :Neomake!<CR>
-
-  let g:neomake_go_enabled_makers = ['go']
-  let g:neomake_python_enabled_makers = ['pylint']
-  let g:neomake_javascript_enabled_makers = ['eslint']
-  let g:neomake_javascript_jsx_enabled_makers = ['eslint']
 " }}}
 Plug 'majutsushi/tagbar'
 " {{{
