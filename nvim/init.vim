@@ -522,5 +522,8 @@ cnoremap w!! w !sudo tee % >/dev/null
   set guioptions-=L
 
 "}}}
+" Abbreviations {{{
+  abbreviate NOne None
+"}}}
 
 " vim: set sw=2 ts=2 et foldlevel=0 foldmethod=marker:
