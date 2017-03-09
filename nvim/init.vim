@@ -1,8 +1,10 @@
 filetype plugin indent on
 
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 " let g:mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
 nnoremap <SPACE> <Nop>
+
 
 " Autoinstall vim-plug {{{
 if empty(glob('~/.nvim/autoload/plug.vim'))
