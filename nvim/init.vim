@@ -369,6 +369,7 @@ else
     colorscheme desertink
 endif
 
+set showmatch      " show matching brackets
 set cursorline     " highlight current line
 set colorcolumn=80 " highlight column
 highlight ColorColumn ctermbg=234 guibg=#1c1c1c
