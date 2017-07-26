@@ -132,11 +132,10 @@ Plug 'scrooloose/nerdcommenter'
   let g:NERDSpaceDelims = 1
 " }}}
 Plug 'wellle/targets.vim'
-"Plug 'Raimondi/delimitMate'
-"" {{{
-"  let g:delimitMate_expand_space=1
-"  let g:delimitMate_expand_cr=1
-"" }}}
+Plug 'jiangmiao/auto-pairs'
+" {{{
+  let g:AutoPairsFlyMode = 1
+" }}}
 " }}}
 " {{{ Languages
 " ====================================================================
