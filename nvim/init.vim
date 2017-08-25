@@ -73,10 +73,16 @@ Plug 'mhinz/vim-startify'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " {{{
   let g:deoplete#enable_at_startup = 1
+  set shortmess+=c
 " }}}
 Plug 'zchee/deoplete-jedi'
 " {{{
   let deoplete#sources#jedi#show_docstring = 1
+" }}}
+Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode && make'}
+Plug 'Shougo/echodoc'
+" {{{
+"set noshowmode
 " }}}
 Plug 'SirVer/ultisnips'
 " {{{
