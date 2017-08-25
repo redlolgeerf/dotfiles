@@ -162,6 +162,7 @@ let g:pymode_lint_on_fly = 0
 let g:pymode_lint_on_write = 0
 let g:pymode_lint_checkers = []
 let g:pymode_rope_goto_definition_cmd = 'new'
+let g:pymode_rope = 0
 
 let python_highlight_all = 1
 
