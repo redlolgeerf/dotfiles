@@ -5,22 +5,22 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell-modified"
+ZSH_THEME="robbyrussell"
 
 # Example aliases
 alias ls="ls -A"
 alias cls="clear"
-alias py="gvim -p *.py"
+alias py="nvim -p *.py"
 alias clip="xclip -selection clipboard"
-alias gv="gvim"
 alias f="fg"
+alias webadmin='PYTHONPATH=/home/redlolgeerf/work/da/python:/home/redlolgeerf/work/da/python/webadmin DJANGO_SETTINGS_MODULE=settings.development django-admin.py'
 
 # paths for virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 export GOPATH=~/Go
-export PATH=$PATH:$HOME/Go/bin
+export PATH=$PATH:$HOME/Go/bin:$HOME/bin
 
 # completion settings
 zstyle ':completion:*' completer _expand _complete _ignored
@@ -39,7 +39,7 @@ compinit
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
-eval `dircolors $HOME/.dir_colors/dircolors.256dark`
+# eval `dircolors $HOME/.dir_colors/dircolors.256dark`
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -66,7 +66,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pip npm go golang docker)
+plugins=(git git-flow pip npm go golang docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -152,3 +152,46 @@ fbr() {
 killbg() {
   jobs -l | awk '{printf $3" "}' | xargs kill -9
 }
+
+function _virtualenv_auto_activate() {
+    if [ -e ".env" ]; then
+        # Check for symlink pointing to virtualenv
+        if [ -L ".env" ]; then
+          _VENV_PATH=$(readlink .env)
+          _VENV_WRAPPER_ACTIVATE=false
+        # Check for directory containing virtualenv
+        elif [ -d ".env" ]; then
+          _VENV_PATH=$(pwd -P)/.env
+          _VENV_WRAPPER_ACTIVATE=false
+        # Check for file containing name of virtualenv
+        elif [ -f ".env" -a $VENV_WRAPPER = "true" ]; then
+          _VENV_PATH=$WORKON_HOME/$(cat .env)
+          _VENV_WRAPPER_ACTIVATE=true
+        else
+          return
+        fi
+
+        # Check to see if already activated to avoid redundant activating
+        if [ "$VIRTUAL_ENV" != $_VENV_PATH ]; then
+            if $_VENV_WRAPPER_ACTIVATE; then
+              _VENV_NAME=$(basename $_VENV_PATH)
+              workon $_VENV_NAME
+            else
+              _VENV_NAME=$(basename `pwd`)
+              VIRTUAL_ENV_DISABLE_PROMPT=1
+              source .env/bin/activate
+              _OLD_VIRTUAL_PS1="$PS1"
+              PS1="($_VENV_NAME)$PS1"
+              export PS1
+            fi
+            echo Activated virtualenv \"$_VENV_NAME\".
+        fi
+    fi
+}
+
+export PROMPT_COMMAND=_virtualenv_auto_activate
+if [ -n "$ZSH_VERSION" ]; then
+  function chpwd() {
+    _virtualenv_auto_activate
+  }
+fi

@@ -7,9 +7,9 @@ faceSize: 14
 XTerm*utf8Title: true
 XTerm*renderFont: true
 XTerm*faceName: Firamono
-XTerm*faceSize: 12
+XTerm*faceSize: 14
 
-URxvt*font:                           xft:Firamono:size=12
+URxvt*font:                           xft:Firamono:size=14
 URxvt*depth:                          32
 
 URxvt*scrollBar:                      false
