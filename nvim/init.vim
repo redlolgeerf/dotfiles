@@ -103,7 +103,7 @@ Plug 'ctrlpvim/ctrlp.vim'
   nmap <LocalLeader>t :CtrlPBufTag<CR>
   nmap <Leader>t :CtrlPTag<CR>
 " }}}
-Plug 'nixprime/cpsm', { 'do': './install.sh' }
+Plug 'nixprime/cpsm', { 'do': 'PY3=ON ./install.sh' }
 " {{{
   let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 " }}}
@@ -289,6 +289,9 @@ Plug 'vimwiki/vimwiki'
 " }}}
 
 call plug#end() " Plugins initialization finished }}}
+
+call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
+call deoplete#custom#source('_', 'sorters', [])
 
 " General settings {{{
 " ====================================================================
