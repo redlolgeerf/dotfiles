@@ -284,6 +284,7 @@ Plug 'kassio/neoterm'
 let g:neoterm_position = 'vertical'
 let g:neoterm_raise_when_tests_fail = 1
 " }}}
+Plug 'brooth/far.vim'
 " }}}
 " {{{ Misc
 " ====================================================================
