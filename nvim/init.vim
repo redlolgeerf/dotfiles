@@ -370,6 +370,7 @@ set ignorecase " ignore case of letters
 set smartcase  " override the 'ignorecase' when there is uppercase letters
 set incsearch  " While typing a search command, show where the pattern
 set hlsearch   " Highlight search results
+set inccommand=nosplit
 " }}}
 " Colors and highlightings {{{
 " ====================================================================
