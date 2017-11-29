@@ -263,6 +263,8 @@ Plug 'vasconcelloslf/vim-interestingwords'
   nnoremap <silent> <localleader>k :call InterestingWords('n')<cr>
   nnoremap <silent> <localleader>K :call UncolorAllWords()<cr>
   let g:interestingWordsRandomiseColors = 1
+  let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
+  let g:interestingWordsTermColors = ['154', '121', '125', '137', '214', '222']
 " }}}
 Plug 'takac/vim-hardtime'
 " {{{
