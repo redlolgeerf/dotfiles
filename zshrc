@@ -150,7 +150,8 @@ fbr() {
 
 # kill all background jobs
 killbg() {
-  jobs -l | awk '{printf $3" "}' | xargs kill -9
+  # jobs -l | awk '{printf $3" "}' | xargs kill -9
+  jobs -l | grep --perl-regexp '\d{3,5}' --only-matching | xargs kill -9
 }
 
 function _virtualenv_auto_activate() {
