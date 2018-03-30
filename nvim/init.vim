@@ -147,6 +147,11 @@ Plug 'jiangmiao/auto-pairs'
 " ====================================================================
 Plug 'w0rp/ale'
 " {{{
+let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter']}
+let g:ale_python_pylint_executable = 'python'
+let g:ale_python_pylint_options = '--rcfile ~/.config/pylintrc'
+" The virtualenv detection needs to be disabled.
+let g:ale_python_pylint_use_global = 0
 " }}}
 Plug 'majutsushi/tagbar'
 " {{{
