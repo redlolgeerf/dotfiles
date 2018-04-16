@@ -75,10 +75,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
   set shortmess+=c
 " }}}
-Plug 'zchee/deoplete-jedi'
-" {{{
-  let deoplete#sources#jedi#show_docstring = 1
-" }}}
 Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode && make'}
 Plug 'Shougo/echodoc'
 " {{{
@@ -93,6 +89,14 @@ Plug 'SirVer/ultisnips'
   let g:UltiSnipsEditSplit="vertical"
 " }}}
 Plug 'honza/vim-snippets'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+let g:LanguageClient_autoStart                        = 1 
+let g:LanguageClient_diagnosticsEnable                = 0 
+let g:LanguageClient_serverCommands                   = {}
+let g:LanguageClient_serverCommands["python"]         = ['pyls']
 " }}}
 " {{{ File Navigation
 " ====================================================================
