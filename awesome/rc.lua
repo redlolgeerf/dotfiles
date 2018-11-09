@@ -68,7 +68,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/blackburn_custom/th
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "sakura"
+terminal   = "alacritty"
 editor     = os.getenv("EDITOR") or "vim" or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
