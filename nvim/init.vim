@@ -301,6 +301,7 @@ call plug#end() " Plugins initialization finished }}}
 
 call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
 call deoplete#custom#source('_', 'sorters', [])
+call deoplete#custom#option('auto_complete', v:false)
 
 " General settings {{{
 " ====================================================================
