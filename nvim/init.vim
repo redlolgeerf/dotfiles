@@ -148,7 +148,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 " {{{
 let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter']}
-let g:ale_python_pylint_executable = 'python'
+let g:ale_python_pylint_executable = 'python2'
 let g:ale_python_pylint_options = '--rcfile ~/.config/pylintrc'
 " The virtualenv detection needs to be disabled.
 let g:ale_python_pylint_use_global = 0
@@ -169,6 +169,7 @@ let g:pymode_lint_checkers = []
 let g:pymode_rope_goto_definition_cmd = 'new'
 let g:pymode_rope = 0
 
+let g:pymode_syntax_slow_sync = 1
 let python_highlight_all = 1
 
 autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
@@ -363,7 +364,8 @@ set softtabstop=4 " remove <Tab> symbols as it was spaces
 set shiftwidth=4  " indent size for << and >>
 set shiftround    " round indent to multiple of 'shiftwidth' (for << and >>)
 autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType html setlocal ts=2 sts=2 sw=2 smarttab
+" autocmd FileType html setlocal ts=2 sts=2 sw=2 smarttab
+autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab smarttab
 autocmd FileType css setlocal ts=2 sts=2 sw=2 smarttab
 autocmd FileType javascript setlocal ts=2 sw=2 smarttab expandtab
 autocmd FileType javascript.jsx setlocal ts=2 sw=2 smarttab expandtab
@@ -391,7 +393,7 @@ set showmatch      " show matching brackets
 set cursorline     " highlight current line
 set colorcolumn=80 " highlight column
 highlight ColorColumn ctermbg=234 guibg=#1c1c1c
-set synmaxcol=200
+set synmaxcol=400
 
 " Various columns
 highlight! SignColumn ctermbg=233 guibg=#0D0D0D
@@ -496,6 +498,8 @@ augroup END
 "}}}
 " Hacks {{{
 set ttimeoutlen=50  " Make Esc work faster
+inoremap ,. <Esc>
+vnoremap ,. <Esc>
 
 if v:version >= 704
   set regexpengine=1
@@ -528,5 +532,14 @@ cnoremap w!! w !sudo tee % >/dev/null
 " Abbreviations {{{
   abbreviate NOne None
 "}}}
+
+
+" let g:netrw_gx=substitute("<cfile>",'#','http://redmine.ivi.ru/issues/','g')
+nmap <LocalLeader>r :call ViewInRedmine()<CR>
+fun! ViewInRedmine()
+    let keyword = expand("<cword>")
+    let url = "http://redmine.ivi.ru/issues/" . keyword
+    exec 'silent ! xdg-open ' . url
+endfun
 
 " vim: set sw=2 ts=2 et foldlevel=0 foldmethod=marker:
