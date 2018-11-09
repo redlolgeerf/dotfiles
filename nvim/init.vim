@@ -147,7 +147,7 @@ Plug 'jiangmiao/auto-pairs'
 " ====================================================================
 Plug 'w0rp/ale'
 " {{{
-let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter']}
+let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter'], 'python': ['pylint'], 'javascript': ['eslint']}
 let g:ale_python_pylint_executable = 'python2'
 let g:ale_python_pylint_options = '--rcfile ~/.config/pylintrc'
 " The virtualenv detection needs to be disabled.
