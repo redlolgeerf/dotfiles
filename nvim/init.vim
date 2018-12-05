@@ -63,8 +63,6 @@ Plug 'mhinz/vim-startify'
   let g:startify_session_delete_buffers = 1
   let g:startify_change_to_dir = 1
   let g:startify_change_to_vcs_root = 1
-  let g:startify_custom_header = 
-        \ map(split(system('fortune ~/.vim/fortunes | cowsay -W 60'), '\n'), '"   ". v:val') + ['','']
   autocmd! User Startified setlocal colorcolumn=0
   " }}}
 " }}}
