@@ -30,6 +30,7 @@ let g:gruvbox_italic = 1
 let g:gruvbox_contrast_dark = 'hard'
 " }}}
 Plug 'toupeira/vim-desertink'
+Plug 'Nequo/vim-allomancer'
 " }}}
 " {{{  Appearance
 " ====================================================================
@@ -385,7 +386,7 @@ set background=dark
 if has("gui_running")
     colorscheme meta5
 else
-    colorscheme desertink
+    colorscheme allomancer
 endif
 
 set showmatch      " show matching brackets
