@@ -71,17 +71,32 @@ Plug 'mhinz/vim-startify'
 " ====================================================================
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " {{{
-  let g:deoplete#enable_at_startup = 1
-  set shortmess+=c
+ let g:deoplete#enable_at_startup = 1
+ set shortmess+=c
 " }}}
-Plug 'zchee/deoplete-jedi'
-" {{{
-  let deoplete#sources#jedi#show_docstring = 1
-" }}}
-Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode && make'}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'go': ['go-langserver', '-gocodecompletion', '-lint-tool=golint'],
+    \ 'javascript': ['node ~/bin/node_modules/javascript-typescript-langserver/lib/language-server.js'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+"Plug 'zchee/deoplete-jedi'
+"" {{{
+"  let deoplete#sources#jedi#show_docstring = 1
+"" }}}
+"Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode && make'}
 Plug 'Shougo/echodoc'
 " {{{
-"set noshowmode
+set noshowmode
 " }}}
 Plug 'SirVer/ultisnips'
 " {{{
@@ -144,14 +159,14 @@ Plug 'jiangmiao/auto-pairs'
 " }}}
 " {{{ Languages
 " ====================================================================
-Plug 'w0rp/ale'
-" {{{
-let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter'], 'python': ['pylint'], 'javascript': ['eslint']}
-let g:ale_python_pylint_executable = 'python2'
-let g:ale_python_pylint_options = '--rcfile ~/.config/pylintrc'
-" The virtualenv detection needs to be disabled.
-let g:ale_python_pylint_use_global = 0
-" }}}
+" Plug 'w0rp/ale'
+" " {{{
+" let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter'], 'python': ['pylint'], 'javascript': ['eslint']}
+" let g:ale_python_pylint_executable = 'python2'
+" let g:ale_python_pylint_options = '--rcfile ~/.config/pylintrc'
+" " The virtualenv detection needs to be disabled.
+" let g:ale_python_pylint_use_global = 0
+" " }}}
 Plug 'majutsushi/tagbar'
 " {{{
 nmap <F8> :TagbarToggle<CR>
@@ -300,7 +315,6 @@ call plug#end() " Plugins initialization finished }}}
 
 call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
 call deoplete#custom#source('_', 'sorters', [])
-call deoplete#custom#option('auto_complete', v:false)
 
 " General settings {{{
 " ====================================================================
@@ -541,5 +555,6 @@ fun! ViewInRedmine()
     let url = "http://redmine.ivi.ru/issues/" . keyword
     exec 'silent ! xdg-open ' . url
 endfun
+set completefunc=LanguageClient#complete
 
 " vim: set sw=2 ts=2 et foldlevel=0 foldmethod=marker:
