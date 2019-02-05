@@ -31,6 +31,7 @@ let g:gruvbox_contrast_dark = 'hard'
 " }}}
 Plug 'toupeira/vim-desertink'
 Plug 'Nequo/vim-allomancer'
+Plug 'Lokaltog/vim-monotone'
 " }}}
 " {{{  Appearance
 " ====================================================================
@@ -400,7 +401,7 @@ set background=dark
 if has("gui_running")
     colorscheme meta5
 else
-    colorscheme allomancer
+    colorscheme monotone
 endif
 
 set showmatch      " show matching brackets
