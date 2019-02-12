@@ -83,6 +83,7 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'go': ['go-langserver', '-gocodecompletion', '-lint-tool=golint'],
     \ 'javascript': ['node ~/bin/node_modules/javascript-typescript-langserver/lib/language-server.js'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -125,7 +126,6 @@ Plug 'nixprime/cpsm', { 'do': 'PY3=ON ./install.sh' }
 Plug 'scrooloose/nerdtree'
 " {{{
   let NERDTreeWinPos = "right"
-  nmap <leader>t :NERDTreeToggle<CR> 
   let g:NERDTreeWinPos = "right"
   let NERDTreeIgnore = ['\.pyc$']
 " }}}
