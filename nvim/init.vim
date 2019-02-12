@@ -556,6 +556,14 @@ fun! ViewInRedmine()
     let url = "http://redmine.ivi.ru/issues/" . keyword
     exec 'silent ! xdg-open ' . url
 endfun
+
+nmap <LocalLeader>j :call ViewInJira()<CR>
+fun! ViewInJira()
+    let keyword = expand("<cWORD>")
+    let url = "https://jira.ivi.ru/browse/" . keyword
+    exec 'silent ! xdg-open ' . url
+endfun
+
 set completefunc=LanguageClient#complete
 
 " vim: set sw=2 ts=2 et foldlevel=0 foldmethod=marker:
