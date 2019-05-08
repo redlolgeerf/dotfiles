@@ -257,6 +257,7 @@ Plug 'tpope/vim-fugitive'
 " }}}
 Plug 'gregsexton/gitv'
 Plug 'idanarye/vim-merginal'
+Plug 'rhysd/git-messenger.vim'
 " }}}
 " {{{ Utility
 " ====================================================================
