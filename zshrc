@@ -148,11 +148,15 @@ killbg() {
 }
 
 
-#compdef pipenv
-_pipenv() {
-  eval $(env COMMANDLINE="${words[1,$CURRENT]}" _PIPENV_COMPLETE=complete-zsh  pipenv)
-}
-if [[ "$(basename ${(%):-%x})" != "_pipenv" ]]; then
-  autoload -U compinit && compinit
-  compdef _pipenv pipenv
-fi
+# #compdef pipenv
+# _pipenv() {
+  # eval $(env COMMANDLINE="${words[1,$CURRENT]}" _PIPENV_COMPLETE=complete-zsh  pipenv)
+# }
+# if [[ "$(basename ${(%):-%x})" != "_pipenv" ]]; then
+  # autoload -U compinit && compinit
+  # compdef _pipenv pipenv
+# fi
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# zprof

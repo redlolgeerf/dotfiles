@@ -222,6 +222,8 @@ Plug 'othree/html5.vim'
 " }}}
 " {{{ Go
 Plug 'fatih/vim-go'
+let g:go_version_warning = 0
+let g:go_def_mapping_enabled = 0
 " }}}
 " {{{ Rust
 if executable('rustc')
