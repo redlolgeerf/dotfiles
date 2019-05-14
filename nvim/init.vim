@@ -70,15 +70,11 @@ Plug 'mhinz/vim-startify'
 " }}}
 " {{{ Completion
 " ====================================================================
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" {{{
- let g:deoplete#enable_at_startup = 1
- set shortmess+=c
-" }}}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+" {{{
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'go': ['go-langserver', '-gocodecompletion', '-lint-tool=golint'],
@@ -91,14 +87,6 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-"Plug 'zchee/deoplete-jedi'
-"" {{{
-"  let deoplete#sources#jedi#show_docstring = 1
-"" }}}
-"Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode && make'}
-Plug 'Shougo/echodoc'
-" {{{
-set noshowmode
 " }}}
 Plug 'SirVer/ultisnips'
 " {{{
@@ -317,8 +305,6 @@ Plug 'vimwiki/vimwiki'
 
 call plug#end() " Plugins initialization finished }}}
 
-call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
-call deoplete#custom#source('_', 'sorters', [])
 
 " General settings {{{
 " ====================================================================
@@ -567,6 +553,7 @@ fun! ViewInJira()
     exec 'silent ! xdg-open ' . url
 endfun
 
-set completefunc=LanguageClient#complete
+set cursorline
+
 
 " vim: set sw=2 ts=2 et foldlevel=0 foldmethod=marker:
