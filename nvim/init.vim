@@ -126,8 +126,8 @@ Plug 'mileszs/ack.vim'
   let g:ackhighlight = 1
   nnoremap <LocalLeader>f :LAck! '\b<C-R>=expand("<cword>")<CR>\b'  <C-R>=ProjectRootGuess()<CR><CR>
   nnoremap <LocalLeader>s :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=ProjectRootGuess()<CR>
-  nnoremap <Leader>f :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=ProjectRootGuess()<CR>/../<CR>
-  nnoremap <Leader>s :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=ProjectRootGuess()<CR>/../
+  nnoremap <Leader>f :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=expand('%:p:h')<CR><CR>
+  nnoremap <Leader>s :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=expand('%:p:h')<CR>
 " }}}
 Plug 'tpope/vim-vinegar'
 " }}}
