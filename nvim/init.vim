@@ -554,6 +554,7 @@ fun! ViewInJira()
 endfun
 
 set cursorline
+autocmd VimEnter * NoMatchParen
 
 
 " vim: set sw=2 ts=2 et foldlevel=0 foldmethod=marker:
