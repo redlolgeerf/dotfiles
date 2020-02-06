@@ -98,13 +98,6 @@ Plug 'honza/vim-snippets'
 " }}}
 " {{{ File Navigation
 " ====================================================================
-Plug 'ctrlpvim/ctrlp.vim'
-" {{{
-  nmap <LocalLeader>b :CtrlPBuffer<CR>
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  nmap <LocalLeader>t :CtrlPBufTag<CR>
-  nmap <Leader>t :CtrlPTag<CR>
-" }}}
 Plug 'nixprime/cpsm', { 'do': 'PY3=ON ./install.sh' }
 " {{{
   let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
