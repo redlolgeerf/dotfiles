@@ -155,7 +155,7 @@ nmap <F8> :TagbarToggle<CR>
 Plug 'klen/python-mode'
 " {{{
 let g:pymode_rope_completion = 0
-let g:pymode_folding = 1
+let g:pymode_folding = 0
 let g:pymode_options_colorcolumn = 1
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_on_write = 0
@@ -312,8 +312,8 @@ set undolevels=10000
 " '100 remember 100 previously edited files
 set viminfo=!,h,f1,'100
 
-set foldmethod=manual       " use manual folding
-set diffopt=filler,vertical " default behavior for diff
+set foldmethod=syntax       " use manual folding
+set diffopt=filler,vertical,internal,algorithm:histogram,indent-heuristic
 
 " ignore pattern for wildmenu
 set wildignore+=.hg,.git,.svn,*.pyc,.ropeproject,*.pyc,*~,*.swp,*.tmp
@@ -405,7 +405,6 @@ inoremap <C-b> <C-o>b
 imap <F6> <esc>:w<CR> a
 nmap <F6> :w<CR>
 
-nmap <LocalLeader><Space> za
 
 " Disable search highlighting
 nmap <LocalLeader>h :noh<CR>
