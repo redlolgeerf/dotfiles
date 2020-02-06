@@ -166,20 +166,9 @@ let g:pymode_rope = 0
 let g:pymode_syntax_slow_sync = 1
 let python_highlight_all = 1
 
-autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
-function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
 " }}}
 Plug 'mitsuhiko/vim-jinja'
+Plug 'kalekundert/vim-coiled-snake'
 " }}}
 " {{{ JavaScript
 Plug 'pangloss/vim-javascript'
@@ -551,4 +540,16 @@ autocmd VimEnter * NoMatchParen
 
 set completefunc=LanguageClient#complete
 
+autocmd BufWritePre :call <SID>StripTrailingWhitespaces()
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
 " vim: set sw=2 ts=2 et foldlevel=0 foldmethod=marker:
