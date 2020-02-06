@@ -278,6 +278,15 @@ let g:neoterm_default_mod = 'vertical'
 let g:neoterm_raise_when_tests_fail = 1
 " }}}
 Plug 'brooth/far.vim'
+Plug 'liuchengxu/vim-clap'
+" {{{
+  nmap <LocalLeader><Space> :Clap<CR>
+  nmap <LocalLeader>b :Clap buffers<CR>
+  nmap <LocalLeader>l :Clap lines<CR>
+  nmap <LocalLeader>b :Clap buffers<CR>
+  nmap <C-p> :Clap files<CR>
+  let g:clap_theme = { 'search_text': {'guifg': 'red', 'ctermfg': 'red'} }
+" }}}
 " }}}
 " {{{ Misc
 " ====================================================================
