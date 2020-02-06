@@ -6,13 +6,14 @@ vim/bundle/*
 vim/.netrwhist
 vim/UltiSnips/
 
-nvim/plugged
-nvim/autoload
+nvim/.init.vim-rplugin~
+nvim/.netrwhist
 nvim/UltiSnips
+nvim/autoload
+nvim/plugged
+nvim/shada/
 nvim/spell
 nvim/undo
-nvim/.init.vim-rplugin~
-nvim/shada/
  
 tags.lock
 tags.temp
