@@ -219,9 +219,10 @@ Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " ====================================================================
 Plug 'tpope/vim-fugitive'
 " {{{
-  " Fix broken syntax highlight in gitcommit files
-  " (https://github.com/tpope/vim-git/issues/12)
-  let g:fugitive_git_executable = 'LANG=en_US.UTF-8 git'
+" }}}
+Plug 'shumphrey/fugitive-gitlab.vim'
+" {{{
+  let g:fugitive_gitlab_domains = ['http://gitlab.dev.ivi.ru/']
 " }}}
 Plug 'gregsexton/gitv'
 Plug 'idanarye/vim-merginal'
