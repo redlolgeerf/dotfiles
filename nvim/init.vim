@@ -35,20 +35,6 @@ Plug 'Lokaltog/vim-monotone'
 " }}}
 " {{{  Appearance
 " ====================================================================
-Plug 'bling/vim-airline'
-" {{{
-  let g:airline#extensions#whitespace#enabled = 0
-  let g:airline_exclude_preview = 1
-
-  " Tabline
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#show_buffers = 1
-  let g:airline#extensions#tabline#show_tabs = 0
-  let g:airline#extensions#tabline#fnamecollapse = 1
-  let g:airline#extensions#tabline#show_close_button = 0
-  let g:airline#extensions#tabline#show_tab_type = 0
-  let g:airline#extensions#tabline#buffer_min_count = 2
-" }}}
 Plug 'nathanaelkane/vim-indent-guides'
 " {{{
   let g:indent_guides_default_mapping = 0
