@@ -349,7 +349,7 @@ set iskeyword+=_
 
 set backspace=2
 
-set spelllang=ru_ru,en_us
+set spelllang=ru_yo,ru_ru,en_us
 " }}}
 " Indentation {{{
 " ====================================================================
