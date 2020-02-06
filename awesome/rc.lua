@@ -118,6 +118,17 @@ require("freedesktop/freedesktop")
 markup = lain.util.markup
 gray   = "#9E9C9A"
 
+-- Mail widget
+mailicon = wibox.widget.imagebox(beautiful.widget_mail)
+mail_widget = lain.widgets.maildir({
+	maildir = os.getenv("HOME") .. "/mail/INBOX/new",
+	timeout = 60,
+	settings = function()
+		widget:set_markup(markup("#7AC82E", " " .. newmail))
+	end,
+})
+mailicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell("ls ~/mail/INBOX/new | wc -l") end)))
+--
 -- Textclock
 clockicon = wibox.widget.imagebox(beautiful.widget_clock)
 mytextclock = awful.widget.textclock(" %a %d %b  %H:%M")
@@ -300,6 +311,8 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
 
+    right_layout:add(mailicon)
+	right_layout:add(mail_widget)
     right_layout:add(spr)
     right_layout:add(volicon)
     right_layout:add(volumewidget)
