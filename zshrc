@@ -11,31 +11,19 @@ ZSH_THEME="robbyrussell"
 # Example aliases
 alias ls="ls -A"
 alias cls="clear"
-alias py="nvim -p *.py"
-alias clip="xclip -selection clipboard"
 alias f="fg"
+alias jira=notjira
 
+autoload -U colors && colors
 export GOPATH=~/Go
-export PATH=$PATH:/usr/local/go/bin:$HOME/Go/bin:$HOME/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/Go/bin:$HOME/bin:$HOME/.local/bin
+export N="notkube.dev.ivi.ru"
 
 # completion settings
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle :compinstall filename '/home/eyeinthebrick/.zshrc'
 autoload -Uz compinit
 compinit
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-# eval `dircolors $HOME/.dir_colors/dircolors.256dark`
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -62,7 +50,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gitfast git-extras pip npm go golang docker)
+plugins=(git gitfast git-extras pip npm go golang docker timer)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,7 +88,7 @@ unsetopt autocd beep extendedglob
 # End of lines configured by zsh-newuser-install
 
 export NVM_DIR=$HOME'/.nvm'
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -140,6 +128,22 @@ fbr() {
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
+# fcf - files changed in branch
+fcf() {
+	local commits git_root
+	git_root=$(git rev-parse --show-toplevel)
+	# commits=$(git log master.. --name-only | egrep '[./]' | grep -v "Author" | sort -u) 
+	commits=$(git diff-tree -r master.. --name-only)
+	f="$(echo "$commits" | fzf-tmux -d $(( 2 + $(wc -l <<< "$commits") )) +m)"
+	vim "$git_root"'/'"$f"
+}
+
+jsearch() {
+	local line
+	setopt localoptions pipefail 2> /dev/null
+	line="$(jira search $@ 2> /dev/null | fzf-tmux --preview="jira dump {1}" | cut -d' ' -f1)"
+	print -z $line
+}
 
 
 # kill all background jobs
@@ -147,6 +151,13 @@ killbg() {
   jobs -l | grep --perl-regexp '\d{3,5}' --only-matching | xargs kill -9
 }
 
+dirty() {
+  local files git_root
+  git_root="$(git rev-parse --show-toplevel)"
+  echo $git_root
+  files="$(git diff --numstat 2>/dev/null | cut -f3 | sort -u | xargs -I{} echo -n $git_root'/'{}' ' )"
+  [[ -n $files ]] && echo -n $files  | xargs vim
+}
 
 # #compdef pipenv
 # _pipenv() {

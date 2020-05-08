@@ -56,6 +56,7 @@ run_once("xscreensaver -no-splash")
 run_once("xfce4-clipman &")
 run_once("compton &")
 run_once("devilspie &")
+run_once("rofi -key-run F2 &")
 -- }}}
 
 -- {{{ Variable definitions
