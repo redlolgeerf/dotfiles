@@ -1,0 +1,9 @@
+TAGS
+tags
+tags.lock
+tags.temp
+.env
+.envv
+local_scrits/
+reports/
+.eslintrc.*

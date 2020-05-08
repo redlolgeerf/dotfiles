@@ -113,6 +113,15 @@ function uninstall_emacs() {
     delete "$HOMES"/.emacs.d
 }
 
+function install_gitignore() {
+    symlink "$DOT_PATH"/gitignoreglobal "$HOMES"/.gitignoreglobal
+}
+
+function uninstall_gitignore() {
+    delete "$HOMES"/.gitignoreglobal
+}
+
+
 INSTALL=true
 to_install=()
 
