@@ -121,6 +121,18 @@ function uninstall_gitignore() {
     delete "$HOMES"/.gitignoreglobal
 }
 
+function install_mutt() {
+    symlink "$DOT_PATH"/mailcap "$HOMES"/.mailcap
+    symlink "$DOT_PATH"/muttrc "$HOMES"/.muttrc
+    symlink "$DOT_PATH"/mutt "$HOMES"/.config/mutt
+}
+
+function uninstall_mutt() {
+    delete "$HOMES"/.mailcap
+    delete "$HOMES"/.muttrc
+    delete "$HOMES"/.config/mutt
+}
+
 
 INSTALL=true
 to_install=()

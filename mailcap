@@ -1,0 +1,5 @@
+text/html;      lynx -dump -width=140 %s; copiousoutput; nametemplate=%s.html
+image/*;        muttimage.sh %s; copiousoutput
+application/x-gunzip;   gzcat; copiousoutput
+application/x-tar-gz; gunzip -c %s | tar -tf - ; copiousoutput
+application/postscript; ps2ascii %s; copiousoutput
