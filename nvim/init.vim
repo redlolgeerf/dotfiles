@@ -196,10 +196,6 @@ let g:go_def_mapping_enabled = 0
 " {{{ Rust
 if executable('rustc')
   Plug 'wting/rust.vim'
-  Plug 'racer-rust/vim-racer', { 'do': 'cargo install racer' }
-  " {{{
-  let g:racer_cmd = "racer"
-  let $RUST_SRC_PATH="/home/redlolgeerf/rust/src"
 endif
 " }}}
 " }}}
