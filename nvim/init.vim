@@ -195,7 +195,11 @@ let g:go_def_mapping_enabled = 0
 " }}}
 " {{{ Rust
 if executable('rustc')
-  Plug 'wting/rust.vim'
+  Plug 'rust-lang/rust.vim', { 'for': [ 'rust' ], 'do': 'rustup component add rustfmt' }
+  " {{{
+    let g:rustfmt_autosave = 1
+    let g:rustfmt_options = '--edition 2018'
+  " }}}
 endif
 " }}}
 " }}}
