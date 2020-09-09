@@ -282,8 +282,10 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 " {{{
   nmap <LocalLeader><Space> :Clap<CR>
   nmap <LocalLeader>b :Clap buffers<CR>
+  nmap <LocalLeader>g :Clap grep<CR>
   nmap <LocalLeader>l :Clap lines<CR>
-  nmap <LocalLeader>b :Clap buffers<CR>
+  nmap <Leader>t :Clap proj_tags<CR>
+  nmap <LocalLeader>t :Clap tags<CR>
   nmap <C-p> :Clap files<CR>
   let g:clap_theme = { 'search_text': {'guifg': 'red', 'ctermfg': 'red'} }
 " }}}
