@@ -278,7 +278,7 @@ let g:neoterm_default_mod = 'vertical'
 let g:neoterm_raise_when_tests_fail = 1
 " }}}
 Plug 'brooth/far.vim'
-Plug 'liuchengxu/vim-clap'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 " {{{
   nmap <LocalLeader><Space> :Clap<CR>
   nmap <LocalLeader>b :Clap buffers<CR>
