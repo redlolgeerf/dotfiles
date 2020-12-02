@@ -2,6 +2,7 @@ TAGS
 tags
 tags.lock
 tags.temp
+.venv
 .env
 .envv
 local_scrits/
