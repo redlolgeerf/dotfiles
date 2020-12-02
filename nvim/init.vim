@@ -16,7 +16,7 @@ endif
 " }}}
 
 " {{{ Plugins
-call plug#begin('~/.nvim/plugged') " Plugins initialization start 
+call plug#begin() " Plugins initialization start
 
 " {{{ Themes
 " ====================================================================
