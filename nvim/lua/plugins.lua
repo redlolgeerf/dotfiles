@@ -9,4 +9,25 @@ return require('packer').startup(function()
 
   -- black and white colorscheme
   use 'Lokaltog/vim-monotone'
+
+  -- settings for lsp
+  use 'neovim/nvim-lspconfig'
+  -- show lsp data in status line
+  use 'nvim-lua/lsp-status.nvim'
+  use 'RishabhRD/nvim-lsputils'
+  -- completion from buffers for completion-nvim
+  use 'steelsojka/completion-buffers'
+  use {
+	  "nvim-lua/completion-nvim",
+	  config = function()
+		  vim.g.completion_chain_complete_list = {
+			  default = {
+				  { complete_items = { 'lsp' } },
+				  { complete_items = { 'buffers' } },
+				  { mode = { '<c-p>' } },
+				  { mode = { '<c-n>' } }
+			  },
+		  }
+	  end
+  }
 end)
