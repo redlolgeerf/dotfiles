@@ -58,4 +58,38 @@ return require('packer').startup(function()
 	  end
   }
 
+  -- comment/uncomment
+  use {
+	  'scrooloose/nerdcommenter',
+	  config = 'vim.cmd[[let g:NERDCreateDefaultMappings = 1]]'
+  }
+
+  -- actions with quotes and brackets
+  use 'tpope/vim-surround'
+
+  -- functions for working with git
+  use 'tpope/vim-fugitive'
+
+  -- use Gbrowse with gitlab
+  use {
+	  'shumphrey/fugitive-gitlab.vim',
+	  config = 'vim.cmd()',
+	  config = function()
+		  vim.api.nvim_exec(
+		  [[
+				let g:fugitive_gitlab_domains = ["http://gitlab.dev.ivi.ru/"]
+		  ]],
+		  false
+		  )
+	  end
+  }
+
+  -- compare file with other commits
+  use 'gregsexton/gitv'
+
+  -- switch language on mode change
+  use {
+	  'lyokha/vim-xkbswitch',
+	  config = 'vim.cmd[[let g:XkbSwitchEnabled = 1]]'
+  }
   end)
