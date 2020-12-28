@@ -3,3 +3,4 @@ require('plugins')
 vim.api.nvim_command('autocmd BufWritePost plugins.lua PackerCompile')
 
 require('theme')
+require('settings')
