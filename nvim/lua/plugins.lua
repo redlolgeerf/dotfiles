@@ -30,4 +30,10 @@ return require('packer').startup(function()
 		  }
 	  end
   }
+
+  -- fuzzy selection of stuff
+  use {
+	  'nvim-telescope/telescope.nvim',
+	  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
 end)
