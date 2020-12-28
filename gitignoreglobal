@@ -8,3 +8,4 @@ tags.temp
 local_scrits/
 reports/
 .eslintrc.*
+.python-version
