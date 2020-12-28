@@ -1,0 +1,5 @@
+vim.api.nvim_command('let maplocalleader = "\\<Space>"')
+vim.api.nvim_command('nnoremap <SPACE> <Nop>')
+vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', ']b', ':bnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[b', ':bprevious<CR>', { noremap = true, silent = true })
