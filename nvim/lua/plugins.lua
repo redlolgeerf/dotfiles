@@ -31,6 +31,12 @@ return require('packer').startup(function()
 	  end
   }
 
+  -- treesitter: syntax highligh, indent and folding
+  use {
+	  'nvim-treesitter/nvim-treesitter',
+	  run = ':TSUpdate',
+  }
+
   -- fuzzy selection of stuff
   use {
 	  'nvim-telescope/telescope.nvim',
