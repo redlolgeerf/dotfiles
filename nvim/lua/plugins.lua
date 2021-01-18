@@ -98,4 +98,24 @@ return require('packer').startup(function()
 	  'lyokha/vim-xkbswitch',
 	  config = 'vim.cmd[[let g:XkbSwitchEnabled = 1]]'
   }
+
+  -- search
+  use {
+	  'mileszs/ack.vim',
+	  config = function()
+		  vim.api.nvim_exec(
+		  [[
+		  if executable('ag')
+			  let g:ackprg = 'ag'
+		  endif
+		  let g:ackhighlight = 1
+		  nnoremap <LocalLeader>f :LAck! '\b<C-R>=expand("<cword>")<CR>\b'  <C-R>=ProjectRootGuess()<CR><CR>
+		  nnoremap <LocalLeader>s :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=ProjectRootGuess()<CR>
+		  nnoremap <Leader>f :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=expand('%:p:h')<CR><CR>
+		  nnoremap <Leader>s :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=expand('%:p:h')<CR>
+		  ]],
+		  false
+		  )
+	  end
+  }
   end)
