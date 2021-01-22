@@ -44,7 +44,12 @@ return require('packer').startup(function()
   }
 
   -- visual guide for indents
-  use 'glepnir/indent-guides.nvim'
+  use 'Yggdroot/indentLine'
+  -- indent guide for blank lines
+  use {
+	  'lukas-reineke/indent-blankline.nvim',
+	  branch = "lua"
+  }
 
   -- check code syntax
   use {
