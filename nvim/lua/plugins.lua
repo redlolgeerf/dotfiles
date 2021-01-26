@@ -121,4 +121,14 @@ return require('packer').startup(function()
 		  )
 	  end
   }
+
+  -- file browser
+  use {
+	  'ms-jpq/chadtree',
+	  branch = 'chad',
+	  run = 'python3 -m chadtree deps',
+	  config = function()
+		vim.api.nvim_set_keymap('n', '<Leader>l', ':CHADopen<CR>', {  noremap = true, silent = true })
+	  end
+  }
   end)
