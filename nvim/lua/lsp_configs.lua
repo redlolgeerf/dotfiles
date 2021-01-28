@@ -1,21 +1,10 @@
 local lsp = require('lspconfig')
-local completion = require('completion') --> CAN US BUILT IN OMNIFUNC BUT WE USE THIS FOR NOW
 local api = vim.api
 local configs = require('lspconfig/configs')
 local util = require 'lspconfig/util'
 local cwd = vim.loop.cwd
 
 
---[[
-Completion Options
---]]
--- Set completeopt to have a better completion experience
-api.nvim_command('set completeopt=longest,menuone,noinsert,noselect')
--- Use <Tab> and <S-Tab> to navigate through popup menu
-api.nvim_command('inoremap <expr> <Tab>   pumvisible() ? "<C-n>" : "<Tab>"')
-api.nvim_command('inoremap <expr> <S-Tab> pumvisible() ? "<C-p>" : "<S-Tab>"')
--- Avoid showing message extra message when using completion
-api.nvim_command('set shortmess+=c')
 
 
 
@@ -63,7 +52,6 @@ Attach Function
 --]]
 --When our LSP starts, this is what happens. Completion enabled, set some mappings, print lsp starting message
 local custom_attach = function(client,bufnr) --> Added client,bufnr works also without, inspo from https://github.com/kuator/nvim/blob/master/lua/plugins/lsp.lua
-  completion.on_attach(client,bufnr)
   vim.lsp.set_log_level('debug') --> ENABLE LOGGING
   -- Move cursor to the next and previous diagnostic
   mapper('n', '<leader>dn', 'vim.lsp.diagnostic.goto_next()')

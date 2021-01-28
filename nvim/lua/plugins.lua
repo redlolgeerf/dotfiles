@@ -17,18 +17,21 @@ return require('packer').startup(function()
   use 'RishabhRD/nvim-lsputils'
   -- ui for lsp
   use 'glepnir/lspsaga.nvim'
-  -- completion from buffers for completion-nvim
-  use 'steelsojka/completion-buffers'
+  -- completion
   use {
-	  "nvim-lua/completion-nvim",
+	  "hrsh7th/nvim-compe",
 	  config = function()
-		  vim.g.completion_chain_complete_list = {
-			  default = {
-				  { complete_items = { 'lsp' } },
-				  { complete_items = { 'buffers' } },
-				  { mode = { '<c-p>' } },
-				  { mode = { '<c-n>' } }
-			  },
+		  require'compe'.setup {
+			  enabled = true;
+			  debug = false;
+			  min_length = 1;
+			  preselect = 'disable';
+			  allow_prefix_unmatch = false;
+			  source = {
+				  path = true;
+				  buffer = true;
+				  nvim_lsp = true;
+			  };
 		  }
 	  end
   }
