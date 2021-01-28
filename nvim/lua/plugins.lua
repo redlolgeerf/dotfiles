@@ -17,6 +17,10 @@ return require('packer').startup(function()
   use 'RishabhRD/nvim-lsputils'
   -- ui for lsp
   use 'glepnir/lspsaga.nvim'
+  -- app for snippets
+  use 'SirVer/ultisnips'
+  -- snippets themselves
+  use 'honza/vim-snippets'
   -- completion
   use {
 	  "hrsh7th/nvim-compe",
@@ -30,7 +34,9 @@ return require('packer').startup(function()
 			  source = {
 				  path = true;
 				  buffer = true;
+				  vsnip = true;
 				  nvim_lsp = true;
+				  ultisnips = true;
 			  };
 		  }
 	  end
