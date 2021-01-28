@@ -15,6 +15,8 @@ return require('packer').startup(function()
   -- show lsp data in status line
   use 'nvim-lua/lsp-status.nvim'
   use 'RishabhRD/nvim-lsputils'
+  -- ui for lsp
+  use 'glepnir/lspsaga.nvim'
   -- completion from buffers for completion-nvim
   use 'steelsojka/completion-buffers'
   use {
