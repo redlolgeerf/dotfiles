@@ -54,8 +54,6 @@ return require('packer').startup(function()
 	  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
 
-  -- visual guide for indents
-  use 'Yggdroot/indentLine'
   -- indent guide for blank lines
   use {
 	  'lukas-reineke/indent-blankline.nvim',
