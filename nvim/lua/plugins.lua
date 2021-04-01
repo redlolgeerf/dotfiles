@@ -123,8 +123,9 @@ return require('packer').startup(function()
 			  let g:ackprg = 'ag'
 		  endif
 		  let g:ackhighlight = 1
-		  nnoremap <Leader>f :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=expand('%:p:h')<CR><CR>
-		  nnoremap <Leader>s :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=expand('%:p:h')<CR>
+		  nnoremap <Leader>f :LAck! '\b<C-R>=expand("<cword>")<CR>\b'<CR>
+		  nnoremap <Leader>s :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=substitute(FugitiveGitDir(), ".git", "", "")<CR>
+		  nnoremap <LocalLeader>s :LAck! '\b<C-R>=expand("<cword>")<CR>\b' <C-R>=expand('%:p:h')<CR>
 		  ]],
 		  false
 		  )
