@@ -78,7 +78,7 @@ end
 --[[
 Language Configs
 --]]
-lsp.pyls.setup{
+lsp.pyright.setup{
   on_attach = custom_attach
 }
 lsp.gopls.setup{
