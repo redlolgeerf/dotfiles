@@ -93,3 +93,6 @@ lsp.vimls.setup{
 lsp.rls.setup{
   on_attach = custom_attach
 }
+lsp.tsserver.setup{
+  on_attach = custom_attach
+}
