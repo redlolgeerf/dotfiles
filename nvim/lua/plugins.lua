@@ -142,4 +142,22 @@ return require('packer').startup(function()
 		vim.api.nvim_set_keymap('n', '<Leader>l', ':CHADopen<CR>', {  noremap = true, silent = true })
 	  end
   }
+
+  -- highlight multiple words
+  use {
+	  'lfv89/vim-interestingwords',
+	  config = function()
+		  vim.api.nvim_exec(
+		  [[
+		  let g:interestingWordsDefaultMappings = 0
+          nnoremap <silent> <LocalLeader>k :call InterestingWords('n')<cr>
+          vnoremap <silent> <LocalLeader>k :call InterestingWords('v')<cr>
+          nnoremap <silent> <LocalLeader>K :call UncolorAllWords()<cr>
+          nnoremap <silent> n :call WordNavigation(1)<cr>
+          nnoremap <silent> N :call WordNavigation(0)<cr>
+		  ]],
+		  false
+		  )
+	  end
+  }
   end)
