@@ -5,3 +5,4 @@ vim.api.nvim_set_keymap('n', ']b', ':bnext<CR>', { noremap = true, silent = true
 vim.api.nvim_set_keymap('n', '[b', ':bprevious<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', ']t', ':tabnex<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[t', ':tabprevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_command('tnoremap <Esc> <C-\\><C-n>')

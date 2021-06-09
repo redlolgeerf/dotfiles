@@ -125,6 +125,34 @@ return require('packer').startup(function()
 	  end
   }
 
+  -- run tests
+  use {
+	  'vim-test/vim-test',
+	  config = function()
+		  vim.api.nvim_exec(
+		  [[
+		  let g:test#strategy = "neoterm"
+		  let g:test#preserve_screen = 1
+		  let g:test#python#runner = 'pytest'
+		  ]],
+		  false
+		  )
+	  end
+  }
+
+  -- reuse terminal
+  use {
+	  'kassio/neoterm',
+	  config = function()
+		  vim.api.nvim_exec(
+		  [[
+		  let g:neoterm_default_mod = "botright"
+		  ]],
+		  false
+		  )
+	  end
+  }
+
   -- fuzzy selection of stuff
   use {'camspiers/snap' , rocks = {'fzy'}}
 
