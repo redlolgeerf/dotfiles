@@ -48,12 +48,6 @@ return require('packer').startup(function()
 	  run = ':TSUpdate',
   }
 
-  -- fuzzy selection of stuff
-  use {
-	  'nvim-telescope/telescope.nvim',
-	  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
-
   -- indent guide for blank lines
   use {
 	  'lukas-reineke/indent-blankline.nvim',
@@ -160,4 +154,8 @@ return require('packer').startup(function()
 		  )
 	  end
   }
+
+  -- fuzzy selection of stuff
+  use {'camspiers/snap' , rocks = {'fzy'}}
+
   end)
