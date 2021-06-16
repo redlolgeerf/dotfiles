@@ -42,6 +42,11 @@ return require('packer').startup(function()
 	  end
   }
 
+  -- signatures
+  use {
+	  "ray-x/lsp_signature.nvim",
+  }
+
   -- treesitter: syntax highligh, indent and folding
   use {
 	  'nvim-treesitter/nvim-treesitter',
