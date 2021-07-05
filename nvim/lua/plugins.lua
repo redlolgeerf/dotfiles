@@ -55,8 +55,7 @@ return require('packer').startup(function()
 
   -- indent guide for blank lines
   use {
-	  'lukas-reineke/indent-blankline.nvim',
-	  branch = "lua"
+	  'lukas-reineke/indent-blankline.nvim'
   }
 
   -- check code syntax
