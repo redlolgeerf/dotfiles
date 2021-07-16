@@ -52,12 +52,3 @@ snap.register.map({'n'}, {'<Leader>f'}, function ()
 	initial_filter = vim.fn.expand('<cword>')
   })
 end)
-
-snap.register.map({'n'}, {'<LocalLeader>f'}, function ()
-  snap.run({
-	prompt = 'Grep',
-	producer = limit(10000, producer_currentbuffer),
-	select = select_vimgrep.select,
-	multiselect = select_vimgrep.multiselect,
-  })
-end)
