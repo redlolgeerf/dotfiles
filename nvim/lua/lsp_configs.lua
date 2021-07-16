@@ -53,7 +53,7 @@ Attach Function
 --When our LSP starts, this is what happens. Completion enabled, set some mappings, print lsp starting message
 local custom_attach = function(client,bufnr) --> Added client,bufnr works also without, inspo from https://github.com/kuator/nvim/blob/master/lua/plugins/lsp.lua
   require "lsp_signature".on_attach()
-  vim.lsp.set_log_level('debug') --> ENABLE LOGGING
+  --vim.lsp.set_log_level('debug') --> ENABLE LOGGING
   -- Move cursor to the next and previous diagnostic
   mapper('n', '<leader>dn', 'vim.lsp.diagnostic.goto_next()')
   mapper('n', '<leader>dp', 'vim.lsp.diagnostic.goto_prev()')
