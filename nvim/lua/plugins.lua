@@ -172,4 +172,48 @@ return require('packer').startup(function()
   -- fuzzy selection of stuff
   use {'camspiers/snap' , rocks = {'fzy'}}
 
+
+  -- code formatting
+  use {
+	  'mhartington/formatter.nvim',
+	  rocks = {'fzy'},
+	  config = function()
+		  require('formatter').setup({
+			  logging = false,
+			  filetype = {
+				  lua = {
+					  -- luafmt
+					  function()
+						  return {
+							  exe = "luafmt",
+							  args = {"--indent-count", 2, "--stdin"},
+							  stdin = true
+						  }
+					  end
+				  },
+				  python = {
+					  function()
+						  return {
+							  exe = "black",
+							  args = {vim.api.nvim_buf_get_name(0)},
+							  stdin = false,
+						  }
+					  end
+				  }
+			  }
+		  })
+
+		  vim.api.nvim_exec(
+		  [[
+		  augroup FormatAutogroup
+		    autocmd!
+		    autocmd BufWritePost *.py,*.lua FormatWrite
+		  augroup END
+		  ]],
+		  true
+		  )
+	  end
+  }
+
+
   end)
