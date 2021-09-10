@@ -82,24 +82,17 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
 
   -- functions for working with git
-  use 'tpope/vim-fugitive'
-
-  -- use Gbrowse with gitlab
-  use {
-	  'shumphrey/fugitive-gitlab.vim',
-	  config = 'vim.cmd()',
-	  config = function()
-		  vim.api.nvim_exec(
-		  [[
-				let g:fugitive_gitlab_domains = ["http://gitlab.dev.ivi.ru/"]
-		  ]],
-		  false
-		  )
-	  end
+  use { 
+	  'tanvirtin/vgit.nvim',
+	  requires = 'nvim-lua/plenary.nvim'
   }
 
-  -- compare file with other commits
-  use 'gregsexton/gitv'
+  -- generate permalinks
+  use {
+	  'ruifm/gitlinker.nvim',
+	  requires = 'nvim-lua/plenary.nvim',
+  }
+
 
   -- switch language on mode change
   use {
