@@ -18,34 +18,6 @@ local mapper = function(mode, key, result)
 end
 
 
---[[
-LSP Configs
---]]
-
--- async formatting
--- https://www.reddit.com/r/neovim/comments/jvisg5/lets_talk_formatting_again/
-vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
-    if err ~= nil or result == nil then
-        return
-    end
-    if not vim.api.nvim_buf_get_option(bufnr, "modified") then
-        local view = vim.fn.winsaveview()
-        vim.lsp.util.apply_text_edits(result, bufnr)
-        vim.fn.winrestview(view)
-        vim.api.nvim_command("noautocmd :update")
-    end
-end
-
--- Diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = false,
-    virtual_text = true,
-    signs = true,
-    update_in_insert = false,
-  }
-)
-
 
 --[[
 Attach Function
@@ -98,18 +70,6 @@ lsp.tsserver.setup{
   on_attach = custom_attach
 }
 
-
--- lua language server configs
-local system_name
-if vim.fn.has("mac") == 1 then
-  system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-  system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-  system_name = "Windows"
-else
-  print("Unsupported system for sumneko")
-end
 
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
