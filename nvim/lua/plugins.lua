@@ -94,12 +94,6 @@ return require('packer').startup(function()
   }
 
 
-  -- switch language on mode change
-  use {
-	  'lyokha/vim-xkbswitch',
-	  config = 'vim.cmd[[let g:XkbSwitchEnabled = 1]]'
-  }
-
   -- highlight multiple words
   use {
 	  'lfv89/vim-interestingwords',
