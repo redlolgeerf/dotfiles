@@ -4,9 +4,8 @@ require('telescope').setup{
   }
 }
 -- mappings
-vim.api.nvim_set_keymap('n', '<c-p>', '<cmd>Telescope git_files<CR>', { noremap = true, silent = true })
---vim.api.nvim_set_keymap('n', 'gb', '<cmd>Telescope buffers<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'gb', ":lua require('telescope_functions').my_buffer()<Cr>", {noremap = true})
+vim.api.nvim_set_keymap('n', '<c-p>', '<cmd>Telescope find_files<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'gb', '<cmd>Telescope buffers<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>g', '<cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<LocalLeader>l', '<cmd>Telescope loclist<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<LocalLeader>t', '<cmd>Telescope lsp_document_symbols<CR>', { noremap = true, silent = true })

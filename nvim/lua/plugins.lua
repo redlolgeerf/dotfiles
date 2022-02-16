@@ -141,7 +141,10 @@ return require('packer').startup(function()
   }
 
   -- fuzzy selection of stuff
-  use {'camspiers/snap' , rocks = {'fzy'}}
+  use {
+	  'nvim-telescope/telescope.nvim',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
 
   -- code formatting
