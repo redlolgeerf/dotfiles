@@ -198,5 +198,11 @@ return require('packer').startup(function()
 	  config = 'require("pytrize").setup()',
   } -- }}}
 
+  use { 
+	  'iamcco/markdown-preview.nvim',
+	  run = 'mkdp#util#install()',
+	  ft = {'markdown', 'vim-plug'},
+  }
+
 
   end)
