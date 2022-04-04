@@ -115,6 +115,7 @@ function uninstall_emacs() {
 
 function install_gitignore() {
     symlink "$DOT_PATH"/gitignoreglobal "$HOMES"/.gitignoreglobal
+    git config --global core.excludesfile ~/.gitignoreglobal
 }
 
 function uninstall_gitignore() {
