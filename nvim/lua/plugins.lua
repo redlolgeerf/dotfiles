@@ -204,5 +204,7 @@ return require('packer').startup(function()
 	  ft = {'markdown', 'vim-plug'},
   }
 
+  use {'folke/tokyonight.nvim'}
+
 
   end)
