@@ -4,6 +4,7 @@ tags.lock
 tags.temp
 .venv
 .env
+.envrc
 .envv
 local_scrits/
 reports/
