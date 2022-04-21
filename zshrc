@@ -12,12 +12,9 @@ ZSH_THEME="robbyrussell"
 alias ls="ls -A"
 alias cls="clear"
 alias f="fg"
-alias jira=notjira
 
 autoload -U colors && colors
-export GOPATH=~/Go
 export PATH=$PATH:/usr/local/go/bin:$HOME/Go/bin:$HOME/bin:$HOME/.local/bin
-export N="notkube.dev.ivi.ru"
 
 # completion settings
 zstyle ':completion:*' completer _expand _complete _ignored
@@ -50,30 +47,12 @@ HIST_STAMPS="yyyy-mm-dd"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gitfast git-extras pip npm go golang docker timer)
+plugins=(git gitfast git-extras pip npm golang docker timer)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# envoy -t ssh-agent -a ~/.ssh/id_rsa
-# source <(envoy -p)
 
 unset GREP_OPTIONS
 
