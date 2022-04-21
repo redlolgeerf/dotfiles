@@ -22,21 +22,26 @@ return require('packer').startup(function()
   -- snippets themselves
   use 'honza/vim-snippets'
 
-   --completion
-   use { 
-	   'ms-jpq/coq_nvim',
-	   run = ':COQdeps',
-	   branch = 'coq',
-		  vim.api.nvim_exec(
-		  [[
+	--completion
+	use {
+		'ms-jpq/coq_nvim',
+		run = ':COQdeps',
+		branch = 'coq',
+		vim.api.nvim_exec(
+			[[
 		  augroup FormatAutogroup
-		    autocmd!
-		    autocmd BufWritePost *.py,*.lua FormatWrite
+			autocmd!
+			autocmd BufWritePost *.py,*.lua FormatWrite
 		  augroup END
-		  ]],
-		  true
-		  )
-   }
+		  let g:coq_settings = { 'auto_start': 'shut-up' }
+			]],
+			true
+		),
+	}
+	use {
+		'ms-jpq/coq.artifacts',
+		branch = 'artifacts'
+	}
 
   -- signatures
   use {
