@@ -99,6 +99,14 @@ fcs() {
   commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
+# fb - checkout git branch (excluding remote branches)
+fb() {
+  local branches branch
+  branches=$(git branch | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
 # fbr - checkout git branch (including remote branches)
 fbr() {
   local branches branch
@@ -109,12 +117,13 @@ fbr() {
 }
 # fcf - files changed in branch
 fcf() {
-	local commits git_root
+	local commits branch_name fork_point git_root
 	git_root=$(git rev-parse --show-toplevel)
-	# commits=$(git log master.. --name-only | egrep '[./]' | grep -v "Author" | sort -u) 
-	commits=$(git diff-tree -r master.. --name-only)
+	branch_name=$(git rev-parse --abbrev-ref HEAD)
+	fork_point=$(git merge-base --fork-point master "$branch_name")
+	commits=$(git diff-tree -r "$fork_point".. --name-only)
 	f="$(echo "$commits" | fzf-tmux -d $(( 2 + $(wc -l <<< "$commits") )) +m)"
-	vim "$git_root"'/'"$f"
+	nvim "$git_root"'/'"$f"
 }
 
 jsearch() {
