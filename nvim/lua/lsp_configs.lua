@@ -66,6 +66,9 @@ lsp.vimls.setup{
 lsp.rls.setup{
   on_attach = custom_attach
 }
+lsp.rust_analyzer.setup{
+  on_attach = custom_attach
+}
 lsp.tsserver.setup{
   on_attach = custom_attach
 }
