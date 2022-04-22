@@ -146,6 +146,7 @@ return require('packer').startup(function()
   }
 
   -- fuzzy selection of stuff
+  use {'nvim-telescope/telescope-ui-select.nvim' }
   use {
 	  'nvim-telescope/telescope.nvim',
 	  requires = { {'nvim-lua/plenary.nvim'} }
