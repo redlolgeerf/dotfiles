@@ -15,8 +15,6 @@ return require('packer').startup(function()
   -- show lsp data in status line
   use 'nvim-lua/lsp-status.nvim'
   use 'RishabhRD/nvim-lsputils'
-  -- ui for lsp
-  use 'glepnir/lspsaga.nvim'
   -- app for snippets
   use 'SirVer/ultisnips'
   -- snippets themselves
@@ -197,10 +195,6 @@ return require('packer').startup(function()
 
   use { -- pytrize {{{
 	  'AckslD/nvim-pytrize.lua',
-	  -- uncomment if you want to lazy load
-	  -- cmd = {'Pytrize', 'PytrizeClear', 'PytrizeJump'},
-	  -- uncomment if you want to lazy load but not use the commands
-	  -- module = 'pytrize',
 	  config = 'require("pytrize").setup()',
   } -- }}}
 
