@@ -27,10 +27,6 @@ return require('packer').startup(function()
 		branch = 'coq',
 		vim.api.nvim_exec(
 			[[
-		  augroup FormatAutogroup
-			autocmd!
-			autocmd BufWritePost *.py,*.lua FormatWrite
-		  augroup END
 		  let g:coq_settings = { 'auto_start': 'shut-up' }
 			]],
 			true
