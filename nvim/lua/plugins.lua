@@ -9,6 +9,7 @@ return require('packer').startup(function()
 
 	-- black and white colorscheme
 	use 'Lokaltog/vim-monotone'
+	use 'bluz71/vim-moonfly-colors'
 
 	-- settings for lsp
 	use 'neovim/nvim-lspconfig'
@@ -154,43 +155,43 @@ return require('packer').startup(function()
 	}
 
 	use 'folke/tokyonight.nvim'
-	use {
-		'gelguy/wilder.nvim',
-		config = function()
-			local wilder = require('wilder')
-			wilder.setup({
-				modes = {':', '/', '?'},
-				next_key = '<Tab>',
-				previous_key = '<S-Tab>',
-				accept_key = '<Down>',
-				reject_key = '<Up>',
-			})
-			wilder.set_option('pipeline', {
-				wilder.branch(
-					wilder.cmdline_pipeline({
-						fuzzy = 1,
-						set_pcre2_pattern = 1,
-					}),
-					wilder.python_search_pipeline({
-						pattern = 'fuzzy',
-					})
-				),
-			})
+	--use {
+		--'gelguy/wilder.nvim',
+		--config = function()
+			--local wilder = require('wilder')
+			--wilder.setup({
+				--modes = {':', '/', '?'},
+				--next_key = '<Tab>',
+				--previous_key = '<S-Tab>',
+				--accept_key = '<Down>',
+				--reject_key = '<Up>',
+			--})
+			--wilder.set_option('pipeline', {
+				--wilder.branch(
+					--wilder.cmdline_pipeline({
+						--fuzzy = 1,
+						--set_pcre2_pattern = 1,
+					--}),
+					--wilder.python_search_pipeline({
+						--pattern = 'fuzzy',
+					--})
+				--),
+			--})
 
-			local highlighters = {
-				wilder.pcre2_highlighter(),
-				wilder.basic_highlighter(),
-			}
+			--local highlighters = {
+				--wilder.pcre2_highlighter(),
+				--wilder.basic_highlighter(),
+			--}
 
-			wilder.set_option('renderer', wilder.renderer_mux({
-				[':'] = wilder.popupmenu_renderer({
-					highlighter = highlighters,
-				}),
-				['/'] = wilder.wildmenu_renderer({
-					highlighter = highlighters,
-				}),
-			}))
-		end,
-	}
+			--wilder.set_option('renderer', wilder.renderer_mux({
+				--[':'] = wilder.popupmenu_renderer({
+					--highlighter = highlighters,
+				--}),
+				--['/'] = wilder.wildmenu_renderer({
+					--highlighter = highlighters,
+				--}),
+			--}))
+		--end,
+	--}
 
 end)
