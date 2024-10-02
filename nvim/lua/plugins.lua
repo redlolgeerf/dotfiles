@@ -1,28 +1,40 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- Automatically install pckr
+local function bootstrap_pckr()
+  local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
 
--- Only required if you have packer in your `opt` pack
-vim.cmd [[packadd packer.nvim]]
+  if not (vim.uv or vim.loop).fs_stat(pckr_path) then
+    vim.fn.system({
+      'git',
+      'clone',
+      "--filter=blob:none",
+      'https://github.com/lewis6991/pckr.nvim',
+      pckr_path
+    })
+  end
 
-return require('packer').startup(function()
-	-- Packer can manage itself as an optional plugin
-	use {'wbthomason/packer.nvim', opt = true}
+  vim.opt.rtp:prepend(pckr_path)
+end
 
+bootstrap_pckr()
+
+require('pckr').add{
 	-- black and white colorscheme
-	use 'Lokaltog/vim-monotone'
-	use 'bluz71/vim-moonfly-colors'
+	'Lokaltog/vim-monotone',
+	'bluz71/vim-moonfly-colors',
 
 	-- settings for lsp
-	use 'neovim/nvim-lspconfig'
+	'neovim/nvim-lspconfig',
 	-- show lsp data in status line
-	use 'nvim-lua/lsp-status.nvim'
-	use 'RishabhRD/nvim-lsputils'
+	'nvim-lua/lsp-status.nvim',
+	'RishabhRD/nvim-lsputils',
 	-- app for snippets
-	use 'SirVer/ultisnips'
+	'SirVer/ultisnips',
 	-- snippets themselves
-	use 'honza/vim-snippets'
+	'honza/vim-snippets',
 
 	--completion
-	use {
+	{
 		'ms-jpq/coq_nvim',
 		run = ':COQdeps',
 		branch = 'coq',
@@ -32,26 +44,26 @@ return require('packer').startup(function()
 			]],
 			true
 		),
-	}
-	use {
+	},
+	{
 		'ms-jpq/coq.artifacts',
 		branch = 'artifacts'
-	}
+	},
 
 	-- signatures
-	use "ray-x/lsp_signature.nvim"
+	"ray-x/lsp_signature.nvim",
 
 	-- treesitter: syntax highligh, indent and folding
-	use {
+	{
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',
-	}
+	},
 
 	-- indent guide for blank lines
-	use 'lukas-reineke/indent-blankline.nvim'
+	'lukas-reineke/indent-blankline.nvim',
 
 	-- check code syntax
-	use {
+	{
 		"dense-analysis/ale",
 		config = function()
 			vim.api.nvim_exec(
@@ -66,32 +78,32 @@ return require('packer').startup(function()
 				false
 			)
 		end
-	}
+	},
 
 	-- comment/uncomment
-	use {
+	{
 		'scrooloose/nerdcommenter',
-		config = 'vim.cmd[[let g:NERDCreateDefaultMappings = 1]]'
-	}
+		--config = 'vim.cmd[[let g:NERDCreateDefaultMappings = 1]]'
+	},
 
 	-- actions with quotes and brackets
-	use 'tpope/vim-surround'
+	'tpope/vim-surround',
 
 	-- functions for working with git
-	use { 
+	{ 
 		'tanvirtin/vgit.nvim',
 		requires = 'nvim-lua/plenary.nvim'
-	}
+	},
 
 	-- generate permalinks
-	use {
+	{
 		'ruifm/gitlinker.nvim',
 		requires = 'nvim-lua/plenary.nvim',
-	}
+	},
 
 
 	-- highlight multiple words
-	use {
+	{
 		'lfv89/vim-interestingwords',
 		config = function()
 			vim.api.nvim_exec(
@@ -106,10 +118,10 @@ return require('packer').startup(function()
 				false
 			)
 		end
-	}
+	},
 
 	-- run tests
-	use {
+	{
 		'vim-test/vim-test',
 		config = function()
 			vim.api.nvim_exec(
@@ -121,10 +133,10 @@ return require('packer').startup(function()
 				false
 			)
 		end
-	}
+	},
 
 	-- reuse terminal
-	use {
+	{
 		'kassio/neoterm',
 		config = function()
 			vim.api.nvim_exec(
@@ -134,64 +146,25 @@ return require('packer').startup(function()
 				false
 			)
 		end
-	}
+	},
 
 	-- fuzzy selection of stuff
-	use 'nvim-telescope/telescope-ui-select.nvim'
-	use {
+	'nvim-telescope/telescope-ui-select.nvim',
+	{
 		'nvim-telescope/telescope.nvim',
 		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+	},
 
-	use { -- pytrize {{{
+	{
 		'AckslD/nvim-pytrize.lua',
-		config = 'require("pytrize").setup()',
-	} -- }}}
+	},
 
-	use { 
+	{ 
 		'iamcco/markdown-preview.nvim',
 		run = 'mkdp#util#install()',
 		ft = {'markdown', 'vim-plug'},
-	}
+	},
 
-	use 'folke/tokyonight.nvim'
-	--use {
-		--'gelguy/wilder.nvim',
-		--config = function()
-			--local wilder = require('wilder')
-			--wilder.setup({
-				--modes = {':', '/', '?'},
-				--next_key = '<Tab>',
-				--previous_key = '<S-Tab>',
-				--accept_key = '<Down>',
-				--reject_key = '<Up>',
-			--})
-			--wilder.set_option('pipeline', {
-				--wilder.branch(
-					--wilder.cmdline_pipeline({
-						--fuzzy = 1,
-						--set_pcre2_pattern = 1,
-					--}),
-					--wilder.python_search_pipeline({
-						--pattern = 'fuzzy',
-					--})
-				--),
-			--})
+	'folke/tokyonight.nvim',
 
-			--local highlighters = {
-				--wilder.pcre2_highlighter(),
-				--wilder.basic_highlighter(),
-			--}
-
-			--wilder.set_option('renderer', wilder.renderer_mux({
-				--[':'] = wilder.popupmenu_renderer({
-					--highlighter = highlighters,
-				--}),
-				--['/'] = wilder.wildmenu_renderer({
-					--highlighter = highlighters,
-				--}),
-			--}))
-		--end,
-	--}
-
-end)
+}
