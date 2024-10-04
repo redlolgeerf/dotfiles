@@ -34,9 +34,8 @@ function uninstall_vim() {
 }
 
 function install_nvim() {
+    mkdir "$HOMES"/.config
     symlink "$DOT_PATH"/nvim "$HOMES"/.config/nvim
-    git clone https://github.com/wbthomason/packer.nvim\
-	    ~/.local/share/nvim/site/pack/packer/opt/packer.nvim
 }
 
 function uninstall_nvim() {
