@@ -133,6 +133,16 @@ function uninstall_mutt() {
     delete "$HOMES"/.config/mutt
 }
 
+function install_wezterm() {
+	brew install wezterm
+    symlink "$DOT_PATH"/wezterm.lua "$HOMES"/.wezterm.lua
+}
+
+function uninstall_wezterm() {
+	brew uninstall wezterm
+    delete "$HOMES"/.wezterm.lua
+}
+
 
 INSTALL=true
 to_install=()
