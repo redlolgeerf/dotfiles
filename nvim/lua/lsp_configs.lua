@@ -86,6 +86,6 @@ lsp.rust_analyzer.setup{
 lsp.terraformls.setup{
   on_attach = custom_attach
 }
-lsp.ruff_lsp.setup{
+lsp.ruff.setup{
   on_attach = custom_attach
 }
