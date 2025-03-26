@@ -87,5 +87,5 @@ lsp.terraformls.setup{
   on_attach = custom_attach
 }
 lsp.ruff.setup{
-  on_attach = custom_attach
+  on_attach = custom_attach,
 }

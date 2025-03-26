@@ -49,6 +49,9 @@ require('pckr').add{
 		'ms-jpq/coq.artifacts',
 		branch = 'artifacts'
 	},
+	{
+		'fannheyward/coc-pyright'
+	},
 
 	-- signatures
 	"ray-x/lsp_signature.nvim",
@@ -92,7 +95,9 @@ require('pckr').add{
 	-- functions for working with git
 	{ 
 		'tanvirtin/vgit.nvim',
-		requires = 'nvim-lua/plenary.nvim'
+		requires = {'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons'},
+		event = 'VimEnter',
+		--config = function() require'vgit'.setup() end,
 	},
 
 	-- generate permalinks
