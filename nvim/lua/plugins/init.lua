@@ -13,28 +13,53 @@ return {
 
 	--completion
 	{
-		"neovim/nvim-lspconfig", -- REQUIRED: for native Neovim LSP integration
-		lazy = false, -- REQUIRED: tell lazy.nvim to start this plugin at startup
-		dependencies = {
-			-- main one
-			{ "ms-jpq/coq_nvim", branch = "coq" },
+		'saghen/blink.cmp',
+		-- optional: provides snippets for the snippet source
+		dependencies = { 'rafamadriz/friendly-snippets' },
 
-			-- 9000+ Snippets
-			{ "ms-jpq/coq.artifacts", branch = "artifacts" },
+		-- use a release tag to download pre-built binaries
+		version = '1.*',
+		-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+		-- build = 'cargo build --release',
+		-- If you use nix, you can build from source using latest nightly rust with:
+		-- build = 'nix run .#build-plugin',
 
-			-- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
-			-- Need to **configure separately**
-			{ 'ms-jpq/coq.thirdparty', branch = "3p" }
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+			-- 'super-tab' for mappings similar to vscode (tab to accept)
+			-- 'enter' for enter to accept
+			-- 'none' for no mappings
+			keymap = { preset = 'enter' },
+
+			-- (Default) Only show the documentation popup when manually triggered
+			completion = { documentation = { auto_show = false } },
+			sources = {
+				default = { 'lsp', 'path', 'snippets', 'buffer' },
+			},
 		},
-		init = function()
-			vim.g.coq_settings = {
-				auto_start = true, -- if you want to start COQ at startup
-				-- Your COQ settings here
+		opts_extend = { "sources.default" }
+	},
+	{
+		'neovim/nvim-lspconfig',
+		dependencies = { 'saghen/blink.cmp' },
+
+		-- example using `opts` for defining servers
+		opts = {
+			servers = {
+				lua_ls = {}
 			}
-		end,
-		config = function()
-			-- Your LSP settings here
-		end,
+		},
+		config = function(_, opts)
+			local lspconfig = require('lspconfig')
+			for server, config in pairs(opts.servers) do
+				-- passing config.capabilities to blink.cmp merges with the capabilities in your
+				-- `opts[server].capabilities, if you've defined it
+				config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+				lspconfig[server].setup(config)
+			end
+		end
 	},
 	{
 		'fannheyward/coc-pyright'
