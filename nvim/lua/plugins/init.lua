@@ -1,53 +1,40 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
--- Automatically install pckr
-local function bootstrap_pckr()
-  local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
-
-  if not (vim.uv or vim.loop).fs_stat(pckr_path) then
-    vim.fn.system({
-      'git',
-      'clone',
-      "--filter=blob:none",
-      'https://github.com/lewis6991/pckr.nvim',
-      pckr_path
-    })
-  end
-
-  vim.opt.rtp:prepend(pckr_path)
-end
-
-bootstrap_pckr()
-
-require('pckr').add{
+return {
 	-- black and white colorscheme
 	'Lokaltog/vim-monotone',
 	'bluz71/vim-moonfly-colors',
 
-	-- settings for lsp
-	'neovim/nvim-lspconfig',
 	-- show lsp data in status line
 	'nvim-lua/lsp-status.nvim',
 	'RishabhRD/nvim-lsputils',
 	-- app for snippets
-	'SirVer/ultisnips',
+	--'SirVer/ultisnips',
 	-- snippets themselves
 	'honza/vim-snippets',
 
 	--completion
 	{
-		'ms-jpq/coq_nvim',
-		run = ':COQdeps',
-		branch = 'coq',
-		vim.api.nvim_exec(
-			[[
-			let g:coq_settings = { 'auto_start': 'shut-up' }
-			]],
-			true
-		),
-	},
-	{
-		'ms-jpq/coq.artifacts',
-		branch = 'artifacts'
+		"neovim/nvim-lspconfig", -- REQUIRED: for native Neovim LSP integration
+		lazy = false, -- REQUIRED: tell lazy.nvim to start this plugin at startup
+		dependencies = {
+			-- main one
+			{ "ms-jpq/coq_nvim", branch = "coq" },
+
+			-- 9000+ Snippets
+			{ "ms-jpq/coq.artifacts", branch = "artifacts" },
+
+			-- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+			-- Need to **configure separately**
+			{ 'ms-jpq/coq.thirdparty', branch = "3p" }
+		},
+		init = function()
+			vim.g.coq_settings = {
+				auto_start = true, -- if you want to start COQ at startup
+				-- Your COQ settings here
+			}
+		end,
+		config = function()
+			-- Your LSP settings here
+		end,
 	},
 	{
 		'fannheyward/coc-pyright'
@@ -59,7 +46,7 @@ require('pckr').add{
 	-- treesitter: syntax highligh, indent and folding
 	{
 		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate',
+		build = ':TSUpdate',
 	},
 
 	-- indent guide for blank lines
@@ -166,10 +153,9 @@ require('pckr').add{
 
 	{ 
 		'iamcco/markdown-preview.nvim',
-		run = 'mkdp#util#install()',
+		build = 'mkdp#util#install()',
 		ft = {'markdown', 'vim-plug'},
 	},
 
 	'folke/tokyonight.nvim',
-
 }
