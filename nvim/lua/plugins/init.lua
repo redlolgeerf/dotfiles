@@ -61,9 +61,6 @@ return {
 			end
 		end
 	},
-	{
-		'fannheyward/coc-pyright'
-	},
 
 	-- signatures
 	"ray-x/lsp_signature.nvim",
