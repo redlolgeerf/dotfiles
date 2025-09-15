@@ -183,4 +183,5 @@ return {
 	},
 
 	'folke/tokyonight.nvim',
+	'Exafunction/windsurf.vim',
 }
