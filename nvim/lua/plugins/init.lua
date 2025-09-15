@@ -74,24 +74,6 @@ return {
 	-- indent guide for blank lines
 	'lukas-reineke/indent-blankline.nvim',
 
-	-- check code syntax
-	{
-		"dense-analysis/ale",
-		config = function()
-			vim.api.nvim_exec(
-				[[
-				let g:ale_linters = {'go': ['gofmt', 'golint', 'gometalinter'], 'python': [], 'javascript': ['eslint']}
-				let g:ale_echo_msg_error_str = 'E'
-				let g:ale_echo_msg_warning_str = 'W'
-				let g:ale_sign_error = '✘'
-				let g:ale_sign_warning = '⚠'
-				let g:ale_lint_on_enter = 0 "Don't lint on enter hope this speeds things up/prevents lag
-				]],
-				false
-			)
-		end
-	},
-
 	-- comment/uncomment
 	{
 		'scrooloose/nerdcommenter',
