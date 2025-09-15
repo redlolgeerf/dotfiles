@@ -34,7 +34,7 @@ return {
 			keymap = { preset = 'enter' },
 
 			-- (Default) Only show the documentation popup when manually triggered
-			completion = { documentation = { auto_show = false } },
+			completion = { documentation = { auto_show = true } },
 			sources = {
 				default = { 'lsp', 'path', 'snippets', 'buffer' },
 			},
