@@ -176,5 +176,10 @@ return {
 				lsp_format = "fallback",
 			},
 		},
+	},
+	-- LSP server management
+	{
+		"mason-org/mason.nvim",
+		opts = {}
 	}
 }
