@@ -1,8 +1,4 @@
 local lsp = require('lspconfig')
-local api = vim.api
-local configs = require('lspconfig/configs')
-local util = require 'lspconfig/util'
-local cwd = vim.loop.cwd
 
 
 
@@ -14,7 +10,7 @@ Helper Functions
 
 --A custom mapper function to make mapping our lsp functions to vim key sequences less verbose
 local mapper = function(mode, key, result)
-  api.nvim_buf_set_keymap(0, mode, key, "<cmd>lua "..result.."<cr>", {noremap = true, silent = true})
+  vim.api.nvim_buf_set_keymap(0, mode, key, "<cmd>lua "..result.."<cr>", {noremap = true, silent = true})
 end
 
 local opts = { noremap=true, silent=true }
