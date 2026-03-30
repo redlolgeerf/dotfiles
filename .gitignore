@@ -10,6 +10,7 @@ nvim/.init.vim-rplugin~
 nvim/.netrwhist
 nvim/UltiSnips
 nvim/autoload
+nvim/lazy-lock.json
 nvim/plugged
 nvim/shada/
 nvim/spell
