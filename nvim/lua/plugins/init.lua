@@ -74,12 +74,6 @@ return {
 	-- indent guide for blank lines
 	'lukas-reineke/indent-blankline.nvim',
 
-	-- comment/uncomment
-	{
-		'scrooloose/nerdcommenter',
-		--config = 'vim.cmd[[let g:NERDCreateDefaultMappings = 1]]'
-	},
-
 	-- actions with quotes and brackets
 	'tpope/vim-surround',
 
