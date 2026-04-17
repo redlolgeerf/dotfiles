@@ -78,9 +78,9 @@ return {
 	'tpope/vim-surround',
 
 	-- functions for working with git
-	{ 
+	{
 		'tanvirtin/vgit.nvim',
-		requires = {'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons'},
+		requires = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' },
 		event = 'VimEnter',
 		--config = function() require'vgit'.setup() end,
 	},
@@ -142,17 +142,17 @@ return {
 	'nvim-telescope/telescope-ui-select.nvim',
 	{
 		'nvim-telescope/telescope.nvim',
-		requires = { {'nvim-lua/plenary.nvim'} }
+		requires = { { 'nvim-lua/plenary.nvim' } }
 	},
 
 	{
 		'AckslD/nvim-pytrize.lua',
 	},
 
-	{ 
+	{
 		'iamcco/markdown-preview.nvim',
 		build = 'mkdp#util#install()',
-		ft = {'markdown', 'vim-plug'},
+		ft = { 'markdown', 'vim-plug' },
 	},
 
 	'folke/tokyonight.nvim',
