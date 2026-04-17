@@ -1,15 +1,14 @@
-local treesitter = require('nvim-treesitter.configs')
+local treesitter = require('nvim-treesitter')
 treesitter.setup {
-	ensure_installed = "all",
-	ignore_install = { "phpdoc" },
-	highlight = {
-		enable = true,
-	},
-	indent = {
-		enable = true,
-	},
+  -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+  install_dir = vim.fn.stdpath('data') .. '/site'
 }
-
-vim.wo.foldmethod="expr"
-vim.o.foldexpr="nvim_treesitter#foldexpr()"
+treesitter.install { 'rust', 'python', 'html', 'json', 'lua' }
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'python' },
+  callback = function() vim.treesitter.start() end,
+})
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldmethod = 'expr'
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 --vim.wo.foldenable=false -- can be enabled directly in opened file - using 'zi' - toogle fold

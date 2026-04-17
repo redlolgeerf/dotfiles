@@ -68,7 +68,9 @@ return {
 	-- treesitter: syntax highligh, indent and folding
 	{
 		'nvim-treesitter/nvim-treesitter',
+		lazy = false,
 		build = ':TSUpdate',
+		branch = "main",
 	},
 
 	-- indent guide for blank lines
