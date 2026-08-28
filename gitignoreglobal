@@ -13,3 +13,8 @@ reports/
 .python-version
 __pycache__/
 *.local
+.tokensave/
+
+**/.claude/settings.local.json
+
+**/.claude/.cc-writes/
